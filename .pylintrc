@@ -1,0 +1,54 @@
+[MASTER]
+# Fichiers ou répertoires à ignorer
+ignore=.git,__pycache__,.venv,venv,env,build,dist,slides,ressources
+# Utiliser plusieurs processus pour accélérer
+jobs=0
+
+[MESSAGES CONTROL]
+# Désactiver certains messages pour plus de flexibilité
+disable=
+    C0111,  # missing-docstring
+    C0103,  # invalid-name (pour permettre des noms courts)
+    R0903,  # too-few-public-methods
+    R0913,  # too-many-arguments
+    W0212,  # protected-access (pour les tests)
+    C0330,  # bad-continuation (conflit avec black)
+    C0326,  # bad-whitespace (conflit avec black)
+
+[FORMAT]
+# Compatibilité avec black
+max-line-length=88
+indent-string='    '
+
+[BASIC]
+# Conventions de nommage
+good-names=i,j,k,x,y,z,f,_,a,b,c,df,ax
+
+[DESIGN]
+max-args=7
+max-attributes=10
+max-bool-expr=5
+max-branches=15
+max-locals=20
+max-parents=7
+max-public-methods=25
+max-returns=6
+max-statements=50
+min-public-methods=1
+
+[SIMILARITIES]
+# Nombre minimum de lignes identiques pour détecter du code dupliqué
+min-similarity-lines=4
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=yes
+
+[TYPECHECK]
+# Ignorer les erreurs pour les bibliothèques connues
+ignored-modules=numpy,pandas,matplotlib,sklearn
+
+[REPORTS]
+# Format du rapport
+output-format=colorized
+reports=no
+score=yes

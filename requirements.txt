@@ -1,0 +1,39 @@
+# Python pour Informaticiens - BUT Informatique
+# Dépendances pour la séance pratique
+
+# ============================================================================
+# Environnement Jupyter
+# ============================================================================
+jupyter>=1.0.0
+jupyterlab>=3.0.0
+notebook>=6.4.0
+ipython>=8.0.0
+
+# ============================================================================
+# Calcul scientifique (pour les démos Partie 3)
+# ============================================================================
+numpy>=1.21.0
+matplotlib>=3.4.0
+
+# ============================================================================
+# Outils de qualité du code (optionnel mais recommandé)
+# ============================================================================
+black[jupyter]>=22.0.0 # Formatage automatique (inclut support Jupyter)
+flake8>=4.0.0          # Vérification PEP 8
+pylint>=2.12.0         # Analyse statique
+mypy>=0.950            # Type checking
+isort>=5.10.0          # Tri automatique des imports
+pre-commit>=2.20.0     # Git hooks pour vérifications automatiques
+nbqa>=1.7.0            # Permet d'exécuter les outils de qualité sur les notebooks Jupyter
+
+# ============================================================================
+# Tests (pour le challenge de la semaine)
+# ============================================================================
+pytest>=7.0.0          # Framework de tests
+pytest-cov>=3.0.0      # Couverture de code
+
+# ============================================================================
+# Utilitaires (optionnel)
+# ============================================================================
+ipdb>=0.13.0           # Débogueur interactif
+rich>=12.0.0           # Affichage terminal amélioré

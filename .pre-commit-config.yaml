@@ -1,0 +1,103 @@
+# Configuration pre-commit pour Python pour Informaticiens
+# Installation : make pre-commit-install
+# Exécution manuelle : make pre-commit-run
+
+repos:
+  # Hooks généraux
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        name: Supprime les espaces en fin de ligne
+      - id: end-of-file-fixer
+        name: Vérifie la fin de fichier
+      - id: check-yaml
+        name: Vérifie les fichiers YAML
+      - id: check-json
+        name: Vérifie les fichiers JSON
+      - id: check-toml
+        name: Vérifie les fichiers TOML
+      - id: check-added-large-files
+        name: Vérifie les fichiers trop volumineux
+        args: ['--maxkb=500']
+      - id: check-merge-conflict
+        name: Vérifie les conflits de merge
+      - id: mixed-line-ending
+        name: Vérifie les fins de ligne
+        args: ['--fix=lf']
+
+  # Black - Formatage du code
+  - repo: https://github.com/psf/black
+    rev: 25.9.0
+    hooks:
+      - id: black
+        name: Formate le code avec Black
+        language_version: python3
+        exclude: ^(slides/|ressources/)
+
+  # isort - Tri des imports
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.1.0
+    hooks:
+      - id: isort
+        name: Trie les imports avec isort
+        args: ["--profile", "black"]
+        exclude: ^(slides/|ressources/)
+
+  # Flake8 - Vérification PEP 8
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.3.0
+    hooks:
+      - id: flake8
+        name: Vérifie PEP 8 avec Flake8
+        args: ['--max-line-length=88', '--extend-ignore=E203,E501,W503']
+        exclude: ^(slides/|ressources/)
+
+  # mypy - Type checking (optionnel - peut être commenté)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.18.2
+    hooks:
+      - id: mypy
+        name: Vérifie les types avec mypy
+        additional_dependencies: []
+        exclude: ^(slides/|ressources/|tests/)
+        args: [--ignore-missing-imports, --no-strict-optional]
+
+  # nbqa - Outils de qualité pour les notebooks Jupyter
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.9.1
+    hooks:
+      - id: nbqa-black
+        name: Formate les notebooks avec Black
+        additional_dependencies: [black]
+      - id: nbqa-isort
+        name: Trie les imports dans les notebooks
+        args: [--profile=black]
+        additional_dependencies: [isort]
+      - id: nbqa-flake8
+        name: Vérifie PEP 8 dans les notebooks
+        args: ["--extend-ignore=E203,E402,E501,W503,F401,F541,F841"]
+        additional_dependencies: [flake8]
+
+# Configuration globale
+default_language_version:
+  python: python3
+
+# Exécution plus rapide (nouveau format)
+default_stages: [pre-commit]
+
+# Ignorer certains fichiers
+exclude: |
+  (?x)^(
+      \.git/|
+      \.venv/|
+      venv/|
+      __pycache__/|
+      \.mypy_cache/|
+      \.pytest_cache/|
+      \.tox/|
+      build/|
+      dist/|
+      .*\.egg-info/|
+      .*\.ipynb_checkpoints/
+  )

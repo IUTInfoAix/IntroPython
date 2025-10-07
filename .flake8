@@ -1,0 +1,30 @@
+[flake8]
+max-line-length = 88
+extend-ignore = E203, E501, W503
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    env,
+    build,
+    dist,
+    *.egg-info,
+    .tox,
+    .mypy_cache,
+    .pytest_cache,
+    slides,
+    ressources
+
+# Compatibilité avec black
+max-complexity = 10
+per-file-ignores =
+    __init__.py:F401
+    */tests/*:F401,F811
+    # Notebooks: imports partout (E402), lignes longues (E501),
+    # imports non utilisés (F401), f-strings sans placeholders (F541),
+    # variables non utilisées (F841)
+    *.ipynb:E402,E501,F401,F541,F841
+
+# Ignorer les notebooks Jupyter
+filename = *.py

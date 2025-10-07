@@ -484,8 +484,8 @@ class: text-center
 <div class="pt-12">
 
 **Ressources de la séance :**
-#### 📓 Notebook Jupyter
-#### 📄 Cheat sheet
+#### 📓 Cahier de TP Jupyter
+#### 📄 Cheat sheet Python
 #### 💾 Cette présentation
 
 </div>

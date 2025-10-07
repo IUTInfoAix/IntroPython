@@ -1,8 +1,15 @@
-# 🐍 Python pour Informaticiens - BUT Informatique
+<img src="https://github.com/IUTInfoAix/Syllabus/blob/main/logo.png?raw=true" alt="class logo" class="logo"/>
 
-## Séance pratique d'introduction (2 heures)
+# 🐍 Python pour Informaticiens
 
----
+## IUT d’Aix-Marseille – Département Informatique Aix-en-Provence
+- **Responsables :**
+  - [Sébastien Nedjar](mailto:sebastien.nedjar@univ-amu.fr)
+- **Besoin d'aide ?**
+  - Consulter et/ou créer des [issues](https://github.com/IUTInfoAix/IntroPython/issues).
+  - [Email](mailto:sebastien.nedjar@univ-amu.fr) pour une question d'ordre privée, ou pour convenir d'un rendez-vous physique.
+
+# Séance pratique d'introduction (2 heures)
 
 ## 📋 Vue d'ensemble
 
@@ -18,7 +25,13 @@ Cette séance vise à faire découvrir **la façon Python** de programmer aux é
 - ✅ Exploiter les outils natifs de Python plutôt que réinventer la roue
 - ✅ Lire et comprendre du code Python professionnel
 
----
+## Création de votre fork du TP
+
+La première chose que vous allez faire est de créer un fork d'un dépôt. Pour ce faire, rendez-vous sur le lien suivant :
+
+<https://classroom.github.com/a/Q1Ghr_uO>
+
+GitHub va vous créer un dépôt contenant un fork du dépôt 'IUTInfoAix/IntroPython' et s'appelant 'IUTInfoAix/IntroPython-votreUsername'. Vous apparaîtrez automatiquement comme contributeur de ce projet pour y pousser votre travail.
 
 ## 🚀 Installation et prérequis
 
@@ -395,7 +408,7 @@ flake8 mon_fichier.py
 Si vous utilisez ce matériel et avez des suggestions d'amélioration :
 - Ouvrez une issue sur GitHub
 - Proposez une pull request
-- Contactez [votre email]
+- Contactez sebastien.nedjar@univ-amu.fr
 
 ### Pour les étudiants
 

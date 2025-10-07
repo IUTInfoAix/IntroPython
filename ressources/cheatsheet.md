@@ -1,410 +1,321 @@
 ---
+title: "Python Cheat Sheet - BUT Informatique"
+geometry: margin=0.65cm
+fontsize: 8pt
+documentclass: extarticle
+classoption: [landscape, twocolumn]
 header-includes:
-   - \usepackage{twemojis}
+  - \setlength{\columnsep}{0.8cm}
+  - \setlength{\columnseprule}{0.3pt}
+  - \usepackage[compact]{titlesec}
+  - \titlespacing{\section}{0pt}{2.5pt}{2pt}
+  - \titlespacing{\subsection}{0pt}{2pt}{1pt}
+  - \pagenumbering{gobble}
+  - \setlength{\parindent}{0pt}
+  - \setlength{\parskip}{1.5pt}
+  - \usepackage{etoolbox}
+  - \AtBeginEnvironment{verbatim}{\small}
 ---
 
-# \twemoji{snake} Python Cheat Sheet - BUT Informatique
+## Structures natives
 
----
+**list** `[1,2,3]` : Séquence ordonnée modifiable
 
-## \twemoji{package} Structures & Idiomes Essentiels
+**dict** `{"a":1}` : Associations clé-valeur
 
-### Structures de données natives
+**set** `{1,2,3}` : Éléments uniques
 
-| Structure | Création | Cas d'usage | Opérations clés |
-|-----------|----------|-------------|-----------------|
-| **list** | `[1, 2, 3]` | Séquence ordonnée, modifiable | `append()`, `insert()`, `[:]` |
-| **dict** | `{"a": 1}` | Associations clé-valeur | `get()`, `keys()`, `values()` |
-| **set** | `{1, 2, 3}` | Éléments uniques, test rapide | `add()`, `in`, `|`, `&`, `-` |
-| **tuple** | `(1, 2, 3)` | Séquence immutable | Indexation, unpacking |
+**tuple** `(1,2)` : Séquence immutable
 
-### Complexité algorithmique (moyenne)
-
-```
-Opération          list    dict    set     tuple
-─────────────────────────────────────────────────
-Accès [i]          O(1)    O(1)    -       O(1)
-Recherche (in)     O(n)    O(1)    O(1)    O(n)
-Insertion          O(n)    O(1)    O(1)    -
-Suppression        O(n)    O(1)    O(1)    -
-```
-
-### List Comprehensions
+## List Comprehensions
 
 ```python
-# Basique
 [x**2 for x in range(10)]
-
-# Avec condition
-[x for x in range(20) if x % 2 == 0]
-
-# Nested
-[x*y for x in range(3) for y in range(3)]
-
-# Dict comprehension
+[x for x in range(20) if x%2==0]
 {x: x**2 for x in range(5)}
-
-# Set comprehension
-{x % 3 for x in range(10)}
+{x%3 for x in range(10)}
 ```
 
-### Unpacking & Enumerate
+## Unpacking & Enumerate
 
 ```python
-# Unpacking
-a, b, c = [1, 2, 3]
-premier, *milieu, dernier = [1, 2, 3, 4, 5]
-a, b = b, a  # Swap
+a,b,c = [1,2,3]
+premier,*milieu,dernier = [1,2,3,4]
+a,b = b,a
 
-# Enumerate (pas range(len()))
-for i, valeur in enumerate(liste):
-    print(f"{i}: {valeur}")
+for i,val in enumerate(liste):
+    print(f"{i}: {val}")
 
-# Zip (parcourir plusieurs listes)
-for nom, age in zip(noms, ages):
+for nom,age in zip(noms,ages):
     print(f"{nom} a {age} ans")
 ```
 
-### Méthodes utiles des structures
+## Méthodes utiles
 
 ```python
 # List
-liste.append(x)      # Ajouter à la fin
-liste.extend([...])  # Ajouter plusieurs
-liste.pop()          # Retirer dernier
-liste.remove(x)      # Retirer première occurrence
-liste.sort()         # Trier sur place
-sorted(liste)        # Nouvelle liste triée
+liste.append(x); liste.extend([...])
+liste.pop(); liste.sort(); sorted(liste)
 
 # Dict
-d.get(key, defaut)   # Accès sécurisé
-d.setdefault(k, v)   # Créer si absent
-d.update(autre)      # Fusionner
-d.pop(key)           # Retirer et retourner
+d.get(key, defaut); d.setdefault(k, v)
+d.update(autre); d.pop(key)
 
 # Set
-s.add(x)             # Ajouter élément
-s.update([...])      # Ajouter plusieurs
-s1 | s2              # Union
-s1 & s2              # Intersection
-s1 - s2              # Différence
+s.add(x); s1|s2; s1&s2; s1-s2
 ```
 
-### Fonctions built-in essentielles
+## Built-in essentiels
 
 ```python
-len(obj)             # Longueur
-sum(iterable)        # Somme
-min(iterable)        # Minimum
-max(iterable)        # Maximum
-all(iterable)        # Tous True ?
-any(iterable)        # Au moins un True ?
-sorted(iterable)     # Trier
-reversed(iterable)   # Inverser
-zip(iter1, iter2)    # Combiner
-map(func, iterable)  # Appliquer fonction
-filter(func, iter)   # Filtrer
-
-# Exemples
-sum([1, 2, 3])       # 6
-max([3, 1, 4])       # 4
-all([True, True])    # True
-any([False, True])   # True
+len(obj)  # Longueur
+sum(iterable)  # Somme
+min(iterable); max(iterable)
+all(iterable); any(iterable)
+sorted(iterable)  # Trier
+zip(it1, it2)  # Combiner
+map(func, iter); filter(func, iter)
 ```
 
-### String formatting
+## String formatting
 
 ```python
-# f-strings (Python 3.6+) - RECOMMANDÉ
-nom = "Alice"
-age = 25
+nom = "Alice"; age = 25
 print(f"{nom} a {age} ans")
-print(f"{nom:>10}")      # Alignement droite
-print(f"{3.14159:.2f}")  # 2 décimales : 3.14
-
-# format()
-"{} a {} ans".format(nom, age)
-"{nom} a {age} ans".format(nom=nom, age=age)
-
-# % (ancien, éviter)
-"%s a %d ans" % (nom, age)
+print(f"{nom:>10}")
+print(f"{3.14159:.2f}")
 ```
 
-### Slicing
+## Slicing
 
 ```python
-liste = [0, 1, 2, 3, 4, 5]
-
-liste[2:5]    # [2, 3, 4] (indices 2 à 4)
-liste[:3]     # [0, 1, 2] (début à 2)
-liste[3:]     # [3, 4, 5] (3 à la fin)
-liste[::2]    # [0, 2, 4] (pas de 2)
-liste[::-1]   # [5, 4, 3, 2, 1, 0] (inverser)
-liste[-1]     # 5 (dernier élément)
-liste[-3:]    # [3, 4, 5] (3 derniers)
+lst = [0,1,2,3,4,5]
+lst[2:5]   # [2,3,4]
+lst[:3]    # [0,1,2]
+lst[3:]    # [3,4,5]
+lst[::2]   # [0,2,4]
+lst[::-1]  # Inverser
+lst[-1]    # Dernier
+lst[-3:]   # 3 derniers
 ```
 
----
-
-## 🎯 VERSO : Bonnes Pratiques & Conventions
-
-### EAFP vs LBYL
+## Context Managers
 
 ```python
-# ❌ LBYL (Look Before You Leap) - Style Java/C
-if key in dictionnaire:
-    valeur = dictionnaire[key]
-else:
-    valeur = default
-
-# ✅ EAFP (Easier to Ask Forgiveness than Permission)
-try:
-    valeur = dictionnaire[key]
-except KeyError:
-    valeur = default
-
-# 🎯 MIEUX : Utiliser les méthodes natives
-valeur = dictionnaire.get(key, default)
-```
-
-### Context Managers
-
-```python
-# ❌ Dangereux (peut ne pas fermer)
-f = open('fichier.txt')
+# Mauvais
+f = open('f.txt')
 contenu = f.read()
 f.close()
 
-# ✅ Pythonique (fermeture garantie)
-with open('fichier.txt') as f:
+# Bon
+with open('f.txt') as f:
     contenu = f.read()
 
-# Multiple context managers
-with open('in.txt') as f_in, open('out.txt', 'w') as f_out:
-    f_out.write(f_in.read())
+# Multiple
+with open('in.txt') as fi, \
+     open('out.txt','w') as fo:
+    fo.write(fi.read())
 ```
 
-### Gestion des erreurs
+## Gestion erreurs
 
 ```python
-# ✅ Erreurs spécifiques (pas except: nu)
 try:
-    valeur = int(input("Nombre: "))
-    resultat = 10 / valeur
+    val = int(input("Nb: "))
+    res = 10 / val
 except ValueError:
-    print("Pas un nombre valide")
+    print("Pas un nombre")
 except ZeroDivisionError:
     print("Division par zéro")
 except Exception as e:
-    print(f"Erreur inattendue: {e}")
+    print(f"Erreur: {e}")
 finally:
     print("Toujours exécuté")
 
-# Lever des exceptions
 if age < 0:
-    raise ValueError("L'âge ne peut pas être négatif")
+    raise ValueError("Négatif")
 ```
 
-### Conventions PEP 8 (essentielles)
+## EAFP vs LBYL
 
 ```python
-# Nommage
-variable_name        # snake_case pour variables et fonctions
-ClassName           # PascalCase pour classes
-CONSTANTE           # MAJUSCULES pour constantes
-_private            # Underscore pour usage interne
-__dunder__          # Double underscore réservé à Python
+# LBYL (non pythonique)
+if key in dico:
+    val = dico[key]
+else:
+    val = default
 
-# Indentation : 4 espaces (PAS de tabs)
+# EAFP (pythonique)
+try:
+    val = dico[key]
+except KeyError:
+    val = default
 
-# Espaces
-x = 1               # ✅ Espaces autour de =
-x=1                 # ❌ Pas d'espace
-func(x, y)          # ✅ Espace après virgule
-func(x,y)           # ❌ Pas d'espace
+# Meilleur
+val = dico.get(key, default)
+```
+## Idiomes pythoniques
 
-# Longueur de ligne : max 79 caractères
-# Utiliser \ ou () pour découper
+```python
+# Liste vide
+if not liste:       # OK
+if len(liste)==0:   # NON
 
-# Imports
-import os
-import sys
+x = valeur or default
+
+for k,v in dico.items():  # OK
+
+", ".join(liste_str)  # OK
+
 from collections import Counter
-
-# ❌ Éviter
-from module import *
+compteur = Counter(liste)
 ```
 
-### Docstrings
+## Arguments de fonctions
 
 ```python
-def calculer_moyenne(notes):
-    """
-    Calcule la moyenne d'une liste de notes.
+# Par défaut
+def saluer(nom, titre="M."):
+    return f"{titre} {nom}"
 
-    Args:
-        notes (list): Liste de notes (float)
+# *args : nb variable d'arguments
+def somme(*nombres):
+    return sum(nombres)
 
-    Returns:
-        float: La moyenne des notes
+# **kwargs : arguments nommés
+def info(**data):
+    for k, v in data.items():
+        print(f"{k}: {v}")
 
-    Raises:
-        ValueError: Si la liste est vide
-
-    Example:
-        >>> calculer_moyenne([10, 15, 12])
-        12.33
-    """
-    if not notes:
-        raise ValueError("Liste vide")
-    return sum(notes) / len(notes)
+# Ordre: pos, *args, kw="def", **kwargs
 ```
 
-### Idiomes pythoniques courants
-
-```python
-# Vérifier si liste vide
-if not liste:        # ✅ Pythonique
-if len(liste) == 0:  # ❌ Verbeux
-
-# Valeur par défaut
-x = valeur or default  # Si valeur est falsy
-
-# Parcourir dict
-for key, value in dictionnaire.items():  # ✅
-for key in dictionnaire:                 # Juste les clés
-
-# Joindre strings
-", ".join(liste_strings)  # ✅
-# Pas de boucle manuelle avec +
-
-# Compter occurrences
-from collections import Counter
-compteur = Counter(liste)  # ✅ Utiliser Counter
-
-# Aplatir liste de listes
-import itertools
-plat = list(itertools.chain.from_iterable(nested))
-```
-
-### Type Hints (Python 3.5+)
+## Type Hints
 
 ```python
 def saluer(nom: str, age: int) -> str:
-    return f"{nom} a {age} ans"
+    return f"{nom} a {age}"
 
-# Types complexes
-from typing import List, Dict, Optional, Tuple
-
-def analyser(data: List[int]) -> Dict[str, float]:
-    return {"moyenne": sum(data) / len(data)}
-
-def trouver(id: int) -> Optional[str]:
-    # Retourne str ou None
-    return resultats.get(id)
-
-def coordonnees() -> Tuple[float, float]:
-    return (48.8566, 2.3522)
+from typing import List, Dict, Optional
+def trouve(id: int) -> Optional[str]:
+    return res.get(id)
 ```
 
-### Le Zen de Python (principes clés)
+## Astuces pratiques
 
 ```python
-import this  # Affiche les 19 aphorismes
+print(f"{variable=}")  # Debug Py3.8+
+a, b = b, a  # Swap
+"ha"*3; [0]*5  # Répéter
 
-# Les plus importants:
-# - Beautiful is better than ugly
-# - Explicit is better than implicit
-# - Simple is better than complex
-# - Readability counts
-# - There should be one obvious way to do it
+# Ternaire
+x = v_vrai if cond else v_faux
+
+# Chaîner comparaisons
+if 0 < x < 10:  # OK
+
+# Walrus operator (Python 3.8+)
+if (n := len(liste)) > 10:
+    print(f"Liste longue: {n}")
+
+# defaultdict - valeur par défaut
+from collections import defaultdict
+d = defaultdict(list)
+d['key'].append(1)  # Pas de KeyError
+
+# enumerate avec start
+for i, val in enumerate(liste, start=1):
+    print(f"Item {i}: {val}")
 ```
 
-### Outils de qualité du code
+## Bibliothèques courantes
 
-```bash
-# Formater automatiquement
-pip install black
-black mon_fichier.py
-
-# Vérifier le style
-pip install flake8
-flake8 mon_fichier.py
-
-# Analyse statique
-pip install pylint
-pylint mon_fichier.py
-
-# Type checking
-pip install mypy
-mypy mon_fichier.py
-```
-
-### Ressources essentielles
-
-**Documentation officielle**
-- https://docs.python.org/3/
-- https://pep8.org/ (style guide)
-
-**Pratique**
-- https://exercism.org/tracks/python
-- https://leetcode.com/
-- https://www.hackerrank.com/domains/python
-
-**Tutoriels**
-- https://realpython.com/
-- https://python.plainenglish.io/
-
-**Bibliothèques courantes**
 ```python
 # Data science
-import numpy as np
-import pandas as pd
+import numpy as np; import pandas as pd
 import matplotlib.pyplot as plt
 
-# Web
-import requests
-from flask import Flask
+# Web & API
+import requests; from flask import Flask
 
 # Utilitaires
-import json
-import csv
-import datetime
+import json, csv, datetime
 from pathlib import Path
 from collections import Counter, defaultdict
 from itertools import chain, combinations
-from functools import reduce
 ```
 
----
-
-## 💡 Astuces de dernière minute
+## Le Zen de Python
 
 ```python
-# Déboguer rapidement
-print(f"{variable=}")  # Python 3.8+, affiche: variable=valeur
-
-# Timer simple
-import time
-start = time.time()
-# ... code ...
-print(f"Temps: {time.time() - start:.2f}s")
-
-# Échanger valeurs
-a, b = b, a
-
-# Répéter string/liste
-"ha" * 3          # "hahaha"
-[0] * 5           # [0, 0, 0, 0, 0]
-
-# Opérateur ternaire
-x = valeur_si_vrai if condition else valeur_si_faux
-
-# Chaîner comparaisons
-if 0 < x < 10:    # ✅ Pythonique
-if x > 0 and x < 10:  # ❌ Verbeux
+import this
 ```
 
----
+**Principes clés** :
 
-**📌 Ce cheat sheet couvre l'essentiel pour écrire du code Python idiomatique !**
+- Beautiful is better than ugly
+- Explicit is better than implicit
+- Simple is better than complex
+- Readability counts
+- One obvious way to do it
+- Hard to explain = bad idea
+
+
+## Conventions PEP 8
+
+```python
+variable_name   # snake_case
+ClassName      # PascalCase
+CONSTANTE      # MAJUSCULES
+_private       # Interne
+```
+
+**Indentation**: 4 espaces (PAS tabs)
+
+**Espaces**: `x = 1` OK / `x=1` NON; `func(x, y)` OK / `func(x,y)` NON
+
+**Max**: 79 caractères/ligne
+
+## Docstrings
+
+```python
+def moyenne(notes):
+    """Calcule moyenne.
+    Args: notes (list)
+    Returns: float
+    Raises: ValueError si vide
+    """
+    if not notes:
+        raise ValueError("Vide")
+    return sum(notes)/len(notes)
+```
+
+## Outils qualité
+
+```bash
+pip install black    # Formatage auto
+black fichier.py
+
+pip install flake8   # Vérif. PEP 8
+flake8 fichier.py
+
+pip install mypy     # Type checking
+mypy fichier.py
+```
+
+## Ressources utiles
+
+**Documentation officielle**
+
+- docs.python.org/3/
+- pep8.org/
+
+**Pratique et exercices**
+
+- exercism.org/tracks/python
+- leetcode.com/
+
+**Tutoriels**
+
+- realpython.com/
+- python.plainenglish.io/

@@ -33,7 +33,27 @@ La première chose que vous allez faire est de créer un fork d'un dépôt. Pour
 
 GitHub va vous créer un dépôt contenant un fork du dépôt 'IUTInfoAix/IntroPython' et s'appelant 'IUTInfoAix/IntroPython-votreUsername'. Vous apparaîtrez automatiquement comme contributeur de ce projet pour y pousser votre travail.
 
-## 🚀 Installation et prérequis
+## Ouverture de GitHub Codespace
+
+Une fois votre fork créé, vous pouvez ouvrir le projet directement dans GitHub Codespace :
+
+1. Rendez-vous sur votre dépôt GitHub (`IUTInfoAix/IntroPython-votreUsername`)
+2. Cliquez sur le bouton vert **Code**
+3. Sélectionnez l'onglet **Codespaces**
+4. Cliquez sur **Create codespace on main**
+
+GitHub va créer un environnement de développement complet dans le cloud. Après quelques instants, vous aurez accès à VS Code directement dans votre navigateur avec :
+- Python et toutes les dépendances déjà installées
+- Jupyter Notebook fonctionnel
+- Accès au terminal
+
+Pour ouvrir le notebook de TP :
+- Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`
+- Le notebook s'ouvrira et vous pourrez exécuter les cellules
+
+**Note** : GitHub offre 60 heures gratuites de Codespace par mois pour les comptes personnels.
+
+## 🚀 Installation et prérequis (alternative locale)
 
 ### Prérequis
 
@@ -49,7 +69,7 @@ git clone https://github.com/IUTInfoAix/IntroPython.git
 cd IntroPython
 
 # Créer un environnement virtuel (recommandé)
-python -m venv ~/venv
+python3 -m venv ~/venv
 
 # Activer l'environnement virtuel
 source ~/venv/bin/activate
@@ -64,6 +84,7 @@ pip install -r requirements.txt
 jupyter>=1.0.0
 numpy>=1.21.0
 matplotlib>=3.4.0
+....
 ```
 
 ### Lancer les slides de présentation
@@ -82,8 +103,6 @@ npx slidev slides.md
 La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:3030`.
 
 **Note** : Si vous n'avez pas Node.js installé, vous pouvez consulter les slides directement dans le fichier `slides/slides.md`.
-
----
 
 ## 📚 Structure de la séance
 
@@ -116,103 +135,6 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
    - Consulter le cheat sheet régulièrement
    - Tenter le challenge de la semaine
    - Explorer les ressources recommandées
-
----
-
-## 🎯 Exercices principaux
-
-### Exercice 1 : Analyseur de texte (Partie 1)
-
-**Objectif** : Manipuler les structures de données natives
-
-**Fichier** : Directement dans le notebook, section "Partie 1B"
-
-**Compétences** :
-- Utiliser `set` pour compter les mots uniques
-- Utiliser `dict` ou `Counter` pour compter les occurrences
-- Nettoyer les données (ponctuation)
-
-**Durée** : 20 minutes
-
-**Niveaux** :
-- ⭐ Niveau 1 : Compter les mots uniques
-- ⭐⭐ Niveau 2 : Compter les occurrences
-- ⭐⭐⭐ Niveau 3 : Ignorer la ponctuation
-
----
-
-### Exercice 2 : Refactoring de code (Partie 4)
-
-**Objectif** : Transformer du code "sale" en code pythonique
-
-**Fichier** : `data/resultats.csv` (données test)
-
-**Compétences** :
-- Context managers (`with`)
-- Gestion d'erreurs appropriée
-- Utilisation de `sum()` et comprehensions
-- Module `csv` de la stdlib
-
-**Durée** : 25 minutes
-
-**Points d'amélioration à identifier** :
-1. Utiliser `with open()` au lieu de `.close()` manuel
-2. Remplacer `while` par `for`
-3. Utiliser `sum()` au lieu de boucle manuelle
-4. Gestion d'erreurs spécifiques (pas `except:` nu)
-5. Méthode `startswith()` au lieu d'indexation
-6. Module `csv` pour parser proprement
-
-**Solution** : Disponible dans `solutions/exercice_refactoring.py`
-
----
-
-## 🏆 Challenge de la semaine (optionnel)
-
-### Analyseur de mots de passe
-
-**Objectif** : Créer un programme complet qui analyse la force de mots de passe
-
-**Spécifications** :
-
-Le programme doit :
-1. Lire une liste de mots de passe depuis un fichier texte (un par ligne)
-2. Évaluer la force de chaque mot de passe selon des critères :
-   - Longueur (faible < 8, moyen 8-12, fort > 12)
-   - Présence de majuscules, minuscules, chiffres, caractères spéciaux
-   - Pas un mot du dictionnaire commun
-3. Générer un rapport avec :
-   - Nombre de mots de passe faibles/moyens/forts
-   - Liste des 5 mots de passe les plus faibles
-   - Suggestions d'amélioration
-4. (Bonus) Visualiser les statistiques avec matplotlib
-
-**Contraintes pythoniques obligatoires** :
-- ✅ Utiliser `with` pour la gestion de fichiers
-- ✅ Au moins une list comprehension
-- ✅ Un dictionnaire pour compter les catégories
-- ✅ Gestion des erreurs avec `try/except`
-- ✅ Docstrings pour toutes les fonctions
-- ✅ Respecter PEP 8
-
-**Exemple de fichier d'entrée** (`passwords.txt`) :
-```
-password123
-Tr0ub4dor&3
-correcthorsebatterystaple
-123456
-P@ssw0rd!
-abc
-MySecureP@ssw0rd2024!
-```
-
-**Critères d'évaluation** :
-- Fonctionnalité (le programme fonctionne)
-- Qualité du code (pythonique, lisible)
-- Gestion des erreurs
-- Documentation
-
----
 
 ## 📖 Ressources complémentaires
 

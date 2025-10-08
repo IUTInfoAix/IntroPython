@@ -1,17 +1,16 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
       "installOhMyZsh": true,
       "upgradePackages": true,
-      "username": "vscode",
       "uid": "1000",
       "gid": "1000"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "latest",
+      "version": "3.13",
       "installTools": "false"
     },
     "ghcr.io/devcontainers/features/node:1": {}
@@ -38,8 +37,6 @@
         "ms-python.flake8",
         "ms-python.mypy-type-checker",
         "ms-toolsai.jupyter",
-        "ms-toolsai.jupyter-keymap",
-        "ms-toolsai.jupyter-renderers",
         "editorconfig.editorconfig"
       ],
       "settings": {

@@ -169,6 +169,56 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
    - Tenter le challenge de la semaine
    - Explorer les ressources recommandées
 
+---
+
+## 🏆 Défi : Devenez un Pythonista en 10 semaines !
+
+### 🎯 Mission jusqu'au début du semestre 2
+
+**Relevez le défi : résolvez 1 exercice [Exercism](https://exercism.org/tracks/python) par semaine !**
+
+#### 📈 Pourquoi participer ?
+
+- 💪 **Pratiquer régulièrement** : la régularité bat l'intensité pour progresser en programmation
+- 🧠 **Penser en Python** : développer les réflexes pythoniques et automatiser les bonnes pratiques
+- 👥 **Échanger avec la communauté** : apprendre des solutions des autres et recevoir des feedbacks constructifs
+- 🏅 **Progresser visiblement** : suivez votre évolution avec les badges et votre profil public Exercism
+
+#### ✨ Les règles du jeu
+
+1. **S'inscrire sur Exercism** : [exercism.org/tracks/python](https://exercism.org/tracks/python)
+2. **Résoudre 1 exercice par semaine** pendant 10 semaines (jusqu'au début du semestre 2)
+3. **Appliquer les idiomes Python** appris pendant la séance
+4. **Demander du feedback** aux mentors Exercism après chaque exercice
+5. **Partager vos solutions** avec vos camarades pour échanger des astuces
+6. **Montrer votre progression** : profil public, badges collectés
+
+#### 🎓 Exercices recommandés pour débuter
+
+Les exercices Exercism sont organisés par difficulté. Voici une progression suggérée :
+
+1. **Hello World** - Prise en main
+2. **Two Fer** - Fonctions et paramètres par défaut
+3. **Raindrops** - Conditions et modulos
+4. **Leap** - Logique booléenne
+5. **Pangram** - Sets et manipulation de chaînes
+6. **Isogram** - Algorithmes sur les chaînes
+7. **Scrabble Score** - Dictionnaires
+8. **Word Count** - Collections et parsing
+9. **Run Length Encoding** - Algorithmes de compression
+10. **Robot Simulator** - POO et états
+
+#### 💡 Conseils pour réussir
+
+- ⏰ **Planifiez** : bloquez 30-60 minutes par semaine dans votre agenda
+- 🔄 **Itérez** : soumettez une première solution, puis améliorez-la avec les feedbacks
+- 📚 **Apprenez** : lisez les solutions des autres après avoir terminé
+- 🤝 **Entraidez-vous** : créez un groupe de discussion avec vos camarades
+
+_"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie_
+
+---
+
 ## 📖 Ressources complémentaires
 
 ### Documentation officielle

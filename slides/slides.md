@@ -422,22 +422,35 @@ led.on()
 
 ---
 
-# Challenge
+# 🏆 Défi : Devenez un Pythonista en 10 semaines !
 
-#### Résoudre un exercice python sur Exercism chaque semaine. Partager vos solutions avec la communauté et demander à un expert de vous conseiller.
+## 🎯 Mission jusqu'au début du semestre 2
+
+**1 exercice Exercism par semaine = 10 exercices au total**
+
 <v-click>
 
-**Contraintes pythoniques obligatoires :**
-- ✅ `with` pour les fichiers
-- ✅ Au moins une list comprehension
-- ✅ Un dictionnaire pour compter
-- ✅ Gestion d'erreurs avec `try/except`
-- ✅ Docstrings pour documenter
+### 📈 Pourquoi ce défi ?
+- 💪 **Pratiquer régulièrement** : la régularité bat l'intensité
+- 🧠 **Penser en Python** : développer les réflexes pythoniques
+- 👥 **Échanger avec la communauté** : apprendre des solutions des autres
+- 🏅 **Progresser visiblement** : suivez votre évolution sur Exercism
 
 </v-click>
 <v-click>
 
-**→ À faire chez vous, optionnel mais recommandé !**
+### ✨ Les règles du jeu
+- ✅ Appliquez les idiomes Python appris aujourd'hui
+- ✅ Demandez du feedback aux mentors Exercism
+- ✅ Partagez vos solutions avec vos camarades
+- ✅ Montrez votre progression (badges, profil public)
+
+</v-click>
+<v-click>
+
+**🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
+
+_"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie_
 
 </v-click>
 ---

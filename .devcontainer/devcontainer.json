@@ -36,7 +36,7 @@
         "ms-python.pylint",
         "ms-python.flake8",
         "ms-python.mypy-type-checker",
-        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter@2025.7.0",
         "editorconfig.editorconfig"
       ],
       "settings": {

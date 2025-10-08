@@ -87,6 +87,39 @@ matplotlib>=3.4.0
 ....
 ```
 
+### Utilisation du Makefile
+
+Le projet inclut un Makefile avec plusieurs commandes utiles pour faciliter votre travail :
+
+```bash
+# Afficher toutes les commandes disponibles
+make help
+```
+
+**Commandes principales** :
+
+```bash
+# Lancer Jupyter Lab (pour ouvrir le notebook de TP)
+make notebook
+
+# Lancer la présentation Slidev (nécessite Node.js)
+make slides
+
+# Formater automatiquement votre code Python
+make format
+
+# Vérifier que votre code respecte PEP 8
+make lint
+
+# Vérifier le formatage + linting (sans modifier les fichiers)
+make check-all
+
+# Nettoyer les fichiers temporaires
+make clean
+```
+
+**Pour les étudiants** : Les commandes `make format` et `make lint` sont particulièrement utiles pour vérifier que votre code suit les conventions pythoniques avant de soumettre vos exercices.
+
 ### Lancer les slides de présentation
 
 Les slides de présentation sont disponibles au format Slidev :
@@ -151,7 +184,7 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
 ### Pratique
 - [Exercism - Python Track](https://exercism.org/tracks/python)
 - [LeetCode](https://leetcode.com/) - Problèmes algorithmiques
-- [HackerRank - Python](https://www.hackerrank.com/domains/python)
+- [CodinGame](https://www.codingame.com/) - Apprendre en jouant
 - [Python Koans](https://github.com/gregmalcolm/python_koans) - Apprentissage par TDD
 
 ### Bibliothèques essentielles par domaine
@@ -233,13 +266,20 @@ pytest tests/
 
 ```json
 {
-    "python.formatting.provider": "black",
-    "python.linting.enabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
+  "[python]": {
     "editor.formatOnSave": true,
-    "editor.rulers": [79],
-    "files.trimTrailingWhitespace": true
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "isort.args": ["--profile", "black"],
+  "editor.rulers": [88],
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "jupyter.askForKernelRestart": false,
 }
 ```
 

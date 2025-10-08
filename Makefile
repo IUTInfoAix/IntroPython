@@ -161,7 +161,7 @@ notebook: ## Lance Jupyter Lab
 
 slides: ## Lance Slidev pour la présentation
 	@echo "$(BLUE)Lancement de la présentation...$(NC)"
-	cd slides && npx slidev slides.md
+	npm install -g @slidev/cli @slidev/theme-default&&cd slides && npx slidev slides.md
 
 fix: format lint ## Formate ET vérifie le code
 	@echo "$(GREEN)✓ Code formaté et vérifié !$(NC)"

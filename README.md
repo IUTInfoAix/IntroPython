@@ -29,7 +29,7 @@ Cette séance vise à faire découvrir **la façon Python** de programmer aux é
 
 La première chose que vous allez faire est de créer un fork d'un dépôt. Pour ce faire, rendez-vous sur le lien suivant :
 
-<https://classroom.github.com/a/Q1Ghr_uO>
+<https://classroom.github.com/a/Ai4FFYXy>
 
 GitHub va vous créer un dépôt contenant un fork du dépôt 'IUTInfoAix/IntroPython' et s'appelant 'IUTInfoAix/IntroPython-votreUsername'. Vous apparaîtrez automatiquement comme contributeur de ce projet pour y pousser votre travail.
 

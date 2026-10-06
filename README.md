@@ -44,6 +44,8 @@ Python a la réputation d'un « langage pour débutants ». C'est aussi un langa
 
 **ruff relit votre code pendant que vous l'écrivez.** Ses remarques s'affichent sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique. Les corrections automatiques à l'enregistrement sont volontairement désactivées : ruff vous montre la tournure à reprendre, à vous de la réécrire.
 
+**Copilot Chat est un tuteur, pas un générateur de code.** Il est configuré pour ne pas donner la solution d'emblée : il commence par expliquer le concept, puis oriente vers la documentation, et ne propose du code qu'en dernier recours. L'objectif est que vous compreniez chaque ligne de code que vous écrivez. La section [Assistance IA](#assistance-ia) explique comment vous en servir.
+
 ### La suite : le défi Exercism
 
 Quatre heures ne suffisent pas à prendre des habitudes. La séance se prolonge par un défi : résoudre un exercice [Exercism](https://exercism.org/tracks/python) par semaine pendant 10 semaines, jusqu'au début du semestre 2. Il est présenté en conclusion de la séance et détaillé plus bas dans ce document.
@@ -126,7 +128,7 @@ Pensez à arrêter votre codespace quand vous avez terminé (bouton **Code**, on
 
 #### Augmenter ce quota avec le Student Developer Pack
 
-En tant qu'étudiant, vous pouvez demander les avantages **GitHub Education**. Une fois votre statut vérifié, votre quota Codespaces passe à 180 heures de calcul par mois, soit **90 heures** sur une machine à 2 cœurs, avec 20 Go de stockage : c'est le quota d'un compte GitHub Pro. Vous obtenez aussi un accès gratuit à GitHub Copilot et aux offres du [Student Developer Pack](https://education.github.com/pack).
+En tant qu'étudiant, vous pouvez demander les avantages **GitHub Education**. Une fois votre statut vérifié, votre quota Codespaces passe à 180 heures de calcul par mois, soit **90 heures** sur une machine à 2 cœurs, avec 20 Go de stockage : c'est le quota d'un compte GitHub Pro. Vous obtenez aussi les offres du [Student Developer Pack](https://education.github.com/pack) et le plan Copilot Student, dont l'activation est décrite [plus bas](#activer-copilot-student).
 
 Pour faire la demande :
 
@@ -139,6 +141,26 @@ Pour faire la demande :
 Une fois la demande acceptée, vos avantages sont regroupés sur le [portail GitHub Education](https://github.com/education). Les conditions à jour sont dans la [documentation de GitHub](https://docs.github.com/fr/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student).
 
 Cette demande n'est pas nécessaire pour la séance : 4 heures sur une machine à 2 cœurs consomment 8 des 120 heures d'un compte gratuit.
+
+#### Activer Copilot Student
+
+Le statut étudiant vérifié donne droit à **Copilot Student**, un plan gratuit de GitHub Copilot. Il fonctionne avec une allocation mensuelle de crédits IA, et choisit lui-même le modèle qui vous répond.
+
+Faire valider son statut ne suffit pas : **l'activation de Copilot Student est une étape à part.**
+
+1. Ouvrez la page [Education benefits](https://github.com/settings/education/benefits) de vos paramètres
+2. Sous **Free GitHub developer resources for students and teachers**, cliquez sur **Learn more**
+3. Suivez les étapes proposées pour activer Copilot Student
+
+L'activation peut prendre plusieurs jours après la validation de votre statut. Faites donc votre demande **plusieurs jours avant la séance**, sans attendre le matin même.
+
+Si votre compte affiche encore Copilot Free, un essai gratuit ou une page de paiement :
+
+- ne payez rien : le plan étudiant est gratuit ;
+- repassez par vos [réglages Copilot](https://github.com/settings/copilot), ou par la page <https://github.com/github-copilot/free_signup> ;
+- si seules des offres payantes apparaissent, attendez quelques jours et réessayez, puis contactez le [support de GitHub](https://support.github.com) si rien ne change.
+
+En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, avec moins d'avantages que le plan étudiant. GitHub revérifie votre statut étudiant chaque mois. La marche à suivre à jour est dans la [documentation de GitHub](https://docs.github.com/fr/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students).
 
 ---
 
@@ -228,9 +250,27 @@ Vous avez le droit d'utiliser **Copilot Chat** (panneau latéral dans VS Code) q
 
 **Copilot Chat n'est pas un raccourci, c'est un tuteur.** Il vous aide à comprendre, pas à copier-coller. L'objectif est que vous soyez capable d'écrire ce code **en autonomie** à la fin de la séance.
 
-Dans le Codespace, les complétions automatiques de Copilot sont désactivées : c'est vous qui écrivez le code, et Copilot ne répond que dans le panneau de discussion.
+### Comment Copilot vous répond
 
-Copilot est gratuit pour les étudiants dont le statut est vérifié par GitHub Education : la marche à suivre est dans la section [Augmenter ce quota avec le Student Developer Pack](#augmenter-ce-quota-avec-le-student-developer-pack).
+Copilot avance d'un cran à chaque fois que vous redemandez de l'aide sur le même point :
+
+| Votre demande | Ce que fait Copilot |
+|---|---|
+| **Première demande** | Il explique le concept en jeu, ce que le test vérifie et la stratégie à suivre. Aucun code. |
+| **Vous redemandez** | Il vous oriente vers la documentation : une page de la documentation Python, un lien « En savoir plus » du notebook ou une section de la cheat sheet. Toujours pas de code complet. |
+| **Vous redemandez encore** | Il propose le minimum de code qui fait passer le test en cours. C'est souvent une valeur écrite en dur, que le test suivant vous obligera à généraliser : c'est la démarche TDD par petits pas. |
+
+Il vous tutoie, et travaille sur un seul test à la fois : celui dont vous venez de retirer le `@unittest.skip`.
+
+### Ce que Copilot ne fera pas
+
+- Donner la solution complète d'un exercice, même si vous la demandez explicitement
+- Réciter les solutions repliées du notebook. Elles restent à votre disposition : une fois que vous en avez ouvert une, il peut vous l'expliquer ligne par ligne
+- Écrire du code pour un test que vous n'avez pas encore activé
+- Réécrire à votre place une ligne signalée par ruff, ou vous proposer d'ajouter un `# noqa` : il vous explique la remarque et la tournure attendue
+- Compléter votre code pendant que vous tapez : dans le Codespace, les complétions automatiques de Copilot sont désactivées, et il ne répond que dans le panneau de discussion
+
+Pour obtenir une réponse précise, dites-lui sur quel exercice et quel test vous travaillez, et copiez le message d'erreur.
 
 ### Essayer Copilot Chat
 
@@ -243,7 +283,9 @@ Ouvrez le panneau **Copilot Chat** (icône dans la barre latérale gauche) et es
 
 Observez comment Copilot répond : il explique le concept sans donner directement du code. Si vous insistez, il vous orientera vers la documentation, puis seulement en dernier recours proposera un minimum de code.
 
-Les solutions repliées du notebook restent disponibles : Copilot ne vous les récitera pas, mais il peut vous les expliquer une fois que vous les avez ouvertes.
+### Accès à Copilot
+
+Copilot Chat fonctionne avec Copilot Free, le plan gratuit que tout compte GitHub peut activer. Les étudiants dont le statut est vérifié par GitHub Education ont droit à un plan plus complet, Copilot Student, lui aussi gratuit : voir [Activer Copilot Student](#activer-copilot-student).
 
 ---
 

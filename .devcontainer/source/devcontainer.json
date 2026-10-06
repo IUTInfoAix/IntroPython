@@ -3,8 +3,8 @@
   //   - fabriquer l'image publiée sur ghcr.io, que la configuration distribuée
   //     (../devcontainer.json) se contente de télécharger ;
   //   - servir de secours si cette image est indisponible : dans GitHub,
-  //     « New with options… » permet de choisir cette configuration, qui
-  //     reconstruit tout sur place.
+  //     elle se choisit avec « New with options… » et reconstruit tout sur
+  //     place.
   // Extensions, réglages et remoteUser sont définis ici et nulle part
   // ailleurs : ils sont inscrits dans l'image à la construction.
   "name": "IntroPython (construction sur place, secours)",

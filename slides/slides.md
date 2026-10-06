@@ -16,7 +16,7 @@ mdc: true
 ---
 
 # Python pour Informaticiens
-## BUT Informatique - Séance pratique (4h)
+## BUT Informatique : séance pratique (4 h)
 
 ---
 
@@ -41,7 +41,7 @@ mdc: true
 layout: two-cols-header
 ---
 
-# Où trouve-t-on Python dans le monde réel?
+# Python dans le monde réel
 
 ::left::
 
@@ -79,7 +79,7 @@ layout: two-cols-header
 
 <v-click>
 
-**→ Python n'est pas un jouet, c'est un outil professionnel**
+**→ Python est un outil professionnel**
 
 </v-click>
 
@@ -89,19 +89,19 @@ layout: two-cols-header
 # Les 4 structures natives essentielles
 
 
-1. LIST - Séquence ordonnée et modifiable
+1. LIST : séquence ordonnée et modifiable
 ```python
 courses = ["pain", "lait", "œufs"]
 ```
-2. DICT - Associations clé-valeur
+2. DICT : associations clé-valeur
 ```python
 etudiant = {"nom": "Dupont", "age": 19}
 ```
-3. SET - Éléments uniques, test rapide
+3. SET : éléments uniques, test rapide
 ```python
 participants = {"Alice", "Bob", "Charlie"}
 ```
-4. TUPLE - Séquence immutable
+4. TUPLE : séquence immutable
 ```python
 position = (48.8566, 2.3522)  # Paris
 ```
@@ -238,12 +238,12 @@ plat = [elem for ligne in matrice
 
 ---
 
-# EAFP - La philosophie Python
+# EAFP : la philosophie Python
 
 ## "Easier to Ask Forgiveness than Permission"
 <v-click>
 
-- LBYL (Look Before You Leap) - Style Java/C
+- LBYL (Look Before You Leap) : style Java/C
 ```python
 if "email" in donnees:
     email = donnees["email"]
@@ -253,7 +253,7 @@ else:
 </v-click>
 <v-click>
 
-- EAFP - Style Python
+- EAFP : style Python
 ```python
 try:
     email = donnees["email"]
@@ -360,7 +360,7 @@ for key, value in dict.items():  # ✅
 
 ---
 
-# PEP 8 - Conventions essentielles
+# PEP 8 : conventions essentielles
 
 - Nommage
 ```python
@@ -386,7 +386,7 @@ if condition:
 </v-click>
 <v-click>
 
-**→ "Readability counts" - Zen de Python**
+**→ "Readability counts" (Zen de Python)**
 </v-click>
 
 ---
@@ -457,7 +457,7 @@ import this
 layout: two-cols-header
 ---
 
-# 🏆 Défi : Devenez un Pythonista en 10 semaines !
+# 🏆 Défi : devenez un Pythonista en 10 semaines !
 
 **🎯 Mission jusqu'au début du semestre 2 : 1 exercice Exercism par semaine = 10 exercices au total**
 
@@ -481,7 +481,7 @@ layout: two-cols-header
 - ✅ Inscrivez-vous sur Exercism
 - ✅ Résolvez 1 exercice par semaine pendant 10 semaines
 - ✅ Appliquez les idiomes Python appris aujourd'hui
-- ✅ Demandez du feedback aux mentors Exercism
+- ✅ Demandez un retour aux mentors Exercism
 - ✅ Partagez vos solutions avec vos camarades
 - ✅ Montrez votre progression (badges, profil public)
 
@@ -493,7 +493,7 @@ layout: two-cols-header
 
 **🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
 
-_"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie_
+_"The only way to learn a new programming language is by writing programs in it."_ (Dennis Ritchie)
 
 </v-click>
 
@@ -544,11 +544,5 @@ class: text-center
 #### 📓 Cahier de TP Jupyter
 #### 📄 Cheat sheet Python
 #### 💾 Cette présentation
-
-</div>
-
-<div class="abs-bottom m-6 text-sm">
-
-_"Python is a language where you can focus on the problem, not the syntax"_
 
 </div>

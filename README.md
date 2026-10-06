@@ -11,25 +11,74 @@
 
 # Séance pratique d'introduction (4 heures)
 
-## Vue d'ensemble
+> **Séance de 4 heures**, à faire dans un GitHub Codespace. Vous travaillez dans un seul fichier, le notebook [notebook_seance.ipynb](notebook_seance.ipynb), qui alterne démonstrations, exercices et tests.
 
-Cette séance fait découvrir la façon Python de programmer aux étudiants de BUT Informatique. La syntaxe de base est supposée connue : on y apprend à écrire du code **pythonique**, c'est-à-dire idiomatique et lisible.
+## Objectifs de la séance
 
-### Objectifs pédagogiques
+### Ce que vous saurez faire à la fin de cette séance
 
-À l'issue de cette séance, les étudiants doivent être capables de :
+La syntaxe de base de Python est supposée connue. Avec elle, on écrit déjà des programmes qui fonctionnent, mais qui ressemblent souvent à du C++ ou à du Java traduit ligne à ligne : une boucle `for i in range(len(fruits))` pour parcourir une liste, un fichier ouvert puis fermé à la main, un `while` avec un compteur. Cette séance vous apprend à écrire les mêmes programmes à la façon Python, c'est-à-dire du code **pythonique** : idiomatique et lisible.
 
-- Choisir la structure de données appropriée (list, dict, set, tuple)
-- Mesurer les performances d'un code avec `timeit`
-- Expliquer les références et la mutabilité, et éviter leurs pièges
-- Utiliser les idiomes Python (comprehensions, EAFP, context managers)
-- Transformer du code « traduit de C++ ou Java » en code pythonique
-- Exploiter les outils natifs de Python plutôt que réinventer la roue
-- Lire et comprendre du code Python professionnel
+La séance est découpée en quatre parties, et chacune vise des savoir-faire précis :
 
-## Création de votre dépôt de TP
+| Partie | Vous serez capable de... |
+|---|---|
+| **1. Structures de données** | Choisir la structure de données appropriée (list, dict, set, tuple). Mesurer les performances d'un code avec `timeit`. Expliquer les références et la mutabilité, et éviter leurs pièges. |
+| **2. Idiomes** | Utiliser les idiomes Python : comprehensions, EAFP, context managers. |
+| **3. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
+| **4. Exercices pilotés par les tests** | Comprendre une spécification à partir de tests, puis écrire le code qui les fait passer. |
 
-Commencez par créer votre copie du dépôt du TP, dans votre compte GitHub personnel :
+À la fin de la séance, vous devez aussi être capables de lire et de comprendre du code Python professionnel.
+
+### Pourquoi cette démarche ?
+
+Python a la réputation d'un « langage pour débutants ». C'est aussi un langage de production, très utilisé dans l'industrie : les slides de la séance en donnent des exemples dans le web, la data science, le DevOps, la finance, le jeu vidéo et la recherche. Sa syntaxe est simple, mais elle cache des concepts qu'il faut comprendre, en informaticien, pour bien s'en servir. La séance est construite pour vous les faire rencontrer un par un.
+
+**Chaque notion est comparée à C++ et à Java**, puis suivie d'un exercice court qui la vérifie. Le notebook vous dit par exemple qu'un test d'appartenance dans une liste se comporte comme une recherche dans un `std::vector` ou une `ArrayList`, et qu'un set se comporte comme un `HashSet`.
+
+**Vous pariez avant d'exécuter.** Le notebook vous demande plusieurs fois de prédire un résultat : l'écart de vitesse entre une liste et un set, ou ce qu'affichent trois petits programmes qui manipulent des références. Notez votre réponse, exécutez la cellule, et si le résultat vous surprend, cherchez pourquoi avant d'ouvrir l'explication.
+
+**Vous mesurez au lieu de croire.** Qu'un test d'appartenance soit « très rapide » sur un set, ne le croyez pas sur parole : le module `timeit` chronomètre un bout de code, et vous vous en servez dès la première partie.
+
+**Les tests servent de cahier des charges.** Les exercices sont accompagnés de tests `unittest`, livrés désactivés par un `@unittest.skip`. Vous les activez un par un en retirant le décorateur, et vous écrivez le code qui fait passer chacun. Dans la quatrième partie, les tests tiennent lieu d'énoncé : c'est l'approche TDD (Test-Driven Development).
+
+**ruff relit votre code pendant que vous l'écrivez.** Ses remarques s'affichent sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique. Les corrections automatiques à l'enregistrement sont volontairement désactivées : ruff vous montre la tournure à reprendre, à vous de la réécrire.
+
+### La suite : le défi Exercism
+
+Quatre heures ne suffisent pas à prendre des habitudes. La séance se prolonge par un défi : résoudre un exercice [Exercism](https://exercism.org/tracks/python) par semaine pendant 10 semaines, jusqu'au début du semestre 2. Il est présenté en conclusion de la séance et détaillé plus bas dans ce document.
+
+### Prérequis
+
+#### Connaissances attendues
+
+- **La syntaxe de base de Python**, supposée connue.
+- **Un compte GitHub personnel** : vous y créerez votre copie du dépôt.
+
+Le notebook compare souvent Python à C++ et à Java. Ces comparaisons sont des points de repère : appuyez-vous sur le langage que vous connaissez.
+
+#### Environnement technique
+
+Toute la séance se fait dans **GitHub Codespaces** : vous n'avez rien à installer sur votre machine. L'environnement (Python 3.15, le noyau Jupyter qui exécute les cellules du notebook, ruff et les extensions VS Code) est prêt dès l'ouverture du Codespace.
+
+> [!NOTE]
+> Pour travailler sur votre propre machine (facultatif), voir la section [Travailler en local](#travailler-en-local-facultatif).
+
+### Documentation de référence
+
+- La [cheat sheet](ressources/cheatsheet.pdf) de la séance : deux pages à garder sous la main pendant les exercices
+- Les [slides](slides/slides.md) de la séance
+- [Le tutoriel Python](https://docs.python.org/3/tutorial/)
+- [La bibliothèque standard](https://docs.python.org/3/library/)
+- [PEP 8, le guide de style](https://pep8.org/)
+
+---
+
+## Mise en place
+
+La mise en place se fait en trois étapes : créer votre copie du dépôt, l'ouvrir dans un Codespace (votre environnement de développement dans le navigateur), puis ouvrir le notebook.
+
+### Étape 1 - Créer votre dépôt de TP
 
 1. Rendez-vous sur le dépôt <https://github.com/IUTInfoAix/IntroPython>
 2. Cliquez sur le bouton vert **Use this template**, puis sur **Create a new repository**
@@ -38,24 +87,25 @@ Commencez par créer votre copie du dépôt du TP, dans votre compte GitHub pers
 
 GitHub crée un dépôt `votreUsername/IntroPython` qui contient une copie du TP. Ce dépôt vous appartient : vous pouvez y pousser votre travail librement.
 
-## Ouverture de GitHub Codespace
+### Étape 2 - Ouvrir le projet dans GitHub Codespaces
 
-Une fois votre dépôt créé, ouvrez-le dans GitHub Codespace :
+Une fois sur la page de votre dépôt (`votreUsername/IntroPython`) :
 
-1. Rendez-vous sur votre dépôt GitHub (`votreUsername/IntroPython`)
-2. Cliquez sur le bouton vert **Code**
-3. Sélectionnez l'onglet **Codespaces**
-4. Cliquez sur **Create codespace on main**
+1. Cliquez sur le bouton vert **Code**
+2. Sélectionnez l'onglet **Codespaces**
+3. Cliquez sur **Create codespace on main**
 
-GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code. Vous n'avez rien à installer vous-même. Vous obtenez VS Code dans votre navigateur avec :
-- Python 3.15, le noyau Jupyter qui exécute les cellules du notebook, et ruff
-- Les extensions Python, Jupyter et Ruff déjà configurées
-- Un terminal
+GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code. VS Code s'ouvre ensuite dans votre navigateur, avec un terminal et les extensions Python, Jupyter et Ruff déjà configurées.
 
-Pour ouvrir le notebook de TP :
-- Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`
-- Le noyau Python 3.15 est normalement déjà sélectionné : son nom s'affiche en haut à droite du notebook, et vous pouvez exécuter les cellules tout de suite
-- Si VS Code affiche **Sélectionner un noyau** à la place, cliquez dessus, choisissez **Environnements Python**, puis Python 3.15
+### Étape 3 - Ouvrir le notebook
+
+Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`.
+
+Le noyau Python 3.15 est normalement déjà sélectionné : son nom s'affiche en haut à droite du notebook, et vous pouvez exécuter les cellules tout de suite. Si VS Code affiche **Sélectionner un noyau** à la place, cliquez dessus, choisissez **Environnements Python**, puis Python 3.15.
+
+### Vérification rapide
+
+Exécutez la première cellule de code du notebook, `import this`, avec le bouton d'exécution à gauche de la cellule ou avec Maj+Entrée. Le Zen de Python doit s'afficher sous la cellule : votre environnement fonctionne, vous pouvez commencer.
 
 ### Si la création du codespace échoue
 
@@ -74,94 +124,9 @@ Un compte GitHub personnel gratuit dispose chaque mois de 120 heures de calcul e
 
 Pensez à arrêter votre codespace quand vous avez terminé (bouton **Code**, onglet **Codespaces**, menu **…**, **Stop codespace**) : un codespace arrêté ne consomme plus d'heures, et votre travail y est conservé.
 
-## Installation et prérequis (alternative locale)
+---
 
-### Prérequis
-
-- **Python 3.15+** installé sur votre machine
-- Un éditeur de code (VS Code, PyCharm, ou autre)
-- *Optionnel* : Jupyter Notebook ou JupyterLab
-
-### Installation des dépendances
-
-```bash
-# Cloner le dépôt (ou télécharger les fichiers)
-git clone https://github.com/IUTInfoAix/IntroPython.git
-cd IntroPython
-
-# Créer un environnement virtuel (recommandé)
-python3 -m venv ~/venv
-
-# Activer l'environnement virtuel
-source ~/venv/bin/activate
-
-# Installer les dépendances
-pip install -r requirements-dev.txt
-```
-
-### Les deux fichiers de dépendances
-
-- [requirements.txt](requirements.txt) : le nécessaire pour faire la séance dans VS Code, c'est-à-dire le noyau Jupyter (`ipykernel`) et `ruff`. C'est tout ce que le Codespace installe.
-- [requirements-dev.txt](requirements-dev.txt) : le même contenu, plus ce qui sert en local (`jupyterlab` pour `make notebook`, `nbconvert` pour `make test`) et à la maintenance du dépôt (`pre-commit`).
-
-### Utilisation du Makefile
-
-Le Makefile du projet regroupe les commandes courantes :
-
-```bash
-# Afficher toutes les commandes disponibles
-make help
-```
-
-**Commandes principales** :
-
-```bash
-# Lancer Jupyter Lab (pour ouvrir le notebook de TP)
-make notebook
-
-# Lancer la présentation Slidev (nécessite Node.js)
-make slides
-
-# Formater automatiquement votre code et trier les imports
-make format
-
-# Afficher les remarques de ruff : PEP 8 et tournures non pythoniques
-make lint
-
-# Appliquer les corrections que ruff sait faire sans risque
-make lint-fix
-
-# Vérifier le formatage + linting (sans modifier les fichiers)
-make check-all
-
-# Nettoyer les fichiers temporaires
-make clean
-```
-
-**Pour les étudiants** : `make format` et `make lint` s'appuient sur [ruff](https://docs.astral.sh/ruff/), le formateur et linter du projet. Dans le Codespace, ses remarques s'affichent aussi sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique : essayez de réécrire vous-même avant de recourir à `make lint-fix`.
-
-Quelques lignes du notebook se terminent par `# noqa: CODE` : ce sont des contre-exemples volontaires (les « ❌ Style classique »), sur lesquels ruff a reçu la consigne de se taire. N'en ajoutez pas dans votre propre code. Si vous corrigez l'une de ces lignes, ruff vous signale que le `# noqa` ne sert plus (`RUF100`) : supprimez-le.
-
-### Lancer les slides de présentation
-
-Les slides sont au format Slidev :
-
-```bash
-# Lancer la présentation Slidev (nécessite Node.js)
-make slides
-
-# Ou directement avec npx
-cd slides
-npx slidev slides.md
-```
-
-La présentation s'ouvre dans votre navigateur à l'adresse `http://localhost:3030`.
-
-**Note** : sans Node.js, vous pouvez lire les slides directement dans le fichier `slides/slides.md`.
-
-## Structure de la séance
-
-### Durée : 4 heures
+## Déroulement de la séance
 
 | Horaire | Partie | Durée | Contenu |
 |---------|--------|-------|---------|
@@ -173,41 +138,71 @@ La présentation s'ouvre dans votre navigateur à l'adresse `http://localhost:30
 | 03:20 | **Partie 4** | 30 min | Exercices pilotés par les tests |
 | 03:50 | Conclusion | 10 min | Bilan et défi Exercism |
 
-La partie 4 sert de marge : le détecteur de palindromes est pour tout le monde, le compresseur RLE et le validateur de mots de passe sont des bonus, à finir chez vous.
+### Mise en route (20 min)
+
+Vous créez votre dépôt et votre Codespace, puis vous lisez le Zen de Python, les principes du langage. L'échauffement compare deux versions d'une même boucle : l'une écrite comme en C ou en Java, avec `range(len(...))` et un indice, l'autre avec `enumerate()` et une f-string. À vous de dire laquelle est la plus lisible.
+
+### Partie 1 - Structures de données, mesure de performances, mutabilité (65 min)
+
+Python fournit quatre structures de base : la liste, le dictionnaire, le set et le tuple. Vous voyez d'abord à quoi sert chacune, puis vous mesurez avec `timeit` ce que coûte un test d'appartenance (`in`) parmi 100 000 éléments, dans une liste puis dans un set. Avant d'exécuter la cellule, pariez sur l'écart.
+
+L'exercice guidé (25 min) met ces structures au travail sur un cas réel : vous gérez les inscriptions à un événement où certaines personnes se sont inscrites plusieurs fois. Il faut compter les participants uniques, retrouver ceux qui se sont inscrits plusieurs fois, puis refaire ce comptage avec `Counter`.
+
+La partie se termine par la mutabilité et les références (20 min). En C++ ou en Java, vous savez toujours si vous manipulez une valeur ou une référence. En Python, la syntaxe ne le montre pas : il faut connaître la règle. Vous la découvrez sur trois petits programmes dont vous prédisez l'affichage (`b = a`, un argument par défaut, une grille 3 × 3), puis vous réparez une fonction dont l'argument par défaut est mutable.
+
+### Partie 2 - Compréhensions, EAFP, context managers (55 min)
+
+Cette partie présente trois idiomes :
+
+- la **list comprehension** écrit en une ligne une boucle qui remplit une liste. Exercice : filtrer une liste de notes (10 min) ;
+- **EAFP**, « Easier to Ask Forgiveness than Permission » : en Python, on préfère essayer puis gérer l'erreur plutôt que vérifier avant. Exercice : une division qui retourne une valeur par défaut au lieu d'échouer (15 min) ;
+- le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit.
+
+### Partie 3 - Refactoring de l'analyseur CSV (45 min)
+
+Vous partez d'un programme écrit par un débutant, qui analyse un fichier de notes d'examen. Il fonctionne, mais il n'est ni pythonique ni très lisible : le fichier est ouvert sans `with`, une boucle `while` avance avec un compteur manuel, les sommes sont calculées à la main et un `except:` attrape toutes les erreurs sans distinction. Vous le réécrivez avec ce que vous venez d'apprendre, et neuf tests vérifient votre version.
+
+### Partie 4 - Exercices pilotés par les tests (30 min)
+
+Ici, vous codez à partir des tests : vous les lisez pour comprendre ce que la fonction doit faire, puis vous les faites passer un par un. Cette partie sert de marge : le détecteur de palindromes est pour tout le monde, le compresseur RLE et le validateur de mots de passe sont des bonus, à finir chez vous.
+
+### Conclusion (10 min)
+
+Bilan de ce que vous avez appris et présentation du défi Exercism.
 
 ---
 
-## Comment utiliser ce matériel
+## Comment travailler dans le notebook
 
-### Pour les étudiants
+Un exercice se présente toujours dans le même ordre : l'énoncé, une cellule de code à compléter et, le plus souvent, des tests puis une solution repliée. Les titres et les commentaires portent des repères qui reviennent tout au long du notebook :
 
-1. **Pendant la séance** :
-   - Ouvrir le notebook Jupyter
-   - Exécuter et modifier les exemples
-   - Poser des questions
-   - Travailler en binôme sur les exercices
+| Repère | Signification |
+|---|---|
+| 📖 | Démonstration ou explication : des cellules à exécuter et à observer |
+| ✏️ | Exercice : du code à écrire |
+| 🎯 📝 ⏱️ | Objectif, consignes et durée de l'exercice |
+| ⭐ à ⭐⭐⭐ | Difficulté croissante des questions |
+| 💡 | Indice |
+| 💻 VOTRE CODE ICI | Zone à compléter dans une cellule de code |
+| 👁️ | Solution ou explication repliée : cliquez après avoir essayé |
+| ❌ et ✅ | Style classique à remplacer, et style Python |
 
-2. **Après la séance** :
-   - Refaire les exercices à tête reposée
-   - Consulter le cheat sheet régulièrement
-   - Relever le défi Exercism présenté ci-dessous
-   - Explorer les ressources recommandées
+**Les tests.** Ils sont tous désactivés au départ. Retirez le `@unittest.skip` du premier test, exécutez la cellule, écrivez le code qui le fait passer, puis passez au suivant.
 
----
+**Les solutions.** Ouvrez-les après avoir cherché. Plusieurs proposent une seconde version, plus concise ou mieux découpée, à comparer avec la vôtre.
 
-## Pour les enseignants
+**Les remarques de ruff.** Quand ruff signale une ligne, lisez sa remarque et essayez de réécrire vous-même avant de recourir à `make lint-fix`. Le code est par ailleurs formaté à chaque enregistrement, y compris dans les cellules du notebook.
 
-### Intention pédagogique
+**Les `# noqa`.** Quelques lignes du notebook se terminent par `# noqa: CODE` : ce sont des contre-exemples volontaires (les « ❌ Style classique »), sur lesquels ruff a reçu la consigne de se taire. N'en ajoutez pas dans votre propre code. Si vous corrigez l'une de ces lignes, ruff vous signale que le `# noqa` ne sert plus (`RUF100`) : supprimez-le.
 
-La séance présente Python comme l'outil d'un informaticien professionnel, à rebours de sa réputation de « langage pour débutants ». Les étudiants doivent en retenir que Python est un langage de production, très utilisé dans l'industrie, et qu'on ne le maîtrise pas sans comprendre les concepts informatiques sous-jacents.
+Pendant la séance, travaillez en binôme sur les exercices, modifiez les exemples pour voir ce qui change, et posez des questions.
 
-Elle relie leurs connaissances théoriques en algorithmique et en programmation à l'usage concret de Python : le langage applique certains des paradigmes qu'ils étudient par ailleurs, et en remet d'autres en question. Sa syntaxe est simple, mais elle cache des concepts qu'il faut comprendre, en informaticien, pour bien s'en servir.
+### Après la séance
 
-### Approche pédagogique
-
-La séance repose sur une pédagogie active. Chaque notion est comparée aux langages que les étudiants pratiqueront (C/C++, Java), puis suivie d'un exercice court qui la vérifie. Les exercices sont posés comme des problèmes d'optimisation ou de refactoring, et tous les exemples viennent de cas d'usage réels qu'ils rencontreront probablement un jour.
-
-L'évaluation est formative : l'enseignant observe les solutions proposées aux exercices, écoute les questions et les discussions, puis ajuste le rythme et le niveau d'approfondissement pendant la séance.
+- Refaites les exercices à tête reposée, et terminez les deux bonus de la partie 4
+- Consultez régulièrement la cheat sheet
+- Relevez le défi Exercism présenté ci-dessous
+- Explorez les ressources recommandées
 
 ---
 
@@ -306,6 +301,93 @@ _"The only way to learn a new programming language is by writing programs in it.
 
 ---
 
+## Travailler en local (facultatif)
+
+Le Codespace suffit pour toute la séance. Cette section s'adresse à ceux qui préfèrent travailler sur leur propre machine.
+
+### Prérequis
+
+- **Python 3.15+** installé sur votre machine
+- Un éditeur de code (VS Code, PyCharm, ou autre)
+- *Optionnel* : Jupyter Notebook ou JupyterLab
+
+### Installation des dépendances
+
+```bash
+# Cloner le dépôt (ou télécharger les fichiers)
+git clone https://github.com/IUTInfoAix/IntroPython.git
+cd IntroPython
+
+# Créer un environnement virtuel (recommandé)
+python3 -m venv ~/venv
+
+# Activer l'environnement virtuel
+source ~/venv/bin/activate
+
+# Installer les dépendances
+pip install -r requirements-dev.txt
+```
+
+### Les deux fichiers de dépendances
+
+- [requirements.txt](requirements.txt) : le nécessaire pour faire la séance dans VS Code, c'est-à-dire le noyau Jupyter (`ipykernel`) et `ruff`. C'est tout ce que le Codespace installe.
+- [requirements-dev.txt](requirements-dev.txt) : le même contenu, plus ce qui sert en local (`jupyterlab` pour `make notebook`, `nbconvert` pour `make test`) et à la maintenance du dépôt (`pre-commit`).
+
+### Utilisation du Makefile
+
+Le Makefile du projet regroupe les commandes courantes :
+
+```bash
+# Afficher toutes les commandes disponibles
+make help
+```
+
+**Commandes principales** :
+
+```bash
+# Lancer Jupyter Lab (pour ouvrir le notebook de TP)
+make notebook
+
+# Lancer la présentation Slidev (nécessite Node.js)
+make slides
+
+# Formater automatiquement votre code et trier les imports
+make format
+
+# Afficher les remarques de ruff : PEP 8 et tournures non pythoniques
+make lint
+
+# Appliquer les corrections que ruff sait faire sans risque
+make lint-fix
+
+# Vérifier le formatage + linting (sans modifier les fichiers)
+make check-all
+
+# Nettoyer les fichiers temporaires
+make clean
+```
+
+`make format` et `make lint` s'appuient sur [ruff](https://docs.astral.sh/ruff/), le formateur et linter du projet.
+
+### Lancer les slides de présentation
+
+Les slides sont au format Slidev :
+
+```bash
+# Lancer la présentation Slidev (nécessite Node.js)
+make slides
+
+# Ou directement avec npx
+cd slides
+npx slidev slides.md
+```
+
+La présentation s'ouvre dans votre navigateur à l'adresse `http://localhost:3030`.
+
+**Note** : sans Node.js, vous pouvez lire les slides directement dans le fichier `slides/slides.md`.
+
+---
+
 ## Outils recommandés
 
 ### Éditeurs et IDE
@@ -369,6 +451,26 @@ Ces réglages demandent l'extension **Ruff** (`charliermarsh.ruff`). Dans le Cod
 
 ---
 
+## Pour les enseignants
+
+### Intention pédagogique
+
+La séance présente Python comme l'outil d'un informaticien professionnel, à rebours de sa réputation de « langage pour débutants ». Les étudiants doivent en retenir que Python est un langage de production, très utilisé dans l'industrie, et qu'on ne le maîtrise pas sans comprendre les concepts informatiques sous-jacents.
+
+Elle relie leurs connaissances théoriques en algorithmique et en programmation à l'usage concret de Python : le langage applique certains des paradigmes qu'ils étudient par ailleurs, et en remet d'autres en question. Sa syntaxe est simple, mais elle cache des concepts qu'il faut comprendre, en informaticien, pour bien s'en servir.
+
+### Approche pédagogique
+
+La séance repose sur une pédagogie active. Chaque notion est comparée aux langages que les étudiants pratiqueront (C/C++, Java), puis suivie d'un exercice court qui la vérifie. Les exercices sont posés comme des problèmes d'optimisation ou de refactoring, et tous les exemples viennent de cas d'usage réels qu'ils rencontreront probablement un jour.
+
+L'évaluation est formative : l'enseignant observe les solutions proposées aux exercices, écoute les questions et les discussions, puis ajuste le rythme et le niveau d'approfondissement pendant la séance.
+
+### Maintenance du dépôt
+
+Le fonctionnement du Codespace, la publication de son image et les conventions du dépôt sont décrits dans [CONTRIBUTING.md](CONTRIBUTING.md).
+
+---
+
 ## FAQ
 
 ### Q : J'ai déjà fait du Python, cette séance m'apprendra quelque chose ?
@@ -401,7 +503,7 @@ Ces réglages demandent l'extension **Ruff** (`charliermarsh.ruff`). Dans le Cod
 
 ---
 
-## Problèmes courants et solutions
+## Dépannage
 
 ### Le notebook ne s'ouvre pas
 

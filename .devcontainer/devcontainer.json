@@ -19,11 +19,7 @@
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-python.black-formatter",
-        "ms-python.isort",
-        "ms-python.pylint",
-        "ms-python.flake8",
-        "ms-python.mypy-type-checker",
+        "charliermarsh.ruff",
         "ms-toolsai.jupyter@2025.7.0",
         "editorconfig.editorconfig"
       ],
@@ -36,7 +32,12 @@
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
         "editor.formatOnSave": true,
-        "editor.formatOnType": true
+        "editor.formatOnType": true,
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "notebook.formatOnSave.enabled": true,
+        "ruff.fixAll": false
       }
     }
   }

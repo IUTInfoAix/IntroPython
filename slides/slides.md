@@ -6,7 +6,7 @@ highlighter: shiki
 lineNumbers: false
 info: |
   ## Python pour Informaticiens
-  Séance pratique de 2h pour le BUT Informatique
+  Séance pratique de 4h pour le BUT Informatique
 
   Apprendre à écrire du code pythonique
 drawings:
@@ -17,7 +17,7 @@ mdc: true
 ---
 
 # Python pour Informaticiens
-## BUT Informatique - Séance pratique (2h)
+## BUT Informatique - Séance pratique (4h)
 
 ---
 

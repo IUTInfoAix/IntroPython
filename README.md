@@ -9,7 +9,7 @@
   - Consulter et/ou créer des [issues](https://github.com/IUTInfoAix/IntroPython/issues).
   - [Email](mailto:sebastien.nedjar@univ-amu.fr) pour une question d'ordre privée, ou pour convenir d'un rendez-vous physique.
 
-# Séance pratique d'introduction (2 heures)
+# Séance pratique d'introduction (4 heures)
 
 ## 📋 Vue d'ensemble
 
@@ -142,17 +142,19 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
 
 ## 📚 Structure de la séance
 
-### Durée : 2 heures
+### Durée : 4 heures
 
 | Horaire | Partie | Durée | Contenu |
 |---------|--------|-------|---------|
-| 00:00 | Introduction | 10 min | Philosophie Python, positionnement |
-| 00:10 | **Partie 1** | 35 min | Structures de données natives + exercice |
-| 00:45 | **Partie 2** | 40 min | Idiomes Python (comprehensions, EAFP, context managers) |
-| 01:25 | Micro-pause | 2 min | Étirements |
-| 01:27 | **Partie 3** | 15 min | Démos (NumPy, OOP, MicroPython) |
-| 01:42 | **Partie 4** | 25 min | Exercice de refactoring guidé |
-| 02:07 | Conclusion | 10 min | Zen de Python, challenge, ressources |
+| 00:00 | Mise en route | 20 min | Création du dépôt, Codespace, Zen de Python, échauffement |
+| 00:20 | **Partie 1** | 65 min | Structures de données natives, mesure de performances, mutabilité |
+| 01:25 | **Partie 2** | 55 min | Compréhensions, EAFP, context managers |
+| 02:20 | Pause | 15 min | |
+| 02:35 | **Partie 3** | 45 min | Refactoring de l'analyseur CSV |
+| 03:20 | **Partie 4** | 30 min | Exercices pilotés par les tests |
+| 03:50 | Conclusion | 10 min | Bilan et défi Exercism |
+
+La partie 4 sert de marge : le détecteur de palindromes est pour tout le monde, le compresseur RLE et le validateur de mots de passe sont des bonus, à finir chez vous.
 
 ---
 

@@ -1,0 +1,57 @@
+# =====================================================================
+# devcontainer.yml : vérifie que l'image du devcontainer se CONSTRUIT et
+# qu'un étudiant peut y travailler.
+#
+# Pourquoi : une casse de la construction (image de base republiée, feature
+# qui change, paquet Python incompatible) n'est sinon visible qu'à la
+# création d'un Codespace, c'est-à-dire en début de séance, devant toute la
+# promotion. Ce workflow construit réellement l'image avec ses features et
+# lance le smoke-test .devcontainer/smoke-test.sh : exécution du notebook de
+# bout en bout, `make lint` et `make format-check`.
+#
+# Déclencheurs :
+#   - schedule hebdomadaire : attrape la DÉRIVE EXTERNE (base, feature ou
+#     dépendance qui bouge SANS changement de config) : c'est le mode de
+#     panne réel. Ne tourne que sur la branche par défaut.
+#   - push/PR touchant .devcontainer/** ou requirements.txt, que le
+#     Dockerfile copie dans l'image : attrape les régressions de config.
+#   - manuel (workflow_dispatch) : à lancer la veille d'une séance.
+#
+# Les étudiants créent leur dépôt avec « Use this template » : tout le
+# dossier .github/ est copié chez eux. Le job est donc neutralisé partout
+# ailleurs que dans le dépôt enseignant, pour ne pas lancer un build par
+# semaine dans chaque copie.
+# =====================================================================
+name: devcontainer
+
+on:
+  push:
+    paths:
+      - ".devcontainer/**"
+      - "requirements.txt"
+      - ".github/workflows/devcontainer.yml"
+  pull_request:
+    paths:
+      - ".devcontainer/**"
+      - "requirements.txt"
+      - ".github/workflows/devcontainer.yml"
+  schedule:
+    - cron: "0 6 * * 1" # lundi 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build & smoke-test devcontainer
+    # Ne pas tourner dans les copies étudiantes.
+    if: github.repository == 'IUTInfoAix/IntroPython'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build & smoke-test devcontainer
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: .devcontainer/smoke-test.sh
+          push: never

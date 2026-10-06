@@ -1,3 +1,64 @@
+# ============================================================================
+# Ruff : formateur et linter du projet (remplace black, isort et flake8)
+# ============================================================================
+# Le seul code Python du dépôt est notebook_seance.ipynb. Ruff lit les notebooks
+# nativement, cellule par cellule : dans VS Code, chaque conseil s'affiche sous
+# le code concerné.
+
+[tool.ruff]
+# Largeur par défaut de ruff (et de black) : plus confortable que les 79
+# caractères de PEP 8 sur un écran actuel.
+line-length = 88
+# Version du prérequis du README et de l'image du devcontainer. Elle fixe la
+# syntaxe acceptée (les `lazy import` de la cheat sheet seraient refusés avec
+# une version plus ancienne) et les modernisations proposées par la famille UP.
+target-version = "py315"
+
+[tool.ruff.lint]
+# Liste explicite plutôt que les règles par défaut : chaque famille est là parce
+# qu'elle signale une tournure que la séance apprend à remplacer.
+select = [
+  "A",        # flake8-builtins : `list = [...]` masque la fonction native jusqu'au redémarrage du noyau
+  "B",        # flake8-bugbear : pièges du langage (argument par défaut mutable, doublon dans un set)
+  "C4",       # flake8-comprehensions : compréhensions et littéraux plutôt que list(), dict() ou map()
+  "E",        # pycodestyle, erreurs : PEP 8, `is None`, `not in`, `except:` sans type
+  "F",        # Pyflakes : noms non définis, f-strings sans variable
+  "I",        # isort : tri des imports
+  "N",        # pep8-naming : snake_case et CapWords, pour qui arrive de Java
+  "PERF",     # Perflint : boucle avec append au lieu d'une compréhension
+  "PLC0206",  # Pylint : `for cle in d: d[cle]` au lieu de `d.items()`
+  "PLR1714",  # Pylint : `x == "a" or x == "b"` au lieu de `x in {"a", "b"}`
+  "PLR1730",  # Pylint : `if x > maxi: maxi = x` au lieu de `max()`
+  "PLR1736",  # Pylint : `fruits[i]` dans une boucle qui utilise déjà `enumerate()`
+  "RUF100",   # Ruff : `# noqa` qui ne masque plus rien (contre-exemple corrigé, code erroné)
+  "SIM",      # flake8-simplify : `with`, `dict.get()`, `enumerate()`, conditions simplifiables
+  "UP",       # pyupgrade : syntaxe moderne (f-strings plutôt que `%` ou `.format()`)
+  "W",        # pycodestyle, avertissements : espaces en trop
+]
+ignore = [
+  "B905",  # `zip()` sans `strict=` : la cheat sheet enseigne `zip(noms, ages)` tel quel
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Contraintes d'un notebook de TP, et non défauts du code. Les contre-exemples
+# pédagogiques ne sont pas ici : ils portent un `# noqa: CODE` sur leur ligne,
+# pour que la règle reste active sur le code écrit par l'étudiant.
+"*.ipynb" = [
+  "B007",  # boucle à compléter : sa variable ne sert pas tant que le corps est vide
+  "E501",  # lignes d'affichage : une f-string ne se coupe pas, le formateur gère le reste
+  "F401",  # imports fournis d'avance (this, csv, unicodedata) pour du code encore à écrire
+  "F811",  # imports répétés d'une cellule à l'autre : chacune doit pouvoir s'exécuter seule
+  "F841",  # fonctions à compléter : variables préparées dans le squelette
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+# Ruff formate aussi les blocs ```python des fichiers Markdown. Ceux de la cheat
+# sheet sont compactés à la main pour tenir sur une page, et les slides montrent
+# volontairement du code non pythonique : on n'y touche pas.
+exclude = ["*.md"]
+
 [tool.black]
 line-length = 88
 target-version = ['py315']

@@ -48,7 +48,11 @@
         // dans Codespaces. Ne retirer l'épinglage qu'après avoir vérifié la
         // version courante dans un vrai codespace (voir CONTRIBUTING.md).
         "ms-toolsai.jupyter@2025.7.0",
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        // Copilot Chat sert de tuteur : son comportement est cadré par
+        // .github/copilot-instructions.md (explication, puis documentation,
+        // puis un minimum de code).
+        "GitHub.copilot-chat"
       ],
       "settings": {
         // Seul interpréteur du conteneur : le désigner évite toute question à
@@ -71,7 +75,12 @@
         "editor.formatOnType": true,
         // Pas de correction automatique à l'enregistrement : ruff montre la
         // tournure à reprendre, à l'étudiant de la réécrire.
-        "ruff.fixAll": false
+        "ruff.fixAll": false,
+        // Pas de complétion automatique par Copilot, pour la même raison :
+        // l'étudiant écrit son code, Copilot ne répond que dans le chat.
+        "github.copilot.enable": {
+          "*": false
+        }
       }
     }
   }

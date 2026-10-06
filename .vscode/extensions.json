@@ -4,6 +4,7 @@
     "ms-python.vscode-pylance",
     "charliermarsh.ruff",
     "ms-toolsai.jupyter",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "GitHub.copilot-chat"
   ]
 }

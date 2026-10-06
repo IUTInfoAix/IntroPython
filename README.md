@@ -222,6 +222,31 @@ Pendant la séance, travaillez en binôme sur les exercices, modifiez les exempl
 
 ---
 
+## Assistance IA
+
+Vous avez le droit d'utiliser **Copilot Chat** (panneau latéral dans VS Code) quand vous bloquez sur un exercice. Il est configuré spécifiquement pour cette séance : il ne donnera pas la solution directement, mais vous guidera par étapes : d'abord une explication du concept, puis un pointeur vers la documentation, et seulement en dernier recours un minimum de code.
+
+**Copilot Chat n'est pas un raccourci, c'est un tuteur.** Il vous aide à comprendre, pas à copier-coller. L'objectif est que vous soyez capable d'écrire ce code **en autonomie** à la fin de la séance.
+
+Dans le Codespace, les complétions automatiques de Copilot sont désactivées : c'est vous qui écrivez le code, et Copilot ne répond que dans le panneau de discussion.
+
+Copilot est gratuit pour les étudiants dont le statut est vérifié par GitHub Education : la marche à suivre est dans la section [Augmenter ce quota avec le Student Developer Pack](#augmenter-ce-quota-avec-le-student-developer-pack).
+
+### Essayer Copilot Chat
+
+Ouvrez le panneau **Copilot Chat** (icône dans la barre latérale gauche) et essayez quelques questions simples pour vous familiariser :
+
+- `Qu'est-ce qu'une list comprehension ?`
+- `Explique-moi la différence entre une liste et un set`
+- `Pourquoi b = a ne copie pas ma liste ?`
+- `Pourquoi mon test test_1_palindrome_simple échoue ?`
+
+Observez comment Copilot répond : il explique le concept sans donner directement du code. Si vous insistez, il vous orientera vers la documentation, puis seulement en dernier recours proposera un minimum de code.
+
+Les solutions repliées du notebook restent disponibles : Copilot ne vous les récitera pas, mais il peut vous les expliquer une fois que vous les avez ouvertes.
+
+---
+
 ## Défi : devenez un Pythonista en 10 semaines !
 
 ### Mission jusqu'au début du semestre 2

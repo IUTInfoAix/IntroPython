@@ -60,7 +60,7 @@ Pour ouvrir le notebook de TP :
 
 ### Prérequis
 
-- **Python 3.8+** installé sur votre machine
+- **Python 3.15+** installé sur votre machine
 - Un éditeur de code (VS Code, PyCharm, ou autre)
 - *Optionnel* : Jupyter Notebook ou JupyterLab
 

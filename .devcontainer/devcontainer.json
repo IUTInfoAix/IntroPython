@@ -1,5 +1,5 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "image": "python:3.15.0rc3",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
@@ -9,10 +9,6 @@
       "gid": "1000"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.13",
-      "installTools": "false"
-    },
     "ghcr.io/devcontainers/features/node:1": {}
   },
   "waitFor": "onCreateCommand",

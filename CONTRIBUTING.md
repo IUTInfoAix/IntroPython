@@ -4,7 +4,7 @@
 
 ### Prérequis
 
-- Python 3.8 ou supérieur
+- Python 3.15 ou supérieur
 - Git
 - make (optionnel mais recommandé)
 

@@ -197,8 +197,8 @@ def info(**data):
 def saluer(nom: str, age: int) -> str:
     return f"{nom} a {age}"
 
-def trouve(id: int) -> str | None:
-    return res.get(id)
+def trouve(cle: int) -> str | None:
+    return res.get(cle)
 noms: list[str] = ["Ana", "Bob"]
 ```
 
@@ -228,7 +228,7 @@ d['key'].append(1)  # Pas de KeyError
 
 ```python
 lazy import json  # Chargé au 1er usage
-[*l for l in listes]  # Aplatir
+[*lst for lst in listes]  # Aplatir
 {**d for d in dicos}  # Fusionner
 fd = frozendict(a=1)  # Dict immutable
 ABSENT = sentinel("ABSENT")  # Pas None
@@ -280,7 +280,7 @@ _private       # Interne
 
 **Espaces**: `x = 1` OK / `x=1` NON; `func(x, y)` OK / `func(x,y)` NON
 
-**Max**: 79 caractères/ligne dans PEP 8, 88 dans ce projet (black)
+**Max**: 79 caractères/ligne dans PEP 8, 88 dans ce projet (ruff)
 
 ## Docstrings
 
@@ -299,13 +299,13 @@ def moyenne(notes):
 ## Outils qualité
 
 ```bash
-pip install black    # Formatage auto
-black fichier.py
+pip install ruff  # Outil du projet
+ruff format fichier.py  # Formatage auto
+ruff check fichier.py   # PEP 8, idiomes
+ruff check --fix fichier.py  # Corrige
+# Ailleurs : black, isort, flake8
 
-pip install flake8   # Vérif. PEP 8
-flake8 fichier.py
-
-pip install mypy     # Type checking
+pip install mypy  # Type checking
 mypy fichier.py
 ```
 

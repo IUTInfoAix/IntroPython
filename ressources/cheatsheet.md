@@ -111,7 +111,7 @@ f.close()
 with open('f.txt') as f:
     contenu = f.read()
 
-# Multiple (Python 3.10+)
+# Multiple
 with (
     open('in.txt') as fi,
     open('out.txt','w') as fo,
@@ -210,7 +210,7 @@ def trier(noms: list[str]) -> list[str]:
 ## Astuces pratiques
 
 ```python
-print(f"{variable=}")  # Debug Py3.8+
+print(f"{variable=}")  # Debug
 a, b = b, a  # Swap
 "ha"*3; [0]*5  # Répéter
 
@@ -220,7 +220,7 @@ x = v_vrai if cond else v_faux
 # Chaîner comparaisons
 if 0 < x < 10:  # OK
 
-# Walrus operator (Python 3.8+)
+# Walrus operator
 if (n := len(liste)) > 10:
     print(f"Liste longue: {n}")
 
@@ -232,6 +232,27 @@ d['key'].append(1)  # Pas de KeyError
 # enumerate avec start
 for i, val in enumerate(liste, start=1):
     print(f"Item {i}: {val}")
+```
+
+## Nouveautés Python 3.15
+
+```python
+# Import paresseux : chargé au 1er usage
+lazy import json
+lazy from pathlib import Path
+
+# Unpacking dans les comprehensions
+listes = [[1, 2], [3]]
+[*l for l in listes]  # [1, 2, 3]
+{**d for d in dicos}  # Fusionner
+
+# frozendict : dict immuable, hachable
+fd = frozendict(a=1, b=2)
+
+# sentinel : distinguer "absent" de None
+ABSENT = sentinel("ABSENT")
+def lire(cle, defaut=ABSENT):
+    if defaut is ABSENT: ...
 ```
 
 ## Bibliothèques courantes

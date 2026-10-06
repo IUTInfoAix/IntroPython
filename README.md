@@ -47,16 +47,32 @@ Une fois votre dépôt créé, vous pouvez ouvrir le projet directement dans Git
 3. Sélectionnez l'onglet **Codespaces**
 4. Cliquez sur **Create codespace on main**
 
-GitHub va créer un environnement de développement complet dans le cloud. Après quelques instants, vous aurez accès à VS Code directement dans votre navigateur avec :
-- Python et toutes les dépendances déjà installées
-- Jupyter Notebook fonctionnel
-- Accès au terminal
+GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code. Vous n'avez rien à installer vous-même. Vous obtenez VS Code dans votre navigateur avec :
+- Python 3.15, le noyau Jupyter qui exécute les cellules du notebook, et ruff
+- Les extensions Python, Jupyter et Ruff déjà configurées
+- Un terminal
 
 Pour ouvrir le notebook de TP :
 - Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`
-- Le notebook s'ouvrira et vous pourrez exécuter les cellules
+- Le noyau Python 3.15 est normalement déjà sélectionné : son nom s'affiche en haut à droite du notebook, et vous pouvez exécuter les cellules tout de suite
+- Si VS Code affiche **Sélectionner un noyau** à la place, cliquez dessus, choisissez **Environnements Python**, puis Python 3.15
 
-**Note** : GitHub offre 60 heures gratuites de Codespace par mois pour les comptes personnels.
+### Si la création du codespace échoue
+
+Si VS Code s'ouvre avec un message parlant de *recovery mode*, l'environnement n'a pas pu être téléchargé. Vous pouvez le faire reconstruire sur place :
+
+1. Retournez sur la page de votre dépôt et supprimez ce codespace (bouton **Code**, onglet **Codespaces**, menu **…** du codespace, **Delete**)
+2. Dans le même onglet, ouvrez le menu **…** à côté du bouton **+**, puis choisissez **New with options…**
+3. Dans **Dev container configuration**, sélectionnez **IntroPython (construction sur place, secours)**
+4. Cliquez sur **Create codespace**
+
+La création est alors plus longue, car tout l'environnement est reconstruit. Prévenez votre enseignant : c'est le signe d'un problème à corriger pour tout le groupe.
+
+### Quota gratuit
+
+Un compte GitHub personnel gratuit dispose chaque mois de **120 heures de calcul** et de 15 Go de stockage pour Codespaces. Les heures sont comptées selon la machine choisie : sur une machine à 2 cœurs, largement suffisante pour cette séance, une heure d'utilisation en consomme 2, ce qui laisse **60 heures par mois**. Sur une machine à 4 cœurs, il n'en reste que 30. Les chiffres à jour sont dans la [documentation de GitHub](https://docs.github.com/fr/billing/concepts/product-billing/github-codespaces).
+
+Pensez à arrêter votre codespace quand vous avez terminé (bouton **Code**, onglet **Codespaces**, menu **…**, **Stop codespace**) : un codespace arrêté ne consomme plus d'heures, et votre travail y est conservé.
 
 ## 🚀 Installation et prérequis (alternative locale)
 

@@ -204,6 +204,107 @@ Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json
 - Ruff
 - Jupyter
 
+## 🐳 Le conteneur du Codespace
+
+### Deux configurations
+
+Les étudiants créent leur dépôt avec « Use this template » dans leur compte personnel. Les prebuilds Codespaces du dépôt enseignant ne s'appliquent pas à leurs copies : sans précaution, chaque étudiant reconstruirait toute l'image au début de la séance. Le dépôt contient donc deux configurations.
+
+| Configuration | Fichiers | Rôle |
+|---|---|---|
+| Distribuée | [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) | Celle que Codespaces prend par défaut. Elle télécharge une image déjà construite, publiée sur ghcr.io, désignée par un tag épinglé. |
+| Source | [.devcontainer/source/](.devcontainer/source/) | Le Dockerfile, les features, les extensions et les réglages VS Code. Elle sert à fabriquer l'image publiée, et de secours si celle-ci est indisponible (« New with options… » dans GitHub). |
+
+Tout se modifie dans la configuration source. Les extensions, les réglages et l'utilisateur `vscode` sont inscrits dans l'image à la construction : la configuration distribuée ne contient que le nom de l'image.
+
+Conséquence : **un changement de la configuration source ou de [requirements.txt](requirements.txt) n'arrive chez les étudiants qu'après la publication d'une nouvelle image.**
+
+### Reconstruire et tester en local
+
+Il faut Docker et la CLI des dev containers (`npm install -g @devcontainers/cli`).
+
+```bash
+# Construire l'image depuis la configuration source, sans cache
+devcontainer build --workspace-folder . --config .devcontainer/source/devcontainer.json --no-cache
+
+# Démarrer un conteneur neuf à partir de cette image
+devcontainer up --workspace-folder . --config .devcontainer/source/devcontainer.json --remove-existing-container
+
+# Lancer le smoke-test dans le conteneur
+devcontainer exec --workspace-folder . --config .devcontainer/source/devcontainer.json .devcontainer/smoke-test.sh
+```
+
+Pour tester la configuration distribuée, c'est-à-dire l'image publiée telle qu'un étudiant la reçoit, retirez l'option `--config` des deux dernières commandes.
+
+Le smoke-test ([.devcontainer/smoke-test.sh](.devcontainer/smoke-test.sh)) vérifie qu'un étudiant peut travailler :
+
+- le conteneur tourne avec l'utilisateur `vscode` ;
+- Python 3.15 est le seul interpréteur (voir « Noyau présélectionné » plus bas) ;
+- le noyau Jupyter est installé ;
+- les paquets de l'image satisfont `requirements.txt` ;
+- `make lint` et `make format-check` passent ;
+- le notebook s'exécute de bout en bout.
+
+Dans VS Code, la commande **Dev Containers: Rebuild Container** reconstruit le conteneur, mais ne lance pas le smoke-test.
+
+### Vérification continue
+
+Le workflow [devcontainer.yml](.github/workflows/devcontainer.yml) lance le smoke-test sur les deux configurations : à chaque push ou PR qui touche le conteneur, le notebook, le Makefile ou la configuration de ruff, chaque lundi, et à la main. L'image distribuée y est téléchargée sans authentification, comme chez un étudiant : le job échoue si le paquet a disparu ou n'est plus public.
+
+**Lancez-le à la main la veille d'une séance** (onglet Actions, workflow `devcontainer`, **Run workflow**).
+
+Les workflows portent la garde `if: github.repository == 'IUTInfoAix/IntroPython'` : « Use this template » copie le dossier `.github/` chez chaque étudiant, et rien ne doit tourner dans ces copies. Pour la même raison, n'ajoutez ni dependabot ni autre automatisation planifiée.
+
+### Publier une nouvelle image
+
+À faire quand `requirements.txt` ou un fichier de `.devcontainer/source/` change.
+
+1. Choisissez une version au format `AAAA.MM.N`, par exemple `2026.11.1`. Jamais `latest`, et jamais une version déjà publiée : les copies étudiantes existantes pointent dessus.
+2. Mettez cette version dans [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) et commitez sur une branche.
+3. Publiez l'image depuis cette branche en poussant un tag git :
+   ```bash
+   git tag devcontainer-2026.11.1
+   git push origin devcontainer-2026.11.1
+   ```
+   Le workflow [devcontainer-publish.yml](.github/workflows/devcontainer-publish.yml) construit l'image, lance le smoke-test et ne publie que s'il réussit.
+4. Relancez le workflow `devcontainer` sur la branche : ses deux jobs doivent passer.
+5. Fusionnez dans `main`.
+
+L'ordre compte : si la nouvelle version arrive sur `main` avant d'être publiée, les codespaces créés depuis le template échouent.
+
+**À la première publication seulement**, le paquet est créé privé. Rendez-le public avant l'étape 4 : page du paquet `intropython-devcontainer` dans l'organisation, **Package settings**, **Change visibility**. Vérifiez ensuite le téléchargement anonyme :
+
+```bash
+docker logout ghcr.io
+docker pull ghcr.io/iutinfoaix/intropython-devcontainer:2026.10.1
+```
+
+Une fois le workflow présent sur `main`, la publication peut aussi se lancer depuis l'onglet Actions (workflow `devcontainer-publish`, **Run workflow**, en saisissant la version).
+
+Les copies étudiantes déjà créées gardent la version qu'elles référencent : une nouvelle image ne profite qu'aux dépôts créés ensuite.
+
+L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur un Mac Apple Silicon, utilisez la configuration source.
+
+### Choix à connaître avant de modifier le conteneur
+
+**Noyau présélectionné.** VS Code ne présélectionne un noyau à l'ouverture d'un notebook que s'il n'en trouve qu'un seul. C'est pourquoi l'image part de la variante `slim` de l'image Python : l'image complète embarque aussi le Python 3.13 de Debian (`/usr/bin/python3`). Un paquet Debian ou une feature qui installerait un second Python ferait réapparaître la question « Sélectionner un noyau » : le smoke-test échoue dans ce cas.
+
+**Image de base épinglée.** Le Dockerfile désigne une version exacte de Python et de Debian, jamais un tag flottant. À la sortie de Python 3.15.0, remplacez `3.15.0rc3-slim-trixie` par `3.15-slim-trixie`.
+
+**Extension Jupyter épinglée.** `ms-toolsai.jupyter@2025.7.0` est figée depuis le 8 octobre 2025. La version 2025.9.0, sortie la veille, exige VS Code 1.105 ou plus, ce qui la rendait vraisemblablement inutilisable dans Codespaces à ce moment-là. Pour lever l'épinglage : dans un vrai codespace, installez la version courante de l'extension, ouvrez `notebook_seance.ipynb`, vérifiez que le noyau est présélectionné et qu'une cellule s'exécute. Si c'est le cas, retirez `@2025.7.0` de la configuration source et publiez une nouvelle image.
+
+**Rien ne s'installe au démarrage.** Les dépendances sont installées par le Dockerfile, pas par une commande de cycle de vie (`onCreateCommand`, `postCreateCommand`) qui serait rejouée à chaque création de codespace.
+
+### Mesures
+
+Création à froid d'un conteneur avec la CLI `devcontainer`, sur un poste de 16 cœurs, dans un démon Docker vide (octobre 2026). L'installation des extensions VS Code n'est pas comptée, et ces durées ne sont pas celles d'un codespace.
+
+| Configuration | Durée | Taille de l'image |
+|---|---|---|
+| Avant la refonte (`python:3.15.0rc3`, features Node et common-utils, `pip install` au démarrage) | 193,5 s | 2,38 Go |
+| Source (construction sur place) | 111,6 s | 781 Mo |
+| Distribuée (image tirée d'un registre local, donc hors téléchargement réseau) | 17,8 s | 190 Mo compressés |
+
 ## 📚 Structure du projet
 
 ```
@@ -215,7 +316,8 @@ IntroPython/
 ├── ressources/                 # Ressources pédagogiques
 │   ├── cheatsheet.md
 │   └── cheatsheet.pdf          # Généré avec pandoc depuis cheatsheet.md
-├── .devcontainer/              # Configuration du Codespace
+├── .devcontainer/              # Configuration du Codespace (image distribuée, source, smoke-test)
+├── .github/workflows/          # Vérification et publication de l'image du Codespace
 ├── .vscode/                    # Extensions VS Code recommandées
 ├── pyproject.toml             # Configuration de ruff
 ├── .pre-commit-config.yaml    # Configuration pre-commit

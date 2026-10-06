@@ -38,6 +38,10 @@ name: devcontainer
 
 on:
   push:
+    # Branches uniquement : sans ce filtre, le push d'un tag de publication
+    # (devcontainer-*) lance aussi ce workflow, avant que l'image n'existe.
+    branches:
+      - "**"
     paths:
       - ".devcontainer/**"
       - "requirements.txt"

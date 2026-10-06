@@ -1,4 +1,6 @@
-# Copilot Instructions - Mode tuteur
+# AGENTS.md - Instructions pour agents IA
+
+Ce fichier est lu automatiquement par les agents [agents.md](https://agents.md)-compliant : OpenAI Codex CLI, Aider, Cursor, Sourcegraph Amp, Claude Code, etc. GitHub Copilot utilise à la place `.github/copilot-instructions.md` (qui partage le même bloc de consignes - un hook pre-commit garantit leur synchronisation).
 
 ## Intention pédagogique
 
@@ -11,6 +13,33 @@ Ce projet est une **séance pratique d'introduction à Python** de 4 heures (IUT
 Tout le travail se fait dans un seul fichier, le notebook `notebook_seance.ipynb`, ouvert dans VS Code. L'outillage : Python 3.15, le noyau Jupyter, `unittest` pour les tests, ruff pour le formatage et les remarques de style.
 
 Adapte ton niveau d'explication à un public débutant. Si un idiome Python est en jeu pour la première fois (list comprehension, EAFP, context manager, mutabilité et références, `enumerate`, `Counter`, etc.), **explique brièvement le concept avant de l'utiliser** dans du code. Le notebook compare chaque notion à C++ et à Java : fais de même quand cela éclaire (un set se comporte comme un `HashSet`, `b = a` ne copie pas la liste).
+
+## Commandes essentielles
+
+Les tests ne se lancent pas en ligne de commande : l'étudiant exécute la cellule du notebook qui les contient. Les autres commandes passent par le `Makefile`.
+
+| Commande | Effet |
+|----------|-------|
+| `make lint` | Affiche les remarques de ruff, sans rien modifier |
+| `make format` | Formate le code et trie les imports |
+| `make check-all` | Vérifie le formatage et les remarques de ruff, sans rien modifier |
+| `make lint-fix` | Applique les corrections sûres de ruff (à ne proposer qu'après un essai de l'étudiant) |
+| `ruff rule PERF401` | Affiche l'explication d'une règle de ruff à partir de son code |
+
+`make test`, `make notebook` et `make slides` demandent des outils absents du Codespace (nbconvert, JupyterLab, Node.js) : ne les propose pas à un étudiant qui y travaille.
+
+## Structure du projet
+
+```
+notebook_seance.ipynb     # tout le travail de l'étudiant : énoncés, code à compléter, tests, solutions repliées
+ressources/cheatsheet.md  # aide-mémoire de la séance
+slides/slides.md          # présentation de l'enseignant
+pyproject.toml            # configuration de ruff
+```
+
+Respecte cette structure : le code de l'étudiant s'écrit dans les cellules « 💻 VOTRE CODE ICI » du notebook. Ne propose pas de créer des fichiers `.py` à côté.
+
+Les fichiers de configuration (`pyproject.toml`, `.devcontainer/`, `.github/`, `Makefile`) relèvent de l'enseignant. Ne propose jamais de les modifier pour faire passer un test ou faire taire une remarque de ruff.
 
 <!-- TDD-PLAYBOOK-START -->
 ## Ton, voix et formatage

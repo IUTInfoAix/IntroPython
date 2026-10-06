@@ -293,7 +293,7 @@ L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur
 
 **Extension Jupyter épinglée.** `ms-toolsai.jupyter@2025.7.0` est figée depuis le 8 octobre 2025. La version 2025.9.0, sortie la veille, exige VS Code 1.105 ou plus, ce qui la rendait vraisemblablement inutilisable dans Codespaces à ce moment-là. Pour lever l'épinglage : dans un vrai codespace, installez la version courante de l'extension, ouvrez `notebook_seance.ipynb`, vérifiez que le noyau est présélectionné et qu'une cellule s'exécute. Si c'est le cas, retirez `@2025.7.0` de la configuration source et publiez une nouvelle image.
 
-**Copilot en tuteur.** [.github/copilot-instructions.md](.github/copilot-instructions.md) cadre les réponses de Copilot Chat : explication du concept, puis documentation, puis un minimum de code, sans jamais réciter les solutions repliées du notebook. Ce fichier est adapté de celui des TP de R2.02 et R2.03 ; « Use this template » le copie chez chaque étudiant. L'extension Copilot Chat et le réglage qui coupe les complétions automatiques (`github.copilot.enable`) sont dans la configuration source : les modifier demande de publier une nouvelle image.
+**Copilot en tuteur.** [.github/copilot-instructions.md](.github/copilot-instructions.md) cadre les réponses de Copilot Chat : explication du concept, puis documentation, puis un minimum de code, sans jamais réciter les solutions repliées du notebook. Ce fichier est adapté de celui des TP de R2.02 et R2.03 ; « Use this template » le copie chez chaque étudiant. [AGENTS.md](AGENTS.md) donne les mêmes consignes aux autres assistants (Codex, Cursor, Aider…). Les deux fichiers partagent le bloc délimité par les marqueurs `TDD-PLAYBOOK` : modifiez-le aux deux endroits, un hook pre-commit refuse le commit s'ils diffèrent. L'extension Copilot Chat et le réglage qui coupe les complétions automatiques (`github.copilot.enable`) sont dans la configuration source : les modifier demande de publier une nouvelle image.
 
 **Rien ne s'installe au démarrage.** Les dépendances sont installées par le Dockerfile, pas par une commande de cycle de vie (`onCreateCommand`, `postCreateCommand`) qui serait rejouée à chaque création de codespace.
 
@@ -318,6 +318,7 @@ IntroPython/
 ├── ressources/                 # Ressources pédagogiques
 │   ├── cheatsheet.md
 │   └── cheatsheet.pdf          # Généré avec pandoc depuis cheatsheet.md
+├── AGENTS.md                   # Consignes de tuteur pour les assistants IA autres que Copilot
 ├── .devcontainer/              # Configuration du Codespace (image distribuée, source, smoke-test)
 ├── .github/
 │   ├── copilot-instructions.md # Consignes de tuteur pour Copilot Chat

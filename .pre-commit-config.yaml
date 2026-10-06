@@ -45,6 +45,23 @@ repos:
       - id: ruff-check
         name: Vérifie le code avec ruff
 
+  # Consignes données aux assistants IA
+  - repo: local
+    hooks:
+      # Copilot lit .github/copilot-instructions.md, les autres agents lisent
+      # AGENTS.md. Les deux fichiers partagent le bloc de consignes délimité
+      # par les marqueurs TDD-PLAYBOOK : il doit rester identique.
+      - id: consignes-ia-synchronisees
+        name: Vérifie que AGENTS.md et copilot-instructions.md partagent les mêmes consignes
+        language: system
+        entry: >-
+          python3 -c "import re, sys;
+          b = [re.search(r'<!-- TDD-PLAYBOOK-START -->(.*?)<!-- TDD-PLAYBOOK-END -->', open(f, encoding='utf-8').read(), re.S)
+          for f in ('AGENTS.md', '.github/copilot-instructions.md')];
+          sys.exit(0 if all(b) and b[0][1] == b[1][1] else 'Le bloc TDD-PLAYBOOK diffère entre AGENTS.md et .github/copilot-instructions.md')"
+        files: ^(AGENTS\.md|\.github/copilot-instructions\.md)$
+        pass_filenames: false
+
 # Configuration globale
 default_language_version:
   python: python3

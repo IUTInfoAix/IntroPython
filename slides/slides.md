@@ -519,7 +519,7 @@ layout: two-cols-header
 ### 🔧 Outils
 - **ruff** : formatage et vérification du style, l'outil de ce projet
 - **black**, **isort**, **flake8** : remplacés ici par ruff, encore répandus ailleurs
-- **pytest** : tests unitaires
+- **unittest**, **pytest** : tests unitaires (le notebook utilise unittest)
 
 ### 🌟 Communauté
 - Reddit : r/learnpython

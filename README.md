@@ -313,8 +313,7 @@ _"The only way to learn a new programming language is by writing programs in it.
   - Python (Microsoft)
   - Pylance
   - Ruff (Astral)
-  - Python Docstring Generator
-  - autoDocstring
+  - autoDocstring - Python Docstring Generator
 
 - **PyCharm** (Community ou Professional)
   - IDE complet avec débogueur intégré

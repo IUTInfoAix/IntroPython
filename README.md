@@ -502,3 +502,5 @@ Inspiré par :
 ---
 
 Bon apprentissage !
+
+_"You will find yourself pleasantly surprised to see how easy it is to concentrate on the solution to the problem rather than the syntax and structure of the language you are programming in."_ (Swaroop C H, _A Byte of Python_)

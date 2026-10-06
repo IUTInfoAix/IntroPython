@@ -124,6 +124,22 @@ Un compte GitHub personnel gratuit dispose chaque mois de 120 heures de calcul e
 
 Pensez à arrêter votre codespace quand vous avez terminé (bouton **Code**, onglet **Codespaces**, menu **…**, **Stop codespace**) : un codespace arrêté ne consomme plus d'heures, et votre travail y est conservé.
 
+#### Augmenter ce quota avec le Student Developer Pack
+
+En tant qu'étudiant, vous pouvez demander les avantages **GitHub Education**. Une fois votre statut vérifié, votre quota Codespaces passe à 180 heures de calcul par mois, soit **90 heures** sur une machine à 2 cœurs, avec 20 Go de stockage : c'est le quota d'un compte GitHub Pro. Vous obtenez aussi un accès gratuit à GitHub Copilot et aux offres du [Student Developer Pack](https://education.github.com/pack).
+
+Pour faire la demande :
+
+1. Ajoutez votre adresse e-mail universitaire à votre compte GitHub et validez-la ([marche à suivre](https://docs.github.com/fr/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account)). GitHub peut l'exiger pour reconnaître votre établissement
+2. Ouvrez la page [Education benefits](https://github.com/settings/education/benefits) de vos paramètres
+3. Sous **GitHub Education**, cliquez sur **Start an application**
+4. Remplissez le formulaire. Si un justificatif de scolarité vous est demandé, GitHub accepte une carte d'étudiant portant la date de l'inscription en cours, un emploi du temps, un relevé de notes ou un certificat de scolarité
+5. Cliquez sur **Submit application**
+
+Une fois la demande acceptée, vos avantages sont regroupés sur le [portail GitHub Education](https://github.com/education). Les conditions à jour sont dans la [documentation de GitHub](https://docs.github.com/fr/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student).
+
+Cette demande n'est pas nécessaire pour la séance : 4 heures sur une machine à 2 cœurs consomment 8 des 120 heures d'un compte gratuit.
+
 ---
 
 ## Déroulement de la séance

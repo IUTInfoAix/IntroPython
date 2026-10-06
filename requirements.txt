@@ -1,7 +1,7 @@
 # Python pour Informaticiens - BUT Informatique
 # Dépendances pour faire la séance dans VS Code
 #
-# C'est tout ce que l'image du Codespace installe (.devcontainer/Dockerfile) :
+# C'est tout ce que l'image du Codespace installe (.devcontainer/source/Dockerfile) :
 # chaque paquet ajouté ici allonge l'attente de tous les étudiants. Ce qui ne
 # sert qu'en local ou à l'enseignant va dans requirements-dev.txt.
 

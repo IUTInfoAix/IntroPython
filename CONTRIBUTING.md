@@ -120,7 +120,7 @@ Puis créer une Pull Request sur GitHub.
 
 ### Écrire des tests
 
-Les tests vivent dans le notebook, avec `unittest`. Chaque exercice suit le même ordre de cellules : énoncé, code à compléter, tests, solution dans un `<details>`.
+Les tests vivent dans le notebook, avec `unittest`. Un exercice suit toujours le même ordre de cellules : énoncé, code à compléter, tests, solution dans un `<details>`. Les questions les plus courtes (les deux premières sur les inscriptions, le filtre sur les notes) n'ont pas de tests.
 
 ```python
 class TestMaFonction(unittest.TestCase):
@@ -198,11 +198,13 @@ Configuration : voir [.pre-commit-config.yaml](.pre-commit-config.yaml)
 
 Si vous utilisez VS Code dans un Codespace ou un dev container, les paramètres sont pré-configurés dans [.devcontainer/source/devcontainer.json](.devcontainer/source/devcontainer.json).
 
-Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json)) :
+Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json)), les mêmes que dans le Codespace :
 - Python (Microsoft)
 - Pylance
 - Ruff
 - Jupyter
+- EditorConfig
+- GitHub Copilot Chat
 
 ## Le conteneur du Codespace
 
@@ -253,7 +255,7 @@ Le workflow [devcontainer.yml](.github/workflows/devcontainer.yml) lance le smok
 
 **Lancez-le à la main la veille d'une séance** (onglet Actions, workflow `devcontainer`, **Run workflow**).
 
-Les workflows portent la garde `if: github.repository == 'IUTInfoAix/IntroPython'` : « Use this template » copie le dossier `.github/` chez chaque étudiant, et rien ne doit tourner dans ces copies. Pour la même raison, n'ajoutez ni dependabot ni autre automatisation planifiée.
+Les workflows portent la garde `if: github.repository == 'IUTInfoAix/IntroPython'` : « Use this template » copie le dossier `.github/` chez chaque étudiant, et aucun job ne doit tourner dans ces copies. Le workflow y apparaît quand même dans l'onglet Actions, avec des exécutions ignorées qui ne consomment aucune minute. Pour la même raison, n'ajoutez ni dependabot ni autre automatisation planifiée.
 
 ### Publier une nouvelle image
 
@@ -289,11 +291,11 @@ L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur
 
 **Noyau présélectionné.** VS Code ne présélectionne un noyau à l'ouverture d'un notebook que s'il n'en trouve qu'un seul. C'est pourquoi l'image part de la variante `slim` de l'image Python : l'image complète embarque aussi le Python 3.13 de Debian (`/usr/bin/python3`). Un paquet Debian ou une feature qui installerait un second Python ferait réapparaître la question « Sélectionner un noyau » : le smoke-test échoue dans ce cas.
 
-**Image de base épinglée.** Le Dockerfile désigne une version exacte de Python et de Debian, jamais un tag flottant. À la sortie de Python 3.15.0, remplacez `3.15.0rc3-slim-trixie` par `3.15-slim-trixie`.
+**Image de base épinglée.** Le Dockerfile fixe la version mineure de Python et la version de Debian, jamais un tag plus large comme `3` ou `slim`. Tant que Python 3.15 n'est pas sorti, il désigne une préversion précise. À la sortie de Python 3.15.0, remplacez `3.15.0rc3-slim-trixie` par `3.15-slim-trixie`, qui ne suivra que les correctifs de la série 3.15.
 
 **Extension Jupyter épinglée.** `ms-toolsai.jupyter@2025.7.0` est figée depuis le 8 octobre 2025. La version 2025.9.0, sortie la veille, exige VS Code 1.105 ou plus, ce qui la rendait vraisemblablement inutilisable dans Codespaces à ce moment-là. Pour lever l'épinglage : dans un vrai codespace, installez la version courante de l'extension, ouvrez `notebook_seance.ipynb`, vérifiez que le noyau est présélectionné et qu'une cellule s'exécute. Si c'est le cas, retirez `@2025.7.0` de la configuration source et publiez une nouvelle image.
 
-**Copilot en tuteur.** [.github/copilot-instructions.md](.github/copilot-instructions.md) cadre les réponses de Copilot Chat : explication du concept, puis documentation, puis un minimum de code, sans jamais réciter les solutions repliées du notebook. Ce fichier est adapté de celui des TP de R2.02 et R2.03 ; « Use this template » le copie chez chaque étudiant. [AGENTS.md](AGENTS.md) donne les mêmes consignes aux autres assistants (Codex, Cursor, Aider…). Les deux fichiers partagent le bloc délimité par les marqueurs `TDD-PLAYBOOK` : modifiez-le aux deux endroits, un hook pre-commit refuse le commit s'ils diffèrent. L'extension Copilot Chat et le réglage qui coupe les complétions automatiques (`github.copilot.enable`) sont dans la configuration source : les modifier demande de publier une nouvelle image.
+**Copilot en tuteur.** [.github/copilot-instructions.md](.github/copilot-instructions.md) cadre les réponses de Copilot Chat : explication du concept, puis documentation, puis un minimum de code, sans jamais réciter les solutions repliées du notebook. Ce fichier est adapté de celui des TP de R2.02 et R2.03 ; « Use this template » le copie chez chaque étudiant. [AGENTS.md](AGENTS.md) donne les mêmes consignes aux autres assistants (Codex, Cursor…). Seul leur en-tête diffère. Le bloc délimité par les marqueurs `TDD-PLAYBOOK` doit rester identique dans les deux fichiers : un hook pre-commit refuse le commit s'il diffère. Les sections qui le précèdent (commandes, structure du projet) ne sont pas contrôlées : reportez-y vos modifications à la main. L'extension Copilot Chat et le réglage qui coupe les complétions automatiques (`github.copilot.enable`) sont dans la configuration source : les modifier demande de publier une nouvelle image.
 
 **Rien ne s'installe au démarrage.** Les dépendances sont installées par le Dockerfile, pas par une commande de cycle de vie (`onCreateCommand`, `postCreateCommand`) qui serait rejouée à chaque création de codespace.
 

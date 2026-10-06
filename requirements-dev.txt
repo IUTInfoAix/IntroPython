@@ -14,4 +14,4 @@ nbconvert>=7.0.0       # `make test` : exécute le notebook de bout en bout
 # ============================================================================
 # Maintenance du dépôt (enseignant)
 # ============================================================================
-pre-commit>=2.20.0     # Git hooks pour vérifications automatiques
+pre-commit>=3.2.0      # Git hooks pour vérifications automatiques (version minimale exigée par .pre-commit-config.yaml)

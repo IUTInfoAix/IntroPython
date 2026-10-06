@@ -7,7 +7,7 @@
   - [Sébastien Nedjar](mailto:sebastien.nedjar@univ-amu.fr)
 - **Besoin d'aide ?**
   - Consulter et/ou créer des [issues](https://github.com/IUTInfoAix/IntroPython/issues).
-  - [Email](mailto:sebastien.nedjar@univ-amu.fr) pour une question d'ordre privée, ou pour convenir d'un rendez-vous physique.
+  - [Email](mailto:sebastien.nedjar@univ-amu.fr) pour une question d'ordre privé, ou pour convenir d'un rendez-vous physique.
 
 # Séance pratique d'introduction (4 heures)
 
@@ -34,13 +34,13 @@ La séance est découpée en quatre parties, et chacune vise des savoir-faire pr
 
 Python a la réputation d'un « langage pour débutants ». C'est aussi un langage de production, très utilisé dans l'industrie : les slides de la séance en donnent des exemples dans le web, la data science, le DevOps, la finance, le jeu vidéo et la recherche. Sa syntaxe est simple, mais elle cache des concepts qu'il faut comprendre, en informaticien, pour bien s'en servir. La séance est construite pour vous les faire rencontrer un par un.
 
-**Chaque notion est comparée à C++ et à Java**, puis suivie d'un exercice court qui la vérifie. Le notebook vous dit par exemple qu'un test d'appartenance dans une liste se comporte comme une recherche dans un `std::vector` ou une `ArrayList`, et qu'un set se comporte comme un `HashSet`.
+**Python est comparé à C++ et à Java** quand la comparaison éclaire, surtout dans la première partie, et chaque notion est suivie d'un exercice court qui la vérifie. Le notebook vous dit par exemple qu'un test d'appartenance dans une liste se comporte comme une recherche dans un `std::vector` ou une `ArrayList`, et qu'un set se comporte comme un `HashSet`.
 
 **Vous pariez avant d'exécuter.** Le notebook vous demande plusieurs fois de prédire un résultat : l'écart de vitesse entre une liste et un set, ou ce qu'affichent trois petits programmes qui manipulent des références. Notez votre réponse, exécutez la cellule, et si le résultat vous surprend, cherchez pourquoi avant d'ouvrir l'explication.
 
 **Vous mesurez au lieu de croire.** Qu'un test d'appartenance soit « très rapide » sur un set, ne le croyez pas sur parole : le module `timeit` chronomètre un bout de code, et vous vous en servez dès la première partie.
 
-**Les tests servent de cahier des charges.** Les exercices sont accompagnés de tests `unittest`, livrés désactivés par un `@unittest.skip`. Vous les activez un par un en retirant le décorateur, et vous écrivez le code qui fait passer chacun. Dans la quatrième partie, les tests tiennent lieu d'énoncé : c'est l'approche TDD (Test-Driven Development).
+**Les tests servent de cahier des charges.** La plupart des exercices sont accompagnés de tests `unittest`, livrés désactivés par un `@unittest.skip`. Vous les activez un par un en retirant le décorateur, et vous écrivez le code qui fait passer chacun. Dans la quatrième partie, les tests tiennent lieu d'énoncé : c'est l'approche TDD (Test-Driven Development).
 
 **ruff relit votre code pendant que vous l'écrivez.** Ses remarques s'affichent sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique. Les corrections automatiques à l'enregistrement sont volontairement désactivées : ruff vous montre la tournure à reprendre, à vous de la réécrire.
 
@@ -210,7 +210,7 @@ Ici, vous codez à partir des tests : vous les lisez pour comprendre ce que la f
 
 ### Conclusion (10 min)
 
-Bilan de ce que vous avez appris et présentation du défi Exercism.
+Présentation du défi Exercism, puis bilan de ce que vous avez appris.
 
 ---
 
@@ -220,14 +220,16 @@ Un exercice se présente toujours dans le même ordre : l'énoncé, une cellule 
 
 | Repère | Signification |
 |---|---|
+| 📚 | Début d'une partie, et liens « En savoir plus » vers la documentation |
 | 📖 | Démonstration ou explication : des cellules à exécuter et à observer |
-| ✏️ | Exercice : du code à écrire |
-| 🎯 📝 ⏱️ | Objectif, consignes et durée de l'exercice |
-| ⭐ à ⭐⭐⭐ | Difficulté croissante des questions |
-| 💡 | Indice |
+| ✏️ | Exercice |
+| 🎯 📝 ⏱️ | Objectif, consignes ou contexte, et durée de l'exercice |
+| ⭐ à ⭐⭐⭐ | Questions successives d'un exercice guidé |
+| 🔮 | Prédiction à faire avant d'exécuter la cellule |
+| 💡 | Indice, exemple ou point à retenir |
 | 💻 VOTRE CODE ICI | Zone à compléter dans une cellule de code |
 | 👁️ | Solution ou explication repliée : cliquez après avoir essayé |
-| ❌ et ✅ | Style classique à remplacer, et style Python |
+| ❌ et ✅ | Ce qu'il faut éviter et ce qu'il faut faire ; ✅ marque aussi les tests et les points clés d'une solution |
 
 **Les tests.** Ils sont tous désactivés au départ. Retirez le `@unittest.skip` du premier test, exécutez la cellule, écrivez le code qui le fait passer, puis passez au suivant.
 
@@ -392,7 +394,7 @@ _"The only way to learn a new programming language is by writing programs in it.
 
 Le Codespace suffit pour toute la séance. Cette section s'adresse à ceux qui préfèrent travailler sur leur propre machine.
 
-### Prérequis
+### Prérequis pour travailler en local
 
 - **Python 3.15+** installé sur votre machine
 - Un éditeur de code (VS Code, PyCharm, ou autre)
@@ -548,7 +550,7 @@ Elle relie leurs connaissances théoriques en algorithmique et en programmation 
 
 ### Approche pédagogique
 
-La séance repose sur une pédagogie active. Chaque notion est comparée aux langages que les étudiants pratiqueront (C/C++, Java), puis suivie d'un exercice court qui la vérifie. Les exercices sont posés comme des problèmes d'optimisation ou de refactoring, et tous les exemples viennent de cas d'usage réels qu'ils rencontreront probablement un jour.
+La séance repose sur une pédagogie active. Les notions sont mises en perspective avec les langages que les étudiants pratiqueront (C/C++, Java), et chacune est suivie d'un exercice court qui la vérifie. Les exercices sont posés comme des problèmes d'optimisation ou de refactoring, et tous les exemples viennent de cas d'usage réels qu'ils rencontreront probablement un jour.
 
 L'évaluation est formative : l'enseignant observe les solutions proposées aux exercices, écoute les questions et les discussions, puis ajuste le rythme et le niveau d'approfondissement pendant la séance.
 

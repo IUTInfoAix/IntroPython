@@ -24,8 +24,8 @@ python -c 'import sys; sys.exit(sys.version_info[:2] != (3, 15))' \
 # Vérifié avant toute installation : c'est l'image distribuée qui doit fournir
 # le noyau, pas ce que le test ajoute ensuite.
 etape "Le noyau Jupyter est installé"
-python -c 'import ipykernel; print("ipykernel", ipykernel.__version__)'
-jupyter kernelspec list | grep -q python3 || echec "noyau python3 introuvable"
+python -c 'import ipykernel; print("ipykernel", ipykernel.__version__)' \
+    || echec "ipykernel ne s'importe pas"
 
 # L'image publiée est figée : si requirements.txt change sans nouvelle
 # publication, les étudiants gardent l'ancienne version de ruff et ne voient

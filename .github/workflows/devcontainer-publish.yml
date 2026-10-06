@@ -79,8 +79,16 @@ jobs:
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
-          if docker manifest inspect "$IMAGE:$VERSION" > /dev/null 2>&1; then
+          # On ne publie que si le registre répond explicitement que ce tag
+          # n'existe pas. Toute autre réponse (panne réseau, accès refusé)
+          # arrête le job : dans le doute, on n'écrase rien.
+          if sortie=$(docker manifest inspect "$IMAGE:$VERSION" 2>&1); then
             echo "::error::$IMAGE:$VERSION existe déjà. Choisissez une nouvelle version."
+            exit 1
+          elif printf '%s' "$sortie" | grep -qiE "manifest unknown|name unknown"; then
+            echo "$IMAGE:$VERSION n'existe pas encore : la publication peut continuer."
+          else
+            echo "::error::Impossible de savoir si $IMAGE:$VERSION existe déjà : $sortie"
             exit 1
           fi
 
@@ -101,7 +109,9 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           {
-            echo "## Image publiée : \`$IMAGE:$VERSION\`"
+            echo "## Image construite et testée : \`$IMAGE:$VERSION\`"
+            echo
+            echo "Le push vers ghcr.io a lieu à la toute fin du job, dans l'étape « Post Build, smoke-test & publish » : vérifiez qu'elle est verte."
             echo
             if grep -q "$IMAGE:$VERSION\"" .devcontainer/devcontainer.json; then
               echo "La configuration distribuée pointe déjà sur cette version."

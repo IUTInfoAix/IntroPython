@@ -2,9 +2,12 @@
 # non dans une commande de cycle de vie relancée à chaque création de conteneur.
 # Elle est publiée sur ghcr.io par .github/workflows/devcontainer-publish.yml.
 
-# Image Python officielle, épinglée sur la version exacte de Python et sur la
-# distribution : un tag flottant (`3`, `latest`, `3.15-rc`) change de contenu
-# sans prévenir. À la sortie de Python 3.15.0, passer à `3.15-slim-trixie`.
+# Image Python officielle, épinglée sur la version mineure de Python et sur la
+# distribution : un tag plus large (`3`, `latest`, `slim`) change de version de
+# Python ou de Debian sans prévenir. Tant que Python 3.15 n'est pas sorti, on
+# épingle une préversion précise (rc3) plutôt que le tag `3.15-rc`, qui passe
+# d'une préversion à la suivante. À la sortie de Python 3.15.0, passer à
+# `3.15-slim-trixie`, qui ne suivra que les correctifs de la série 3.15.
 #
 # Variante `slim` plutôt que l'image complète, pour deux raisons :
 #   - elle ne contient que Python 3.15, alors que l'image complète embarque

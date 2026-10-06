@@ -1,18 +1,27 @@
 # =====================================================================
-# devcontainer.yml : vérifie que l'image du devcontainer se CONSTRUIT et
-# qu'un étudiant peut y travailler.
+# devcontainer.yml : vérifie qu'un étudiant peut travailler dans le
+# Codespace, pour les deux configurations du dépôt.
 #
-# Pourquoi : une casse de la construction (image de base republiée, feature
-# qui change, paquet Python incompatible) n'est sinon visible qu'à la
-# création d'un Codespace, c'est-à-dire en début de séance, devant toute la
-# promotion. Ce workflow construit réellement l'image avec ses features et
-# lance le smoke-test .devcontainer/smoke-test.sh : exécution du notebook de
-# bout en bout, `make lint` et `make format-check`.
+#   - distribuée (.devcontainer/devcontainer.json) : télécharge l'image
+#     publiée sur ghcr.io, SANS authentification, exactement comme le
+#     codespace d'un étudiant. Échoue si le paquet a été supprimé, est
+#     repassé en privé, ou si l'image ne correspond plus à requirements.txt.
+#   - source (.devcontainer/source/) : construit réellement l'image avec ses
+#     features. Échoue si une image de base, une feature ou une dépendance a
+#     bougé : c'est la configuration de secours, et celle de la prochaine
+#     publication.
+#
+# Dans les deux cas, le smoke-test .devcontainer/smoke-test.sh tourne dans
+# le conteneur : exécution du notebook de bout en bout, `make lint` et
+# `make format-check`.
+#
+# Pourquoi : une casse n'est sinon visible qu'à la création d'un Codespace,
+# c'est-à-dire en début de séance, devant toute la promotion.
 #
 # Déclencheurs :
 #   - schedule hebdomadaire : attrape la DÉRIVE EXTERNE (base, feature ou
-#     dépendance qui bouge SANS changement de config) : c'est le mode de
-#     panne réel. Ne tourne que sur la branche par défaut.
+#     dépendance qui bouge, paquet qui disparaît SANS changement de config) :
+#     c'est le mode de panne réel. Ne tourne que sur la branche par défaut.
 #   - push/PR touchant .devcontainer/** ou requirements.txt, que le
 #     Dockerfile copie dans l'image : attrape les régressions de config.
 #   - push/PR touchant ce que le smoke-test exécute (notebook, Makefile,
@@ -52,15 +61,28 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    name: build & smoke-test devcontainer
+  smoke-test:
+    name: smoke-test (${{ matrix.nom }})
     # Ne pas tourner dans les copies étudiantes.
     if: github.repository == 'IUTInfoAix/IntroPython'
     runs-on: ubuntu-latest
+    strategy:
+      # Les deux configurations tombent en panne pour des raisons
+      # différentes : l'échec de l'une ne doit pas masquer l'état de l'autre.
+      fail-fast: false
+      matrix:
+        include:
+          - nom: image distribuée
+            config: .devcontainer/devcontainer.json
+          - nom: construction depuis source
+            config: .devcontainer/source/devcontainer.json
     steps:
       - uses: actions/checkout@v7
+      # Pas de `docker login` avant cette étape : l'image distribuée doit
+      # rester téléchargeable sans authentification, comme chez un étudiant.
       - name: Build & smoke-test devcontainer
         uses: devcontainers/ci@v0.3
         with:
+          configFile: ${{ matrix.config }}
           runCmd: .devcontainer/smoke-test.sh
           push: never

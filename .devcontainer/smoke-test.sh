@@ -1,7 +1,8 @@
 #!/bin/sh
 # Smoke-test du devcontainer : prouve qu'un étudiant peut travailler dans le
-# conteneur tel qu'il est distribué. Lancé par .github/workflows/devcontainer.yml
-# et, à la main, par :
+# conteneur tel qu'il est distribué. Lancé par les workflows devcontainer.yml
+# (vérification) et devcontainer-publish.yml (avant toute publication) et, à la
+# main, par :
 #   devcontainer exec --workspace-folder . .devcontainer/smoke-test.sh
 set -eu
 
@@ -25,6 +26,15 @@ python -c 'import sys; sys.exit(sys.version_info[:2] != (3, 15))' \
 etape "Le noyau Jupyter est installé"
 python -c 'import ipykernel; print("ipykernel", ipykernel.__version__)'
 jupyter kernelspec list | grep -q python3 || echec "noyau python3 introuvable"
+
+# L'image publiée est figée : si requirements.txt change sans nouvelle
+# publication, les étudiants gardent l'ancienne version de ruff et ne voient
+# plus les mêmes conseils que le dépôt. Sans index (--no-index), pip ne peut
+# rien télécharger : il réussit si l'image satisfait déjà le fichier, et
+# échoue sinon.
+etape "Les paquets de l'image correspondent à requirements.txt"
+python -m pip install --dry-run --no-index --no-deps --quiet -r requirements.txt \
+    || echec "l'image ne correspond plus à requirements.txt : publiez-en une nouvelle (CONTRIBUTING.md)"
 
 etape "make lint"
 make lint

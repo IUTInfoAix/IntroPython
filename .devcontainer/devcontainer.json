@@ -12,5 +12,5 @@
   //
   // Tag épinglé, jamais `latest` : un tag publié ne change plus de contenu.
   // Pour en changer, voir « Publier une nouvelle image » dans CONTRIBUTING.md.
-  "image": "ghcr.io/iutinfoaix/intropython-devcontainer:2026.10.1"
+  "image": "ghcr.io/iutinfoaix/intropython-devcontainer:2026.10.2"
 }

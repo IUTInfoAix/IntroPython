@@ -188,13 +188,17 @@ L'exercice guidé (25 min) met ces structures au travail sur un cas réel : vous
 
 La partie se termine par la mutabilité et les références (20 min). En C++ ou en Java, vous savez toujours si vous manipulez une valeur ou une référence. En Python, la syntaxe ne le montre pas : il faut connaître la règle. Vous la découvrez sur trois petits programmes dont vous prédisez l'affichage (`b = a`, un argument par défaut, une grille 3 × 3), puis vous réparez une fonction dont l'argument par défaut est mutable.
 
+Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min).
+
 ### Partie 2 - Compréhensions, EAFP, context managers (55 min)
 
 Cette partie présente trois idiomes :
 
 - la **list comprehension** écrit en une ligne une boucle qui remplit une liste. Exercice : filtrer une liste de notes (10 min) ;
 - **EAFP**, « Easier to Ask Forgiveness than Permission » : en Python, on préfère essayer puis gérer l'erreur plutôt que vérifier avant. Exercice : une division qui retourne une valeur par défaut au lieu d'échouer (15 min) ;
-- le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit.
+- le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit. Exercice : écrire puis relire un fichier (10 min).
+
+Là aussi, un exercice « Pour aller plus loin » attend ceux qui sont en avance : classer les admis d'un examen avec une comprehension et `sorted()` (15 min).
 
 ### Partie 3 - Refactoring de l'analyseur CSV (45 min)
 
@@ -237,7 +241,7 @@ Pendant la séance, travaillez en binôme sur les exercices, modifiez les exempl
 
 ### Après la séance
 
-- Refaites les exercices à tête reposée, et terminez les deux bonus de la partie 4
+- Refaites les exercices à tête reposée, et terminez les exercices « Pour aller plus loin » et les deux bonus de la partie 4
 - Consultez régulièrement la cheat sheet
 - Relevez le défi Exercism présenté ci-dessous
 - Explorez les ressources recommandées

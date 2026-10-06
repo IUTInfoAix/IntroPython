@@ -1,6 +1,5 @@
 ---
 theme: default
-background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
 lineNumbers: false
@@ -123,9 +122,10 @@ position = (48.8566, 2.3522)  # Paris
 # Performances moyennes des opérations
 | Opération | list | dict | set | tuple |
 |-----------|------|------|-----|-------|
-| Accès `[i]` | <span class="text-green-500">**O(1)**</span> | <span class="text-green-500">**O(1)**</span> | - | <span class="text-green-500">**O(1)**</span> |
+| Accès | <span class="text-green-500">**O(1)**</span> `[i]` | <span class="text-green-500">**O(1)**</span> accès par clé | - | <span class="text-green-500">**O(1)**</span> `[i]` |
 | Recherche `in` | <span class="text-orange-500">O(n)</span> | <span class="text-green-500">**O(1)**</span> | <span class="text-green-500">**O(1)**</span> | <span class="text-orange-500">O(n)</span> |
-| Insertion | <span class="text-orange-500">O(n)</span> | <span class="text-green-500">**O(1)**</span> | <span class="text-green-500">**O(1)**</span> | - |
+| Ajout | <span class="text-green-500">**O(1)**</span> amorti (`append`) | <span class="text-green-500">**O(1)**</span> | <span class="text-green-500">**O(1)**</span> | - |
+| Insertion au milieu | <span class="text-orange-500">O(n)</span> | - | - | - |
 | Suppression | <span class="text-orange-500">O(n)</span> | <span class="text-green-500">**O(1)**</span> | <span class="text-green-500">**O(1)**</span> | - |
 
 <v-click>
@@ -312,7 +312,7 @@ CONSTANTE           # MAJUSCULES pour constantes
 
 - Règles de base :
     - **Indentation** : 4 espaces (PAS de tabs)
-    - **Longueur ligne** : max 79 caractères
+    - **Longueur ligne** : 79 caractères dans PEP 8, 88 dans ce projet (black)
     - **Espaces** : `x = 1` (pas `x=1`)
     - **Imports** : en haut, groupés
 </v-click>

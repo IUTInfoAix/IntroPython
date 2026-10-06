@@ -10,12 +10,6 @@ notebook>=6.4.0
 ipython>=8.0.0
 
 # ============================================================================
-# Calcul scientifique (pour les démos Partie 3)
-# ============================================================================
-numpy>=1.21.0
-matplotlib>=3.4.0
-
-# ============================================================================
 # Outils de qualité du code (optionnel mais recommandé)
 # ============================================================================
 black[jupyter]>=22.0.0 # Formatage automatique (inclut support Jupyter)
@@ -27,7 +21,7 @@ pre-commit>=2.20.0     # Git hooks pour vérifications automatiques
 nbqa>=1.7.0            # Permet d'exécuter les outils de qualité sur les notebooks Jupyter
 
 # ============================================================================
-# Tests (pour le challenge de la semaine)
+# Tests
 # ============================================================================
 pytest>=7.0.0          # Framework de tests
 pytest-cov>=3.0.0      # Couverture de code

@@ -111,9 +111,11 @@ f.close()
 with open('f.txt') as f:
     contenu = f.read()
 
-# Multiple
-with open('in.txt') as fi, \
-     open('out.txt','w') as fo:
+# Multiple (Python 3.10+)
+with (
+    open('in.txt') as fi,
+    open('out.txt','w') as fo,
+):
     fo.write(fi.read())
 ```
 
@@ -162,6 +164,8 @@ if not liste:       # OK
 if len(liste)==0:   # NON
 
 x = valeur or default
+# Piège : 0, "" et [] comptent
+# comme faux et sont remplacés
 
 for k,v in dico.items():  # OK
 
@@ -196,9 +200,11 @@ def info(**data):
 def saluer(nom: str, age: int) -> str:
     return f"{nom} a {age}"
 
-from typing import List, Dict, Optional
-def trouve(id: int) -> Optional[str]:
+def trouve(id: int) -> str | None:
     return res.get(id)
+
+def trier(noms: list[str]) -> list[str]:
+    return sorted(noms)
 ```
 
 ## Astuces pratiques
@@ -274,7 +280,7 @@ _private       # Interne
 
 **Espaces**: `x = 1` OK / `x=1` NON; `func(x, y)` OK / `func(x,y)` NON
 
-**Max**: 79 caractères/ligne
+**Max**: 79 caractères/ligne dans PEP 8, 88 dans ce projet (black)
 
 ## Docstrings
 

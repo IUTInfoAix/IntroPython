@@ -85,9 +85,12 @@ pip install -r requirements.txt
 
 ```
 jupyter>=1.0.0
-numpy>=1.21.0
-matplotlib>=3.4.0
-....
+jupyterlab>=3.0.0
+notebook>=6.4.0
+ipython>=8.0.0
+black[jupyter]>=22.0.0
+flake8>=4.0.0
+...
 ```
 
 ### Utilisation du Makefile
@@ -171,8 +174,29 @@ La partie 4 sert de marge : le détecteur de palindromes est pour tout le monde,
 2. **Après la séance** :
    - Refaire les exercices à tête reposée
    - Consulter le cheat sheet régulièrement
-   - Tenter le challenge de la semaine
+   - Relever le défi Exercism présenté ci-dessous
    - Explorer les ressources recommandées
+
+---
+
+## 🎓 Pour les enseignants
+
+### Intention pédagogique
+
+Cette séance vise à **repositionner Python dans la perspective d'un informaticien professionnel**, en dépassant la vision "langage pour débutants" souvent véhiculée. L'intention est de faire comprendre aux étudiants que Python n'est pas qu'un outil pédagogique mais un **langage de production** utilisé massivement dans l'industrie, dont la maîtrise nécessite une compréhension des concepts informatiques sous-jacents.
+
+Il s'agit de créer un **pont cognitif** entre leurs connaissances théoriques en algorithmique et programmation et l'utilisation pragmatique de Python, en montrant comment le langage incarne ou questionne constructivement certains paradigmes qu'ils étudient par ailleurs. La séance doit leur faire prendre conscience que la simplicité syntaxique de Python cache une richesse conceptuelle qui demande une réflexion d'informaticien pour être exploitée efficacement.
+
+### Approche pédagogique
+
+La séance adopte une **pédagogie active** basée sur :
+
+- **L'apprentissage par comparaison** : mise en perspective systématique avec les langages qu'ils pratiqueront (C/C++, Java)
+- **L'expérimentation immédiate** : chaque concept est accompagné d'un exercice court pour une validation empirique
+- **La résolution de problèmes** : les exercices sont formulés comme des défis d'optimisation ou de refactoring
+- **L'ancrage professionnel** : tous les exemples sont tirés de cas d'usage réels qu'ils rencontreront probablement un jour
+
+L'évaluation formative se fait par observation des solutions proposées aux exercices et par les questions/discussions suscitées, permettant d'ajuster le rythme et le niveau d'approfondissement en temps réel.
 
 ---
 
@@ -269,7 +293,7 @@ _"The only way to learn a new programming language is by writing programs in it.
 
 **Python embarqué** :
 - [MicroPython](https://micropython.org/) - Python pour microcontrôleurs
-- [CircuitPython](https://circuitpython.org/) - Fork d'Adafruit
+- [CircuitPython](https://circuitpython.org/) - Variante maintenue par Adafruit
 - [Documentation STeaMi](https://www.steami.cc/) - Pour vos cartes
 
 ---
@@ -311,10 +335,6 @@ pylint mon_fichier.py
 # Type checking
 pip install mypy
 mypy mon_fichier.py
-
-# Tests unitaires
-pip install pytest
-pytest tests/
 ```
 
 ### Configuration recommandée (`.vscode/settings.json`)
@@ -388,7 +408,7 @@ pip install jupyterlab
 jupyter lab
 ```
 
-### ImportError: No module named 'numpy'
+### ModuleNotFoundError: No module named '...'
 
 ```bash
 # Vérifier que vous êtes dans l'environnement virtuel
@@ -400,7 +420,7 @@ pip install -r requirements.txt
 
 ```python
 # Utiliser l'encodage UTF-8 explicitement
-with open('resultats.csv', encoding='utf-8') as f:
+with open('mon_fichier.csv', encoding='utf-8') as f:
     contenu = f.read()
 ```
 

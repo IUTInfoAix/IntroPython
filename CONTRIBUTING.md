@@ -24,7 +24,7 @@ venv\Scripts\activate  # Windows
 # Installer les dépendances
 make install-dev
 # ou
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 pre-commit install
 ```
 
@@ -221,7 +221,8 @@ IntroPython/
 ├── .pre-commit-config.yaml    # Configuration pre-commit
 ├── .editorconfig              # Configuration éditeur
 ├── Makefile                   # Commandes make
-└── requirements.txt           # Dépendances Python
+├── requirements.txt           # Dépendances de la séance (installées dans le Codespace)
+└── requirements-dev.txt       # Dépendances pour le travail en local et la maintenance
 ```
 
 ## 🤝 Processus de revue

@@ -1,0 +1,17 @@
+# Python pour Informaticiens - BUT Informatique
+# Dépendances pour travailler hors du Codespace (installation locale) et pour
+# maintenir le dépôt. Le Codespace ne les installe pas.
+
+# Le nécessaire de la séance : noyau Jupyter et ruff.
+-r requirements.txt
+
+# ============================================================================
+# Travail en local, sans VS Code
+# ============================================================================
+jupyterlab>=3.0.0      # `make notebook` : ouvre le notebook dans le navigateur
+nbconvert>=7.0.0       # `make test` : exécute le notebook de bout en bout
+
+# ============================================================================
+# Maintenance du dépôt (enseignant)
+# ============================================================================
+pre-commit>=2.20.0     # Git hooks pour vérifications automatiques

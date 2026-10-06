@@ -80,20 +80,13 @@ python3 -m venv ~/venv
 source ~/venv/bin/activate
 
 # Installer les dépendances
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 ```
 
-### Contenu de `requirements.txt`
+### Les deux fichiers de dépendances
 
-```
-jupyter>=1.0.0
-jupyterlab>=3.0.0
-notebook>=6.4.0
-ipython>=8.0.0
-ruff==0.16.10
-pre-commit>=2.20.0
-...
-```
+- [requirements.txt](requirements.txt) : le nécessaire pour faire la séance dans VS Code, c'est-à-dire le noyau Jupyter (`ipykernel`) et `ruff`. C'est tout ce que le Codespace installe.
+- [requirements-dev.txt](requirements-dev.txt) : le même contenu, plus ce qui sert en local (`jupyterlab` pour `make notebook`, `nbconvert` pour `make test`) et à la maintenance du dépôt (`pre-commit`).
 
 ### Utilisation du Makefile
 
@@ -421,7 +414,7 @@ jupyter lab
 ```bash
 # Vérifier que vous êtes dans l'environnement virtuel
 # Réinstaller les dépendances
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 ```
 
 ### Les accents s'affichent mal dans le fichier CSV

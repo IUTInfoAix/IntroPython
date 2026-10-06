@@ -16,9 +16,9 @@ help: ## Affiche cette aide
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-20s$(NC) %s\n", $$1, $$2}'
 
-install: ## Installe toutes les dépendances
+install: ## Installe toutes les dépendances (travail en local)
 	@echo "$(BLUE)Installation des dépendances...$(NC)"
-	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 	@echo "$(GREEN)✓ Installation terminée$(NC)"
 
 install-dev: install ## Installe les dépendances + outils de dev
@@ -73,6 +73,10 @@ lint-fix: ## Applique les corrections sûres de ruff
 	@$(RUFF) check --fix .
 
 test: ## Exécute le notebook de bout en bout
+	@jupyter nbconvert --version > /dev/null 2>&1 || { \
+		echo "$(RED)✗ nbconvert est introuvable : il n'est pas installé dans le Codespace.$(NC)"; \
+		echo "  Installez-le avec : pip install -r requirements-dev.txt"; \
+		exit 1; }
 	@echo "$(BLUE)Exécution du notebook...$(NC)"
 	jupyter nbconvert --to notebook --execute --stdout notebook_seance.ipynb > /dev/null
 	@echo "$(GREEN)✓ Le notebook s'exécute sans erreur$(NC)"
@@ -104,11 +108,21 @@ clean: ## Nettoie les fichiers temporaires
 	find . -type f -name "*.pyo" -delete 2>/dev/null || true
 	@echo "$(GREEN)✓ Nettoyage terminé$(NC)"
 
-notebook: ## Lance Jupyter Lab
+notebook: ## Lance Jupyter Lab (travail en local)
+	@jupyter lab --version > /dev/null 2>&1 || { \
+		echo "$(RED)✗ JupyterLab est introuvable : il n'est pas installé dans le Codespace.$(NC)"; \
+		echo "  Dans le Codespace, ouvrez notebook_seance.ipynb directement dans VS Code."; \
+		echo "  En local, installez-le avec : make install"; \
+		exit 1; }
 	@echo "$(BLUE)Lancement de Jupyter Lab...$(NC)"
 	jupyter lab
 
-slides: ## Lance Slidev pour la présentation
+slides: ## Lance Slidev pour la présentation (nécessite Node.js)
+	@command -v npm > /dev/null 2>&1 || { \
+		echo "$(RED)✗ Node.js est introuvable : make slides en a besoin.$(NC)"; \
+		echo "  Il n'est pas installé dans le Codespace, où il ne sert pas à la séance."; \
+		echo "  Installez-le depuis https://nodejs.org/ ou lisez directement slides/slides.md."; \
+		exit 1; }
 	@echo "$(BLUE)Lancement de la présentation...$(NC)"
 	npm install -g @slidev/cli @slidev/theme-default&&cd slides && npx slidev slides.md
 

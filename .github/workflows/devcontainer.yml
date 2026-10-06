@@ -58,7 +58,7 @@ jobs:
     if: github.repository == 'IUTInfoAix/IntroPython'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build & smoke-test devcontainer
         uses: devcontainers/ci@v0.3
         with:

@@ -372,7 +372,7 @@ CONSTANTE           # MAJUSCULES pour constantes
 
 - Règles de base :
     - **Indentation** : 4 espaces (PAS de tabs)
-    - **Longueur ligne** : 79 caractères dans PEP 8, 88 dans ce projet (black)
+    - **Longueur ligne** : 79 caractères dans PEP 8, 88 dans ce projet (ruff)
     - **Espaces** : `x = 1` (pas `x=1`)
     - **Imports** : en haut, groupés
 </v-click>
@@ -449,7 +449,7 @@ import this
 
     - Pratiquer avec des petits projets
     - Lire du code Python open-source
-    - Utiliser les outils de qualité (black, flake8)
+    - Utiliser les outils de qualité (ruff)
     - Explorer la stdlib (collections, itertools, etc.)
 </v-click>
 
@@ -517,8 +517,8 @@ layout: two-cols-header
 ::right::
 
 ### 🔧 Outils
-- **black** : formatage automatique
-- **flake8** : vérification style
+- **ruff** : formatage et vérification du style, l'outil de ce projet
+- **black**, **isort**, **flake8** : remplacés ici par ruff, encore répandus ailleurs
 - **pytest** : tests unitaires
 
 ### 🌟 Communauté

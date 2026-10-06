@@ -30,83 +30,46 @@ pre-commit install
 
 ## 📋 Standards de qualité du code
 
+Un seul outil : **[ruff](https://docs.astral.sh/ruff/)**. Il formate le code, trie les imports et signale les tournures non pythoniques. Il remplace black, isort et flake8, que vous croiserez encore dans d'autres projets. Il lit nativement les notebooks, sans passer par nbqa.
+
+Sa configuration se trouve dans les sections `[tool.ruff]` de [pyproject.toml](pyproject.toml). Chaque famille de règles et chaque exception y est justifiée par un commentaire : faites de même si vous en ajoutez.
+
+Sa version est épinglée (`ruff==0.16.10`) dans [requirements.txt](requirements.txt) et dans [.pre-commit-config.yaml](.pre-commit-config.yaml). D'une version à l'autre, ruff ajoute des règles et retouche son formatage : changez la version aux deux endroits en même temps, puis relancez `make check-all`.
+
 ### Formatage
 
-Nous utilisons **Black** pour le formatage automatique du code Python et des notebooks Jupyter :
-
 ```bash
-# Formater tout le code (fichiers .py et .ipynb)
+# Formater le code et trier les imports (fichiers .py et .ipynb)
 make format
 
 # Vérifier le formatage sans modifier
 make format-check
 ```
 
-**Note** : Le formatage fonctionne sur :
-- Les fichiers Python (`.py`) avec `black`
-- Les notebooks Jupyter (`.ipynb`) avec `nbqa black`
+Lignes de 88 caractères, guillemets doubles. Les blocs de code des fichiers Markdown sont exclus du formatage : ceux de la cheat sheet sont compactés à la main, et les slides montrent volontairement du code non pythonique.
 
-Configuration : voir [pyproject.toml](pyproject.toml)
-
-### Imports
-
-Les imports sont triés automatiquement avec **isort** :
+### Lint
 
 ```bash
-# Trier les imports
-isort .
-```
-
-Configuration : voir section `[tool.isort]` dans [pyproject.toml](pyproject.toml)
-
-### Style PEP 8
-
-Nous utilisons **flake8** pour vérifier la conformité PEP 8 des fichiers Python et des notebooks :
-
-```bash
-# Vérifier le style (fichiers .py et .ipynb)
+# Afficher les remarques de ruff (fichiers .py et .ipynb)
 make lint
+
+# Appliquer les corrections sûres
+make lint-fix
 ```
 
-**Note** : La vérification s'applique à :
-- Les fichiers Python (`.py`) avec `flake8`
-- Les notebooks Jupyter (`.ipynb`) avec `nbqa flake8`
-
-Configuration : voir [.flake8](.flake8)
-
-### Analyse statique
-
-**Pylint** est utilisé pour une analyse plus approfondie :
-
-```bash
-# Analyser le code
-make pylint
-```
-
-Configuration : voir [.pylintrc](.pylintrc)
-
-### Type hints (optionnel)
-
-**mypy** peut être utilisé pour vérifier les annotations de types dans les fichiers Python et notebooks :
-
-```bash
-# Vérifier les types (fichiers .py et .ipynb)
-make mypy
-```
-
-**Note** : La vérification de types s'applique également aux notebooks Jupyter avec `nbqa mypy`.
-
-Configuration : voir [mypy.ini](mypy.ini)
+Les règles activées couvrent PEP 8 et les tournures que la séance apprend à remplacer : boucle avec `append` au lieu d'une compréhension, `open()` sans `with`, argument par défaut mutable, nom qui masque une fonction native. Pour lire l'explication d'une règle : `ruff rule PERF401`.
 
 ### Outils de qualité pour notebooks Jupyter
 
-Tous les outils de qualité du code fonctionnent sur les notebooks Jupyter grâce à **nbqa** :
+Le notebook contient volontairement du code imparfait. Deux mécanismes le rendent compatible avec ruff, à ne pas confondre :
 
-- `make format` : Formate le code dans les notebooks avec Black et isort
-- `make lint` : Vérifie le style PEP 8 dans les notebooks avec flake8
-- `make mypy` : Vérifie les types dans les notebooks
+- **Contraintes d'un notebook de TP** (imports fournis d'avance, fonctions à compléter, lignes d'affichage longues) : `per-file-ignores` sur `*.ipynb` dans [pyproject.toml](pyproject.toml). La règle est alors coupée dans tout le notebook.
+- **Contre-exemples pédagogiques** (cellules « ❌ Style classique », set avec doublon, argument par défaut mutable) : `# noqa: CODE` sur la ligne concernée. La règle reste active sur le code que l'étudiant écrit dans le même fichier.
 
-**nbqa** extrait automatiquement le code des cellules, applique les outils, puis réintègre les modifications.
+Tel que distribué, le notebook doit passer `make check-all` sans aucune remarque, et `make lint-fix` ne doit rien y modifier. La règle `RUF100` signale tout `# noqa` devenu inutile, par exemple après la modification d'un contre-exemple.
+
+Dans VS Code, les remarques de ruff s'affichent sous le code, dans les cellules. Les corrections automatiques à l'enregistrement sont désactivées (`ruff.fixAll` dans [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json)) : c'est à l'étudiant de réécrire son code.
 
 ## 🔄 Workflow de développement
 
@@ -137,9 +100,8 @@ make test
 ### 3. Commit
 
 Les hooks pre-commit vont automatiquement :
-- Formater le code (black, isort)
-- Vérifier PEP 8 (flake8)
-- Vérifier les types (mypy)
+- Trier les imports et formater le code (ruff)
+- Signaler les remarques de ruff, sans les corriger à votre place
 
 ```bash
 git add .
@@ -211,7 +173,8 @@ Le [Makefile](Makefile) fournit des raccourcis pour toutes les commandes courant
 make help        # Affiche l'aide
 make install     # Installe les dépendances
 make format      # Formate le code
-make lint        # Vérifie PEP 8
+make lint        # Affiche les remarques de ruff
+make lint-fix    # Applique les corrections sûres de ruff
 make test        # Exécute le notebook
 make check-all   # Vérifie tout
 make clean       # Nettoie les fichiers temporaires
@@ -238,9 +201,7 @@ Si vous utilisez VS Code dans un Codespace ou un dev container, les paramètres 
 Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json)) :
 - Python (Microsoft)
 - Pylance
-- Black Formatter
-- isort
-- Flake8
+- Ruff
 - Jupyter
 
 ## 📚 Structure du projet
@@ -256,10 +217,7 @@ IntroPython/
 │   └── cheatsheet.pdf          # Généré avec pandoc depuis cheatsheet.md
 ├── .devcontainer/              # Configuration du Codespace
 ├── .vscode/                    # Extensions VS Code recommandées
-├── pyproject.toml             # Configuration Python
-├── .flake8                    # Configuration flake8
-├── .pylintrc                  # Configuration pylint
-├── mypy.ini                   # Configuration mypy
+├── pyproject.toml             # Configuration de ruff
 ├── .pre-commit-config.yaml    # Configuration pre-commit
 ├── .editorconfig              # Configuration éditeur
 ├── Makefile                   # Commandes make

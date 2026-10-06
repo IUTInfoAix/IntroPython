@@ -90,8 +90,8 @@ jupyter>=1.0.0
 jupyterlab>=3.0.0
 notebook>=6.4.0
 ipython>=8.0.0
-black[jupyter]>=26.5.0
-flake8>=4.0.0
+ruff==0.16.10
+pre-commit>=2.20.0
 ...
 ```
 
@@ -113,11 +113,14 @@ make notebook
 # Lancer la présentation Slidev (nécessite Node.js)
 make slides
 
-# Formater automatiquement votre code Python
+# Formater automatiquement votre code et trier les imports
 make format
 
-# Vérifier que votre code respecte PEP 8
+# Afficher les remarques de ruff : PEP 8 et tournures non pythoniques
 make lint
+
+# Appliquer les corrections que ruff sait faire sans risque
+make lint-fix
 
 # Vérifier le formatage + linting (sans modifier les fichiers)
 make check-all
@@ -126,7 +129,9 @@ make check-all
 make clean
 ```
 
-**Pour les étudiants** : Les commandes `make format` et `make lint` sont particulièrement utiles pour vérifier que votre code suit les conventions pythoniques avant de soumettre vos exercices.
+**Pour les étudiants** : `make format` et `make lint` s'appuient sur [ruff](https://docs.astral.sh/ruff/), le formateur et linter du projet. Dans le Codespace, ses remarques s'affichent aussi sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique : essayez de réécrire vous-même avant de recourir à `make lint-fix`.
+
+Quelques lignes du notebook se terminent par `# noqa: CODE` : ce sont des contre-exemples volontaires (les « ❌ Style classique »), sur lesquels ruff a reçu la consigne de se taire. N'en ajoutez pas dans votre propre code. Si vous corrigez l'une de ces lignes, ruff vous signale que le `# noqa` ne sert plus (`RUF100`) : supprimez-le.
 
 ### Lancer les slides de présentation
 
@@ -289,8 +294,8 @@ _"The only way to learn a new programming language is by writing programs in it.
 
 **Tests et qualité** :
 - [pytest](https://pytest.org/) - Framework de tests
-- [black](https://black.readthedocs.io/) - Formatage automatique
-- [flake8](https://flake8.pycqa.org/) - Analyse statique
+- [ruff](https://docs.astral.sh/ruff/) - Formatage, tri des imports et analyse statique : l'outil de ce projet
+- [black](https://black.readthedocs.io/), [isort](https://pycqa.github.io/isort/) et [flake8](https://flake8.pycqa.org/) - Les trois outils que ruff remplace, encore présents dans beaucoup de projets
 - [mypy](http://mypy-lang.org/) - Type checking
 
 **Python embarqué** :
@@ -307,6 +312,7 @@ _"The only way to learn a new programming language is by writing programs in it.
 - **VS Code** + extensions Python
   - Python (Microsoft)
   - Pylance
+  - Ruff (Astral)
   - Python Docstring Generator
   - autoDocstring
 
@@ -322,22 +328,23 @@ _"The only way to learn a new programming language is by writing programs in it.
 ### Outils en ligne de commande
 
 ```bash
+# Ruff : l'outil de ce projet (déjà installé dans le Codespace)
+pip install ruff
+
 # Formater automatiquement
-pip install black
-black mon_fichier.py
+ruff format mon_fichier.py
 
-# Vérifier le style PEP 8
-pip install flake8
-flake8 mon_fichier.py
+# Vérifier le style PEP 8 et repérer les tournures non pythoniques
+ruff check mon_fichier.py
 
-# Analyse statique approfondie
-pip install pylint
-pylint mon_fichier.py
+# Appliquer les corrections sûres
+ruff check --fix mon_fichier.py
 
-# Type checking
-pip install mypy
-mypy mon_fichier.py
+# Lire l'explication d'une règle à partir de son code
+ruff rule PERF401
 ```
+
+Ruff remplace à lui seul trois outils que vous croiserez encore dans beaucoup de projets : **black** (formatage), **isort** (tri des imports) et **flake8** (style PEP 8). Ils s'utilisent de la même façon, par exemple `black mon_fichier.py`. Ruff ne vérifie pas les annotations de types : pour cela, l'outil de référence reste **mypy**, qui n'est pas utilisé dans ce projet.
 
 ### Configuration recommandée (`.vscode/settings.json`)
 
@@ -345,20 +352,20 @@ mypy mon_fichier.py
 {
   "[python]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "isort.args": ["--profile", "black"],
+  "notebook.formatOnSave.enabled": true,
+  "ruff.fixAll": false,
   "editor.rulers": [88],
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  "jupyter.askForKernelRestart": false,
+  "jupyter.askForKernelRestart": false
 }
 ```
+
+Ces réglages demandent l'extension **Ruff** (`charliermarsh.ruff`). Dans le Codespace, elle est déjà installée et configurée. Le code est formaté à chaque enregistrement, y compris dans les cellules du notebook. Les corrections automatiques à l'enregistrement sont volontairement désactivées (`ruff.fixAll`) : ruff vous montre la tournure à reprendre, à vous de la réécrire.
 
 ---
 
@@ -429,14 +436,20 @@ with open('mon_fichier.csv', encoding='utf-8') as f:
 ### Le code ne suit pas PEP 8
 
 ```bash
-# Formater automatiquement avec black
-pip install black
-black mon_fichier.py
+# Formater automatiquement avec ruff
+make format
 
-# Ou vérifier avec flake8
-pip install flake8
-flake8 mon_fichier.py
+# Puis lire les remarques de ruff et reprendre votre code
+make lint
 ```
+
+### Ruff affiche « Support for Python 3.15 is under development »
+
+C'est un simple avertissement, pas une erreur : la prise en charge de Python 3.15 par ruff n'est pas encore déclarée stable. Vos résultats sont valables, vous pouvez l'ignorer.
+
+### Ruff signale « Unused `noqa` directive » (RUF100)
+
+Vous avez corrigé un contre-exemple du notebook : le commentaire `# noqa` qui demandait à ruff de se taire sur cette ligne ne sert plus. Supprimez-le, ou lancez `make lint-fix`.
 
 ---
 

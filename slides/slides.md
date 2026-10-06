@@ -493,7 +493,7 @@ layout: two-cols-header
 
 **🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
 
-_"The only way to learn a new programming language is by writing programs in it."_ (Dennis Ritchie)
+_"The only way to learn a new programming language is by writing programs in it."_ (Brian Kernighan et Dennis Ritchie, _The C Programming Language_)
 
 </v-click>
 

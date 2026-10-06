@@ -252,7 +252,7 @@ Les exercices Exercism sont classés par difficulté. Une progression possible :
 - Lisez les solutions des autres après avoir terminé
 - Créez un groupe de discussion avec vos camarades
 
-_"The only way to learn a new programming language is by writing programs in it."_ (Dennis Ritchie)
+_"The only way to learn a new programming language is by writing programs in it."_ (Brian Kernighan et Dennis Ritchie, _The C Programming Language_)
 
 ---
 
@@ -381,7 +381,7 @@ Ces réglages demandent l'extension **Ruff** (`charliermarsh.ruff`). Dans le Cod
 
 ### Q : Le code « pythonique » est-il vraiment plus rapide ?
 
-**R :** Souvent oui (list comprehensions, fonctions built-in optimisées en C), mais le principal avantage est la lisibilité et la maintenabilité. "Premature optimization is the root of all evil."
+**R :** Souvent oui (list comprehensions, fonctions built-in optimisées en C), mais le principal avantage est la lisibilité et la maintenabilité. "Premature optimization is the root of all evil." (Donald Knuth, 1974)
 
 ### Q : Dois-je toujours suivre PEP 8 strictement ?
 

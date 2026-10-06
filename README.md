@@ -130,7 +130,7 @@ En tant qu'étudiant, vous pouvez demander les avantages **GitHub Education**. U
 
 Pour faire la demande :
 
-1. Ajoutez votre adresse e-mail universitaire à votre compte GitHub et validez-la ([marche à suivre](https://docs.github.com/fr/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account)). GitHub peut l'exiger pour reconnaître votre établissement
+1. Ajoutez votre adresse e-mail universitaire (en `@etu.univ-amu.fr` pour les étudiants d'AMU) à votre compte GitHub et validez-la ([marche à suivre](https://docs.github.com/fr/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account)). GitHub peut l'exiger pour reconnaître votre établissement
 2. Ouvrez la page [Education benefits](https://github.com/settings/education/benefits) de vos paramètres
 3. Sous **GitHub Education**, cliquez sur **Start an application**
 4. Remplissez le formulaire. Si un justificatif de scolarité vous est demandé, GitHub accepte une carte d'étudiant portant la date de l'inscription en cours, un emploi du temps, un relevé de notes ou un certificat de scolarité

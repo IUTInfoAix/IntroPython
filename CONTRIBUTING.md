@@ -130,7 +130,7 @@ make format
 # Vérifier la qualité
 make check-all
 
-# Lancer les tests
+# Exécuter le notebook de bout en bout
 make test
 ```
 
@@ -158,29 +158,29 @@ Puis créer une Pull Request sur GitHub.
 
 ### Écrire des tests
 
-Placez vos tests dans le dossier `tests/` :
+Les tests vivent dans le notebook, avec `unittest`. Chaque exercice suit le même ordre de cellules : énoncé, code à compléter, tests, solution dans un `<details>`.
 
 ```python
-# tests/test_exemple.py
-import pytest
+class TestMaFonction(unittest.TestCase):
+    """Tests unitaires pour ma_fonction"""
 
-def test_ma_fonction():
-    """Test de ma_fonction"""
-    assert ma_fonction(2, 3) == 5
+    @unittest.skip
+    def test_1_cas_simple(self):
+        """Test 1 : Cas simple"""
+        self.assertEqual(ma_fonction(2, 3), 5)
+        print("✅ Test 1 réussi : cas simple")
 ```
+
+Chaque test porte un `@unittest.skip` que les étudiants retirent progressivement. Vérifiez que chaque solution proposée fait passer tous les tests de son exercice.
 
 ### Lancer les tests
 
 ```bash
-# Tous les tests
+# Exécuter le notebook de bout en bout, tel que distribué
 make test
-
-# Avec couverture
-make test-cov
-
-# Un test spécifique
-pytest tests/test_exemple.py::test_ma_fonction
 ```
+
+Tel que distribué, le notebook ne doit lever aucune exception : les tests sont tous ignorés tant que les `@unittest.skip` sont en place.
 
 ## 📝 Convention de commits
 
@@ -212,7 +212,7 @@ make help        # Affiche l'aide
 make install     # Installe les dépendances
 make format      # Formate le code
 make lint        # Vérifie PEP 8
-make test        # Lance les tests
+make test        # Exécute le notebook
 make check-all   # Vérifie tout
 make clean       # Nettoie les fichiers temporaires
 ```
@@ -269,11 +269,10 @@ IntroPython/
 ## 🤝 Processus de revue
 
 Les Pull Requests doivent :
-1. ✅ Passer tous les checks CI/CD
-2. ✅ Avoir une couverture de tests ≥ 80%
-3. ✅ Être revues par au moins un mainteneur
-4. ✅ Respecter les conventions de code
-5. ✅ Inclure de la documentation si nécessaire
+1. ✅ Passer `make check-all` et `make test`
+2. ✅ Être revues par au moins un mainteneur
+3. ✅ Respecter les conventions de code
+4. ✅ Inclure de la documentation si nécessaire
 
 ## 💡 Conseils
 

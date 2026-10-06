@@ -20,7 +20,6 @@ exclude =
 max-complexity = 10
 per-file-ignores =
     __init__.py:F401
-    */tests/*:F401,F811
     # Notebooks: imports partout (E402), lignes longues (E501),
     # imports non utilisés (F401), f-strings sans placeholders (F541),
     # variables non utilisées (F841)

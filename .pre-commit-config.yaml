@@ -60,7 +60,7 @@ repos:
       - id: mypy
         name: Vérifie les types avec mypy
         additional_dependencies: []
-        exclude: ^(slides/|ressources/|tests/)
+        exclude: ^(slides/|ressources/)
         args: [--ignore-missing-imports, --no-strict-optional]
 
   # nbqa - Outils de qualité pour les notebooks Jupyter

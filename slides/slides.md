@@ -30,7 +30,6 @@ mdc: true
 - ✅ Choisir la bonne structure de données
 - ✅ Utiliser les idiomes Python
 - ✅ Écrire du code lisible et élégant
-- ✅ Découvrir l'écosystème
 
 <v-click>
 
@@ -134,6 +133,67 @@ position = (48.8566, 2.3522)  # Paris
 
 **Pour tester l'appartenance → dict ou set**
 
+</v-click>
+
+---
+
+# Mesurer plutôt que croire
+
+- Le module `timeit` chronomètre un bout de code
+```python
+import timeit
+
+liste = list(range(100_000))
+ensemble = set(liste)
+x = 99_999  # Pire cas pour la liste : le dernier élément
+
+timeit.timeit(lambda: x in liste, number=200)
+timeit.timeit(lambda: x in ensemble, number=200)
+```
+<v-click>
+
+| Recherche | Temps moyen |
+|-----------|-------------|
+| `x in liste` | <span class="text-orange-500">≈ 500 µs</span> |
+| `x in ensemble` | <span class="text-green-500">**≈ 0,1 µs**</span> |
+
+</v-click>
+<v-click>
+
+**→ Plusieurs milliers de fois plus rapide : O(n) contre O(1)**
+</v-click>
+
+---
+
+# Mutabilité et références
+
+## Une variable est un nom posé sur un objet
+
+- `=` ne copie jamais l'objet
+```python
+a = [1, 2, 3]
+b = a
+b.append(4)  # a vaut aussi [1, 2, 3, 4]
+```
+<v-click>
+
+- Un argument par défaut est créé une seule fois
+```python
+def ajouter_fruit(fruit, panier=[]):    # ❌ Liste partagée entre les appels
+def ajouter_fruit(fruit, panier=None):  # ✅ Puis panier = [] dans la fonction
+```
+</v-click>
+<v-click>
+
+- `*` répète la même référence
+```python
+grille = [[0] * 3] * 3                # ❌ Trois fois la même rangée
+grille = [[0] * 3 for _ in range(3)]  # ✅ Trois rangées distinctes
+```
+</v-click>
+<v-click>
+
+**→ Immutables (int, str, tuple) : sans danger. Mutables (list, dict, set) : attention au partage**
 </v-click>
 
 ---
@@ -353,35 +413,6 @@ import this
 
 ---
 
-# Applications spécialisées
-
-- 🔬 NumPy - Calcul scientifique vectorisé
-```python
-array = np.arange(1_000_000)
-resultat = array * 2  # 10-100x plus rapide que Python pur
-```
-<v-click>
-
-- 🏗️ POO - Surcharge d'opérateurs
-```python
-v3 = v1 + v2  # Naturel grâce à __add__()
-```
-</v-click>
-<v-click>
-
-- 🤖 MicroPython - Python embarqué
-```python
-from machine import Pin
-led = Pin(25, Pin.OUT)
-led.on()
-```
-</v-click>
-<v-click>
-
-**→ Même syntaxe, contextes différents**
-</v-click>
----
-
 # Exercice de refactoring
 
 - Code original (moche mais fonctionnel)
@@ -407,9 +438,11 @@ led.on()
 - ✅ Ce que vous avez appris
 
     1. **Structures** : Choisir la bonne (list, dict, set, tuple)
-    2. **Idiomes** : Comprehensions, EAFP, context managers
-    3. **Outils natifs** : Ne pas réinventer la roue
-    4. **Lisibilité** : Code clair > code court
+    2. **Mesure** : `timeit` avant de choisir
+    3. **Mutabilité** : Se méfier des références partagées
+    4. **Idiomes** : Comprehensions, EAFP, context managers
+    5. **Outils natifs** : Ne pas réinventer la roue
+    6. **Lisibilité** : Code clair > code court
 <v-click>
 
 - 🎯 Prochaines étapes
@@ -421,12 +454,14 @@ led.on()
 </v-click>
 
 ---
+layout: two-cols-header
+---
 
 # 🏆 Défi : Devenez un Pythonista en 10 semaines !
 
-## 🎯 Mission jusqu'au début du semestre 2
+**🎯 Mission jusqu'au début du semestre 2 : 1 exercice Exercism par semaine = 10 exercices au total**
 
-**1 exercice Exercism par semaine = 10 exercices au total**
+::left::
 
 <v-click>
 
@@ -437,15 +472,23 @@ led.on()
 - 🏅 **Progresser visiblement** : suivez votre évolution sur Exercism
 
 </v-click>
+
+::right::
+
 <v-click>
 
 ### ✨ Les règles du jeu
+- ✅ Inscrivez-vous sur Exercism
+- ✅ Résolvez 1 exercice par semaine pendant 10 semaines
 - ✅ Appliquez les idiomes Python appris aujourd'hui
 - ✅ Demandez du feedback aux mentors Exercism
 - ✅ Partagez vos solutions avec vos camarades
 - ✅ Montrez votre progression (badges, profil public)
 
 </v-click>
+
+::bottom::
+
 <v-click>
 
 **🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
@@ -453,6 +496,7 @@ led.on()
 _"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie_
 
 </v-click>
+
 ---
 layout: two-cols-header
 ---

@@ -89,13 +89,10 @@ mypy: ## Vérification de types avec mypy
 	@echo "$(BLUE)Vérification de types des notebooks...$(NC)"
 	nbqa mypy . || true
 
-test: ## Lance les tests unitaires
-	@echo "$(BLUE)Exécution des tests...$(NC)"
-	pytest -v
-
-test-cov: ## Lance les tests avec couverture
-	@echo "$(BLUE)Exécution des tests avec couverture...$(NC)"
-	pytest --cov=. --cov-report=html --cov-report=term
+test: ## Exécute le notebook de bout en bout
+	@echo "$(BLUE)Exécution du notebook...$(NC)"
+	jupyter nbconvert --to notebook --execute --stdout notebook_seance.ipynb > /dev/null
+	@echo "$(GREEN)✓ Le notebook s'exécute sans erreur$(NC)"
 
 check-all: ## Vérifie tout (format + lint)
 	@echo ""
@@ -148,11 +145,9 @@ clean: ## Nettoie les fichiers temporaires
 	@echo "$(BLUE)Nettoyage...$(NC)"
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 	find . -type d -name "*.egg-info" -exec rm -rf {} + 2>/dev/null || true
-	find . -type d -name ".pytest_cache" -exec rm -rf {} + 2>/dev/null || true
 	find . -type d -name ".mypy_cache" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete 2>/dev/null || true
 	find . -type f -name "*.pyo" -delete 2>/dev/null || true
-	rm -rf htmlcov/ .coverage 2>/dev/null || true
 	@echo "$(GREEN)✓ Nettoyage terminé$(NC)"
 
 notebook: ## Lance Jupyter Lab

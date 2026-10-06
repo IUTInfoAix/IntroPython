@@ -21,12 +21,6 @@ pre-commit>=2.20.0     # Git hooks pour vérifications automatiques
 nbqa>=1.7.0            # Permet d'exécuter les outils de qualité sur les notebooks Jupyter
 
 # ============================================================================
-# Tests
-# ============================================================================
-pytest>=7.0.0          # Framework de tests
-pytest-cov>=3.0.0      # Couverture de code
-
-# ============================================================================
 # Utilitaires (optionnel)
 # ============================================================================
 ipdb>=0.13.0           # Débogueur interactif

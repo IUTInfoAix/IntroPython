@@ -34,13 +34,3 @@ max_line_length = off
 # Fichiers de configuration
 [{Makefile,*.mk}]
 indent_style = tab
-
-# Fichiers JavaScript/TypeScript (pour Slidev)
-[*.{js,ts,jsx,tsx,vue}]
-indent_style = space
-indent_size = 2
-
-# Fichiers CSS
-[*.{css,scss,less}]
-indent_style = space
-indent_size = 2

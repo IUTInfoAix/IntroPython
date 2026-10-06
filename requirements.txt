@@ -17,9 +17,3 @@ ipython>=8.0.0
 # voir les mêmes conseils sur le même code.
 ruff==0.16.10          # Formatage, tri des imports et lint (fichiers .py et notebooks)
 pre-commit>=2.20.0     # Git hooks pour vérifications automatiques
-
-# ============================================================================
-# Utilitaires (optionnel)
-# ============================================================================
-ipdb>=0.13.0           # Débogueur interactif
-rich>=12.0.0           # Affichage terminal amélioré

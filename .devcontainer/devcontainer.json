@@ -1,70 +1,16 @@
 {
   "name": "IntroPython",
-  // Image décrite par le Dockerfile voisin (Python épinglé, noyau Jupyter et
-  // ruff déjà installés). Le contexte est la racine du dépôt pour que le
-  // Dockerfile puisse lire requirements.txt.
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
-  "features": {
-    // L'image Python officielle n'a ni utilisateur non-root, ni zsh, ni git :
-    // cette feature les apporte. `upgradePackages` est désactivé : une mise à
-    // jour de tous les paquets Debian à chaque construction allonge l'attente
-    // et rend l'image différente d'un jour à l'autre.
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "installOhMyZsh": true,
-      "upgradePackages": false,
-      "username": "vscode",
-      "uid": "1000",
-      "gid": "1000"
-    },
-    "ghcr.io/devcontainers/features/github-cli:1": {}
-    // Pas de feature Node : elle ne servait qu'à `make slides`, côté enseignant.
-  },
-  // Sans cette ligne, le conteneur tourne en root alors que la feature
-  // common-utils a créé l'utilisateur vscode. L'uid 1000 est celui auquel
-  // Codespaces attribue le dossier de travail.
-  "remoteUser": "vscode",
-  // Aucune commande de cycle de vie (onCreateCommand, updateContentCommand...) :
-  // rien ne s'installe au démarrage, tout est dans l'image.
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "charliermarsh.ruff",
-        // Version figée le 8 octobre 2025. La 2025.9.0, sortie la veille,
-        // exige VS Code 1.105 ou plus : c'est vraisemblablement ce qui bloquait
-        // dans Codespaces. Ne retirer l'épinglage qu'après avoir vérifié la
-        // version courante dans un vrai codespace (voir CONTRIBUTING.md).
-        "ms-toolsai.jupyter@2025.7.0",
-        "editorconfig.editorconfig"
-      ],
-      "settings": {
-        // Seul interpréteur du conteneur : le désigner évite toute question à
-        // l'ouverture du notebook.
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "terminal.integrated.profiles.linux": {
-          "zsh": {
-            "path": "zsh"
-          }
-        },
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        // Formatage par ruff à chaque enregistrement, cellules de notebook
-        // comprises.
-        "editor.formatOnSave": true,
-        "notebook.formatOnSave.enabled": true,
-        "[python]": {
-          "editor.defaultFormatter": "charliermarsh.ruff"
-        },
-        // Indentation automatique de Pylance pendant la frappe.
-        "editor.formatOnType": true,
-        // Pas de correction automatique à l'enregistrement : ruff montre la
-        // tournure à reprendre, à l'étudiant de la réécrire.
-        "ruff.fixAll": false
-      }
-    }
-  }
+  // Configuration DISTRIBUÉE : celle que Codespaces prend par défaut.
+  //
+  // Elle ne construit rien : elle télécharge l'image fabriquée à partir de
+  // source/ et publiée par le dépôt enseignant. Créer un codespace se réduit
+  // à ce téléchargement, identique pour toute la promotion, au lieu d'une
+  // construction par étudiant qui dépend de l'état des miroirs ce jour-là.
+  //
+  // Les extensions VS Code, les réglages et l'utilisateur vscode ne sont pas
+  // répétés ici : ils sont inscrits dans l'image (voir source/devcontainer.json).
+  //
+  // Tag épinglé, jamais `latest` : un tag publié ne change plus de contenu.
+  // Pour en changer, voir « Publier une nouvelle image » dans CONTRIBUTING.md.
+  "image": "ghcr.io/iutinfoaix/intropython-devcontainer:2026.10.1"
 }

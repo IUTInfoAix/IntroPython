@@ -69,7 +69,7 @@ Le notebook contient volontairement du code imparfait. Deux mécanismes le rende
 
 Tel que distribué, le notebook doit passer `make check-all` sans aucune remarque, et `make lint-fix` ne doit rien y modifier. La règle `RUF100` signale tout `# noqa` devenu inutile, par exemple après la modification d'un contre-exemple.
 
-Dans VS Code, les remarques de ruff s'affichent sous le code, dans les cellules. Les corrections automatiques à l'enregistrement sont désactivées (`ruff.fixAll` dans [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json)) : c'est à l'étudiant de réécrire son code.
+Dans VS Code, les remarques de ruff s'affichent sous le code, dans les cellules. Les corrections automatiques à l'enregistrement sont désactivées (`ruff.fixAll` dans [.devcontainer/source/devcontainer.json](.devcontainer/source/devcontainer.json)) : c'est à l'étudiant de réécrire son code.
 
 ## 🔄 Workflow de développement
 
@@ -196,7 +196,7 @@ Configuration : voir [.pre-commit-config.yaml](.pre-commit-config.yaml)
 
 ### VS Code
 
-Si vous utilisez VS Code dans un Codespace ou un dev container, les paramètres sont pré-configurés dans [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json).
+Si vous utilisez VS Code dans un Codespace ou un dev container, les paramètres sont pré-configurés dans [.devcontainer/source/devcontainer.json](.devcontainer/source/devcontainer.json).
 
 Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json)) :
 - Python (Microsoft)

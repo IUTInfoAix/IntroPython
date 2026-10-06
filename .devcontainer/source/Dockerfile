@@ -1,5 +1,6 @@
 # Image du Codespace : tout ce qui s'installe l'est ici, à la construction, et
 # non dans une commande de cycle de vie relancée à chaque création de conteneur.
+# Elle est publiée sur ghcr.io par .github/workflows/devcontainer-publish.yml.
 
 # Image Python officielle, épinglée sur la version exacte de Python et sur la
 # distribution : un tag flottant (`3`, `latest`, `3.15-rc`) change de contenu
@@ -12,6 +13,10 @@
 #   - elle est bien plus légère : pas de compilateurs, dont le notebook n'a
 #     pas besoin (il n'utilise que la bibliothèque standard).
 FROM python:3.15.0rc3-slim-trixie
+
+# Rattache le paquet publié sur ghcr.io au dépôt enseignant.
+LABEL org.opencontainers.image.source="https://github.com/IUTInfoAix/IntroPython" \
+      org.opencontainers.image.description="Environnement du TP IntroPython (BUT Informatique, IUT d'Aix-Marseille)"
 
 # make : absent de l'image slim, nécessaire à `make lint` et `make format`.
 # git, curl et sudo sont apportés par la feature common-utils.

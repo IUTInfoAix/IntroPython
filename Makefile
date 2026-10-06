@@ -1,4 +1,8 @@
-.PHONY: help install format lint test clean check-all notebook slides fix pre-commit-install pre-commit-run format-check check-verbose
+.PHONY: help install install-dev format format-check lint lint-fix test check-all clean notebook slides fix pre-commit-install pre-commit-run
+
+# Commande ruff. Surchargeable pour essayer une autre version sans l'installer :
+#   make lint RUFF="uvx ruff@0.16.10"
+RUFF ?= ruff
 
 # Couleurs pour l'affichage
 BLUE = \033[0;34m
@@ -22,22 +26,16 @@ install-dev: install ## Installe les dépendances + outils de dev
 	pre-commit install
 	@echo "$(GREEN)✓ Environnement de dev configuré$(NC)"
 
-format: ## Formate le code avec black et isort
+format: ## Formate le code et trie les imports avec ruff
 	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
 	@echo "$(BLUE)   Formatage automatique du code$(NC)"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
 	@echo ""
-	@echo "$(YELLOW)→ Formatage Black (fichiers Python)...$(NC)"
-	@black .
+	@echo "$(YELLOW)→ Tri des imports (fichiers Python et notebooks)...$(NC)"
+	@$(RUFF) check --select I --fix .
 	@echo ""
-	@echo "$(YELLOW)→ Tri des imports (fichiers Python)...$(NC)"
-	@isort .
-	@echo ""
-	@echo "$(YELLOW)→ Formatage Black (notebooks Jupyter)...$(NC)"
-	@nbqa black .
-	@echo ""
-	@echo "$(YELLOW)→ Tri des imports (notebooks Jupyter)...$(NC)"
-	@nbqa isort .
+	@echo "$(YELLOW)→ Formatage (fichiers Python et notebooks)...$(NC)"
+	@$(RUFF) format .
 	@echo ""
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
 	@echo "$(GREEN)  ✓ Code formaté avec succès !$(NC)"
@@ -48,46 +46,31 @@ format-check: ## Vérifie le formatage sans modifier
 	@echo "$(BLUE)   Vérification du formatage du code$(NC)"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
 	@echo ""
-	@echo "$(YELLOW)→ Vérification Black (fichiers Python)...$(NC)"
-	@black --check --quiet . && echo "$(GREEN)  ✓ Tous les fichiers Python sont bien formatés$(NC)" || (echo "$(RED)  ✗ Certains fichiers Python nécessitent un formatage$(NC)" && exit 1)
+	@echo "$(YELLOW)→ Vérification du formatage (fichiers Python et notebooks)...$(NC)"
+	@$(RUFF) format --check . && echo "$(GREEN)  ✓ Tout le code est bien formaté$(NC)" || (echo "$(RED)  ✗ Du code nécessite un formatage : make format$(NC)" && exit 1)
 	@echo ""
-	@echo "$(YELLOW)→ Vérification isort (imports Python)...$(NC)"
-	@isort --check-only --quiet . && echo "$(GREEN)  ✓ Tous les imports Python sont bien triés$(NC)" || (echo "$(RED)  ✗ Certains imports Python nécessitent un tri$(NC)" && exit 1)
-	@echo ""
-	@echo "$(YELLOW)→ Vérification Black (notebooks Jupyter)...$(NC)"
-	@black --check --quiet *.ipynb && echo "$(GREEN)  ✓ Tous les notebooks sont bien formatés$(NC)" || (echo "$(RED)  ✗ Certains notebooks nécessitent un formatage$(NC)" && exit 1)
-	@echo ""
-	@echo "$(YELLOW)→ Vérification isort (imports notebooks)...$(NC)"
-	@nbqa isort . --check-only --quiet && echo "$(GREEN)  ✓ Tous les imports des notebooks sont bien triés$(NC)" || (echo "$(RED)  ✗ Certains imports des notebooks nécessitent un tri$(NC)" && exit 1)
+	@echo "$(YELLOW)→ Vérification du tri des imports (fichiers Python et notebooks)...$(NC)"
+	@$(RUFF) check --select I . && echo "$(GREEN)  ✓ Tous les imports sont bien triés$(NC)" || (echo "$(RED)  ✗ Des imports nécessitent un tri : make format$(NC)" && exit 1)
 	@echo ""
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
 	@echo "$(GREEN)  ✓ Toutes les vérifications de formatage sont passées !$(NC)"
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
 
-lint: ## Vérifie le code avec flake8
+lint: ## Vérifie le code avec ruff
 	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
-	@echo "$(BLUE)   Vérification PEP 8$(NC)"
+	@echo "$(BLUE)   Vérification du code (PEP 8 et tournures pythoniques)$(NC)"
 	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
 	@echo ""
-	@echo "$(YELLOW)→ Vérification flake8 (fichiers Python)...$(NC)"
-	@flake8 . && echo "$(GREEN)  ✓ Tous les fichiers Python respectent PEP 8$(NC)" || (echo "$(RED)  ✗ Des violations PEP 8 ont été détectées dans les fichiers Python$(NC)" && exit 1)
-	@echo ""
-	@echo "$(YELLOW)→ Vérification flake8 (notebooks Jupyter)...$(NC)"
-	@nbqa flake8 . --extend-ignore=E402,E501,F401,F541,F841 && echo "$(GREEN)  ✓ Tous les notebooks respectent PEP 8$(NC)" || (echo "$(RED)  ✗ Des violations PEP 8 ont été détectées dans les notebooks$(NC)" && exit 1)
+	@echo "$(YELLOW)→ Vérification ruff (fichiers Python et notebooks)...$(NC)"
+	@$(RUFF) check . && echo "$(GREEN)  ✓ Ruff n'a aucune remarque$(NC)" || (echo "$(RED)  ✗ Ruff a des remarques : lisez-les ci-dessus et reprenez votre code$(NC)" && exit 1)
 	@echo ""
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
-	@echo "$(GREEN)  ✓ Toutes les vérifications PEP 8 sont passées !$(NC)"
+	@echo "$(GREEN)  ✓ Toutes les vérifications ruff sont passées !$(NC)"
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
 
-pylint: ## Analyse statique avec pylint
-	@echo "$(BLUE)Analyse statique avec pylint...$(NC)"
-	pylint **/*.py || true
-
-mypy: ## Vérification de types avec mypy
-	@echo "$(BLUE)Vérification de types des fichiers Python...$(NC)"
-	mypy . || true
-	@echo "$(BLUE)Vérification de types des notebooks...$(NC)"
-	nbqa mypy . || true
+lint-fix: ## Applique les corrections sûres de ruff
+	@echo "$(BLUE)Corrections automatiques de ruff...$(NC)"
+	@$(RUFF) check --fix .
 
 test: ## Exécute le notebook de bout en bout
 	@echo "$(BLUE)Exécution du notebook...$(NC)"
@@ -113,39 +96,11 @@ check-all: ## Vérifie tout (format + lint)
 	@echo "$(GREEN)╚═══════════════════════════════════════════════════════╝$(NC)"
 	@echo ""
 
-check-verbose: ## Vérifie tout avec détails sur les erreurs
-	@echo ""
-	@echo "$(BLUE)╔═══════════════════════════════════════════════════════╗$(NC)"
-	@echo "$(BLUE)║                                                       ║$(NC)"
-	@echo "$(BLUE)║      VÉRIFICATION DÉTAILLÉE DE LA QUALITÉ             ║$(NC)"
-	@echo "$(BLUE)║                                                       ║$(NC)"
-	@echo "$(BLUE)╚═══════════════════════════════════════════════════════╝$(NC)"
-	@echo ""
-	@echo "$(YELLOW)→ Détails des fichiers non formatés (Black)...$(NC)"
-	@black --check --diff . || true
-	@echo ""
-	@echo "$(YELLOW)→ Détails des imports mal triés (isort)...$(NC)"
-	@isort --check-only --diff . || true
-	@echo ""
-	@echo "$(YELLOW)→ Détails des notebooks non formatés (Black)...$(NC)"
-	@black --check --diff *.ipynb || true
-	@echo ""
-	@echo "$(YELLOW)→ Détails des imports mal triés dans notebooks...$(NC)"
-	@nbqa isort . --check-only --diff || true
-	@echo ""
-	@echo "$(YELLOW)→ Violations PEP 8 détaillées (flake8)...$(NC)"
-	@flake8 . || true
-	@nbqa flake8 . --extend-ignore=E402,E501,F401,F541,F841 || true
-	@echo ""
-	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
-	@echo "$(BLUE)  Pour corriger automatiquement : make format$(NC)"
-	@echo "$(BLUE)═══════════════════════════════════════════════════════$(NC)"
-
 clean: ## Nettoie les fichiers temporaires
 	@echo "$(BLUE)Nettoyage...$(NC)"
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 	find . -type d -name "*.egg-info" -exec rm -rf {} + 2>/dev/null || true
-	find . -type d -name ".mypy_cache" -exec rm -rf {} + 2>/dev/null || true
+	find . -type d -name ".ruff_cache" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete 2>/dev/null || true
 	find . -type f -name "*.pyo" -delete 2>/dev/null || true
 	@echo "$(GREEN)✓ Nettoyage terminé$(NC)"

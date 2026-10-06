@@ -26,58 +26,21 @@ repos:
         name: Vérifie les fins de ligne
         args: ['--fix=lf']
 
-  # Black - Formatage du code
-  - repo: https://github.com/psf/black
-    rev: 26.10.0
+  # Ruff - Formatage, tri des imports et lint (fichiers .py et notebooks)
+  # rev : même version que ruff dans requirements.txt
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.10
     hooks:
-      - id: black
-        name: Formate le code avec Black
-        language_version: python3
-        exclude: ^(slides/|ressources/)
-
-  # isort - Tri des imports
-  - repo: https://github.com/PyCQA/isort
-    rev: 6.1.0
-    hooks:
-      - id: isort
-        name: Trie les imports avec isort
-        args: ["--profile", "black"]
-        exclude: ^(slides/|ressources/)
-
-  # Flake8 - Vérification PEP 8
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.3.0
-    hooks:
-      - id: flake8
-        name: Vérifie PEP 8 avec Flake8
-        args: ['--max-line-length=88', '--extend-ignore=E203,E501,W503']
-        exclude: ^(slides/|ressources/)
-
-  # mypy - Type checking (optionnel - peut être commenté)
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.2
-    hooks:
-      - id: mypy
-        name: Vérifie les types avec mypy
-        additional_dependencies: []
-        exclude: ^(slides/|ressources/)
-        args: [--ignore-missing-imports, --no-strict-optional]
-
-  # nbqa - Outils de qualité pour les notebooks Jupyter
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.9.1
-    hooks:
-      - id: nbqa-black
-        name: Formate les notebooks avec Black
-        additional_dependencies: [black]
-      - id: nbqa-isort
-        name: Trie les imports dans les notebooks
-        args: [--profile=black]
-        additional_dependencies: [isort]
-      - id: nbqa-flake8
-        name: Vérifie PEP 8 dans les notebooks
-        args: ["--extend-ignore=E203,E402,E501,W503,F401,F541,F841"]
-        additional_dependencies: [flake8]
+      # Seule correction automatique : le tri des imports, comme `make format`.
+      # Les autres règles sont signalées sans --fix, à l'étudiant de corriger.
+      - id: ruff-check
+        alias: ruff-imports
+        name: Trie les imports avec ruff
+        args: [--select, I, --fix]
+      - id: ruff-format
+        name: Formate le code avec ruff
+      - id: ruff-check
+        name: Vérifie le code avec ruff
 
 # Configuration globale
 default_language_version:
@@ -93,7 +56,7 @@ exclude: |
       \.venv/|
       venv/|
       __pycache__/|
-      \.mypy_cache/|
+      \.ruff_cache/|
       \.pytest_cache/|
       \.tox/|
       build/|

@@ -15,9 +15,6 @@
     },
     "ghcr.io/devcontainers/features/node:1": {}
   },
-  "hostRequirements": {
-    "cpus": 4
-  },
   "waitFor": "onCreateCommand",
   "onCreateCommand": "python3 -m pip install --upgrade pip",
   "updateContentCommand": "python3 -m pip install -r requirements.txt",

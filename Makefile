@@ -55,7 +55,7 @@ format-check: ## Vérifie le formatage sans modifier
 	@isort --check-only --quiet . && echo "$(GREEN)  ✓ Tous les imports Python sont bien triés$(NC)" || (echo "$(RED)  ✗ Certains imports Python nécessitent un tri$(NC)" && exit 1)
 	@echo ""
 	@echo "$(YELLOW)→ Vérification Black (notebooks Jupyter)...$(NC)"
-	@nbqa black . --check --quiet && echo "$(GREEN)  ✓ Tous les notebooks sont bien formatés$(NC)" || (echo "$(RED)  ✗ Certains notebooks nécessitent un formatage$(NC)" && exit 1)
+	@black --check --quiet *.ipynb && echo "$(GREEN)  ✓ Tous les notebooks sont bien formatés$(NC)" || (echo "$(RED)  ✗ Certains notebooks nécessitent un formatage$(NC)" && exit 1)
 	@echo ""
 	@echo "$(YELLOW)→ Vérification isort (imports notebooks)...$(NC)"
 	@nbqa isort . --check-only --quiet && echo "$(GREEN)  ✓ Tous les imports des notebooks sont bien triés$(NC)" || (echo "$(RED)  ✗ Certains imports des notebooks nécessitent un tri$(NC)" && exit 1)
@@ -131,7 +131,7 @@ check-verbose: ## Vérifie tout avec détails sur les erreurs
 	@isort --check-only --diff . || true
 	@echo ""
 	@echo "$(YELLOW)→ Détails des notebooks non formatés (Black)...$(NC)"
-	@nbqa black . --check --diff || true
+	@black --check --diff *.ipynb || true
 	@echo ""
 	@echo "$(YELLOW)→ Détails des imports mal triés dans notebooks...$(NC)"
 	@nbqa isort . --check-only --diff || true

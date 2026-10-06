@@ -20,6 +20,8 @@ Cette séance vise à faire découvrir **la façon Python** de programmer aux é
 À l'issue de cette séance, les étudiants doivent être capables de :
 
 - ✅ Choisir la structure de données appropriée (list, dict, set, tuple)
+- ✅ Mesurer les performances d'un code avec `timeit`
+- ✅ Expliquer les références et la mutabilité, et éviter leurs pièges
 - ✅ Utiliser les idiomes Python (comprehensions, EAFP, context managers)
 - ✅ Transformer du code "traduit de C++ ou Java" en code pythonique
 - ✅ Exploiter les outils natifs de Python plutôt que réinventer la roue
@@ -88,7 +90,7 @@ jupyter>=1.0.0
 jupyterlab>=3.0.0
 notebook>=6.4.0
 ipython>=8.0.0
-black[jupyter]>=22.0.0
+black[jupyter]>=26.5.0
 flake8>=4.0.0
 ...
 ```
@@ -440,14 +442,14 @@ flake8 mon_fichier.py
 
 ## 📝 Contribution et feedback
 
-### Pour les enseignants
+### Vous enseignez avec ce matériel ?
 
 Si vous utilisez ce matériel et avez des suggestions d'amélioration :
 - Ouvrez une issue sur GitHub
 - Proposez une pull request
 - Contactez sebastien.nedjar@univ-amu.fr
 
-### Pour les étudiants
+### Vous êtes étudiant ?
 
 Questions, bugs, suggestions ? N'hésitez pas à :
 - Poser des questions en cours

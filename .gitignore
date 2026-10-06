@@ -210,7 +210,7 @@ $RECYCLE.BIN/
 *.bak
 *.backup
 
-# Données de test personnelles (garder resultats.csv pour l'exercice)
+# Données de test personnelles
 data/test_*.csv
 data/temp_*.csv
 

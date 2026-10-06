@@ -28,7 +28,7 @@ repos:
 
   # Black - Formatage du code
   - repo: https://github.com/psf/black
-    rev: 25.9.0
+    rev: 26.10.0
     hooks:
       - id: black
         name: Formate le code avec Black

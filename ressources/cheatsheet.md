@@ -1,6 +1,6 @@
 ---
 title: "Python Cheat Sheet - BUT Informatique"
-geometry: margin=0.65cm
+geometry: margin=0.55cm
 fontsize: 8pt
 documentclass: extarticle
 classoption: [landscape, twocolumn]
@@ -43,7 +43,7 @@ a,b,c = [1,2,3]
 premier,*milieu,dernier = [1,2,3,4]
 a,b = b,a
 
-for i,val in enumerate(liste):
+for i,val in enumerate(liste, start=1):
     print(f"{i}: {val}")
 
 for nom,age in zip(noms,ages):
@@ -112,10 +112,8 @@ with open('f.txt') as f:
     contenu = f.read()
 
 # Multiple
-with (
-    open('in.txt') as fi,
-    open('out.txt','w') as fo,
-):
+with (open('in.txt') as fi,
+      open('out.txt','w') as fo):
     fo.write(fi.read())
 ```
 
@@ -164,8 +162,7 @@ if not liste:       # OK
 if len(liste)==0:   # NON
 
 x = valeur or default
-# Piège : 0, "" et [] comptent
-# comme faux et sont remplacés
+# Piège : 0, "" et [] sont remplacés
 
 for k,v in dico.items():  # OK
 
@@ -202,16 +199,13 @@ def saluer(nom: str, age: int) -> str:
 
 def trouve(id: int) -> str | None:
     return res.get(id)
-
-def trier(noms: list[str]) -> list[str]:
-    return sorted(noms)
+noms: list[str] = ["Ana", "Bob"]
 ```
 
 ## Astuces pratiques
 
 ```python
 print(f"{variable=}")  # Debug
-a, b = b, a  # Swap
 "ha"*3; [0]*5  # Répéter
 
 # Ternaire
@@ -228,31 +222,16 @@ if (n := len(liste)) > 10:
 from collections import defaultdict
 d = defaultdict(list)
 d['key'].append(1)  # Pas de KeyError
-
-# enumerate avec start
-for i, val in enumerate(liste, start=1):
-    print(f"Item {i}: {val}")
 ```
 
 ## Nouveautés Python 3.15
 
 ```python
-# Import paresseux : chargé au 1er usage
-lazy import json
-lazy from pathlib import Path
-
-# Unpacking dans les comprehensions
-listes = [[1, 2], [3]]
-[*l for l in listes]  # [1, 2, 3]
+lazy import json  # Chargé au 1er usage
+[*l for l in listes]  # Aplatir
 {**d for d in dicos}  # Fusionner
-
-# frozendict : dict immuable, hachable
-fd = frozendict(a=1, b=2)
-
-# sentinel : distinguer "absent" de None
-ABSENT = sentinel("ABSENT")
-def lire(cle, defaut=ABSENT):
-    if defaut is ABSENT: ...
+fd = frozendict(a=1)  # Dict immutable
+ABSENT = sentinel("ABSENT")  # Pas None
 ```
 
 ## Bibliothèques courantes

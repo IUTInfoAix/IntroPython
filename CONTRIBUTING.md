@@ -233,7 +233,7 @@ Configuration : voir [.pre-commit-config.yaml](.pre-commit-config.yaml)
 
 ### VS Code
 
-Si vous utilisez VS Code, les paramètres sont pré-configurés dans [.vscode/settings.json](.vscode/settings.json).
+Si vous utilisez VS Code dans un Codespace ou un dev container, les paramètres sont pré-configurés dans [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json).
 
 Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json)) :
 - Python (Microsoft)
@@ -247,14 +247,15 @@ Extensions recommandées (voir [.vscode/extensions.json](.vscode/extensions.json
 
 ```
 IntroPython/
-├── notebook_seance.ipynb      # Notebook principal
+├── notebook_seance.ipynb      # Notebook principal (exercices et tests unitaires)
+├── README.md                   # Présentation de la séance
 ├── slides/                     # Présentation Slidev
 │   └── slides.md
 ├── ressources/                 # Ressources pédagogiques
-│   └── cheatsheet.md
-├── data/                       # Données pour les exercices
-├── tests/                      # Tests unitaires
-├── .vscode/                    # Configuration VS Code
+│   ├── cheatsheet.md
+│   └── cheatsheet.pdf          # Généré avec pandoc depuis cheatsheet.md
+├── .devcontainer/              # Configuration du Codespace
+├── .vscode/                    # Extensions VS Code recommandées
 ├── pyproject.toml             # Configuration Python
 ├── .flake8                    # Configuration flake8
 ├── .pylintrc                  # Configuration pylint

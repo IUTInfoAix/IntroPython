@@ -25,19 +25,22 @@ Cette séance vise à faire découvrir **la façon Python** de programmer aux é
 - ✅ Exploiter les outils natifs de Python plutôt que réinventer la roue
 - ✅ Lire et comprendre du code Python professionnel
 
-## Création de votre fork du TP
+## Création de votre dépôt de TP
 
-La première chose que vous allez faire est de créer un fork d'un dépôt. Pour ce faire, rendez-vous sur le lien suivant :
+La première chose que vous allez faire est de créer votre propre copie du dépôt du TP, dans votre compte GitHub personnel :
 
-<https://classroom.github.com/a/Ai4FFYXy>
+1. Rendez-vous sur le dépôt <https://github.com/IUTInfoAix/IntroPython>
+2. Cliquez sur le bouton vert **Use this template**, puis sur **Create a new repository**
+3. Dans **Owner**, choisissez votre compte personnel et gardez `IntroPython` comme nom de dépôt
+4. Cliquez sur **Create repository**
 
-GitHub va vous créer un dépôt contenant un fork du dépôt 'IUTInfoAix/IntroPython' et s'appelant 'IUTInfoAix/IntroPython-votreUsername'. Vous apparaîtrez automatiquement comme contributeur de ce projet pour y pousser votre travail.
+GitHub va vous créer un dépôt `votreUsername/IntroPython` contenant une copie du TP. Ce dépôt vous appartient : vous pouvez y pousser votre travail librement.
 
 ## Ouverture de GitHub Codespace
 
-Une fois votre fork créé, vous pouvez ouvrir le projet directement dans GitHub Codespace :
+Une fois votre dépôt créé, vous pouvez ouvrir le projet directement dans GitHub Codespace :
 
-1. Rendez-vous sur votre dépôt GitHub (`IUTInfoAix/IntroPython-votreUsername`)
+1. Rendez-vous sur votre dépôt GitHub (`votreUsername/IntroPython`)
 2. Cliquez sur le bouton vert **Code**
 3. Sélectionnez l'onglet **Codespaces**
 4. Cliquez sur **Create codespace on main**

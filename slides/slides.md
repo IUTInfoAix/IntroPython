@@ -412,34 +412,42 @@ if condition:
 </v-click>
 
 ---
+layout: two-cols-header
+---
 
-# Exercice de refactoring
+# Refactoring : un code moche mais fonctionnel
 
-- Code original (moche mais fonctionnel)
-    - ❌ Pas de `with` pour les fichiers
-    - ❌ Boucle `while` avec compteur
-    - ❌ Boucle manuelle pour sommer
-    - ❌ Découpage du CSV à la main (`split(',')`)
-    - ❌ `except:` sans préciser l'erreur
-    - ❌ Rien de prévu si le fichier n'existe pas
-    - ❌ Indexation au lieu de méthodes
+::left::
+
+### Code original
+
+- ❌ Pas de `with` pour les fichiers
+- ❌ Boucle `while` avec compteur
+- ❌ Boucle manuelle pour sommer
+- ❌ Découpage du CSV à la main (`split(',')`)
+- ❌ `except:` sans préciser l'erreur
+- ❌ Rien de prévu si le fichier n'existe pas
+- ❌ Indexation au lieu de méthodes
+
+::right::
+
 <v-click>
 
-- À améliorer
-    1. Context managers
-    2. Boucles `for` idiomatiques
-    3. Fonctions built-in (`sum()`)
-    4. Module `csv` (`csv.reader()`)
-    5. Gestion d'erreurs spécifiques (`ValueError`, `IndexError`)
-    6. Fichier absent (`FileNotFoundError`)
-    7. Méthodes de string (`startswith()`)
+### À améliorer
+
+1. Context managers
+2. Boucles `for` idiomatiques
+3. Fonctions built-in (`sum()`)
+4. Module `csv` (`csv.reader()`)
+5. Erreurs précises (`ValueError`, `IndexError`)
+6. Fichier absent (`FileNotFoundError`)
+7. Méthodes de string (`startswith()`)
+
 </v-click>
 
 ---
 
 # Coder à partir des tests
-
-## TDD : Test-Driven Development
 
 - Les tests sont livrés désactivés
 

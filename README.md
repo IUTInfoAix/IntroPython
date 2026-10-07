@@ -72,7 +72,7 @@ Toute la séance se fait dans **GitHub Codespaces** : vous n'avez rien à instal
 - Les [slides](slides/slides.md) de la séance
 - [Le tutoriel Python](https://docs.python.org/3/tutorial/)
 - [La bibliothèque standard](https://docs.python.org/3/library/)
-- [PEP 8, le guide de style](https://pep8.org/)
+- [PEP 8, le guide de style](https://peps.python.org/pep-0008/)
 
 ---
 
@@ -344,7 +344,7 @@ _"The only way to learn a new programming language is by writing programs in it.
 
 ### Documentation officielle
 - [Python.org - Tutorial](https://docs.python.org/3/tutorial/)
-- [PEP 8 - Style Guide](https://pep8.org/)
+- [PEP 8 - Style Guide for Python Code](https://peps.python.org/pep-0008/)
 - [Python Standard Library](https://docs.python.org/3/library/)
 
 ### Tutoriels et cours

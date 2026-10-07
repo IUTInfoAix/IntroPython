@@ -86,6 +86,28 @@ layout: two-cols-header
 
 ---
 
+# Le Zen de Python
+
+```python
+import this
+```
+<v-click>
+
+### Les principes fondamentaux
+
+- **Beautiful is better than ugly**
+- **Explicit is better than implicit**
+- **Simple is better than complex**
+- **Readability counts**
+- **There should be one obvious way to do it**
+</v-click>
+<v-click>
+
+**→ Python privilégie la clarté sur la concision à tout prix**
+</v-click>
+
+---
+
 # Les 4 structures natives essentielles
 
 
@@ -354,7 +376,7 @@ premier, *milieu, dernier = [1, 2, 3, 4, 5]
 - Parcourir dict
 
 ```python
-for key, value in dict.items():  # ✅
+for key, value in dico.items():  # ✅
 ```
 </v-click>
 
@@ -391,35 +413,15 @@ if condition:
 
 ---
 
-# Le Zen de Python
-
-```python
-import this
-```
-<v-click>
-
-### Les principes fondamentaux
-
-- **Beautiful is better than ugly**
-- **Explicit is better than implicit**
-- **Simple is better than complex**
-- **Readability counts**
-- **There should be one obvious way to do it**
-</v-click>
-<v-click>
-
-**→ Python privilégie la clarté sur la concision à tout prix**
-</v-click>
-
----
-
 # Exercice de refactoring
 
 - Code original (moche mais fonctionnel)
     - ❌ Pas de `with` pour les fichiers
     - ❌ Boucle `while` avec compteur
     - ❌ Boucle manuelle pour sommer
+    - ❌ Découpage du CSV à la main (`split(',')`)
     - ❌ `except:` sans préciser l'erreur
+    - ❌ Rien de prévu si le fichier n'existe pas
     - ❌ Indexation au lieu de méthodes
 <v-click>
 
@@ -427,8 +429,43 @@ import this
     1. Context managers
     2. Boucles `for` idiomatiques
     3. Fonctions built-in (`sum()`)
-    4. Gestion d'erreurs spécifiques
-    5. Méthodes de string (`startswith()`)
+    4. Module `csv` (`csv.reader()`)
+    5. Gestion d'erreurs spécifiques (`ValueError`, `IndexError`)
+    6. Fichier absent (`FileNotFoundError`)
+    7. Méthodes de string (`startswith()`)
+</v-click>
+
+---
+
+# Coder à partir des tests
+
+## TDD : Test-Driven Development
+
+- Les tests sont livrés désactivés
+
+```python
+class TestPalindrome(unittest.TestCase):
+    @unittest.skip
+    def test_1_palindrome_simple(self):
+        self.assertTrue(est_palindrome("kayak"))
+```
+<v-click>
+
+- La boucle de travail
+    1. Lire le test pour comprendre ce que la fonction doit faire
+    2. Retirer son `@unittest.skip`
+    3. Écrire le code qui le fait passer
+    4. Passer au test suivant, puis refactorer quand tout est vert
+</v-click>
+<v-click>
+
+- Trois exercices
+    - Détecteur de palindromes : pour tout le monde
+    - Compresseur RLE, validateur de mots de passe : bonus, à finir chez vous
+</v-click>
+<v-click>
+
+**→ Les tests tiennent lieu d'énoncé**
 </v-click>
 
 ---
@@ -441,8 +478,8 @@ import this
     2. **Mesure** : `timeit` avant de choisir
     3. **Mutabilité** : Se méfier des références partagées
     4. **Idiomes** : Comprehensions, EAFP, context managers
-    5. **Outils natifs** : Ne pas réinventer la roue
-    6. **Lisibilité** : Code clair > code court
+    5. **Code pythonique** : Lisible, avec les outils natifs plutôt que la roue réinventée
+    6. **TDD** : Coder à partir des tests
 <v-click>
 
 - 🎯 Prochaines étapes

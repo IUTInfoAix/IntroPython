@@ -314,7 +314,7 @@ mypy fichier.py
 **Documentation officielle**
 
 - docs.python.org/3/
-- pep8.org/
+- peps.python.org/pep-0008/
 
 **Pratique et exercices**
 

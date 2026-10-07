@@ -55,7 +55,7 @@ Quatre heures ne suffisent pas à prendre des habitudes. La séance se prolonge 
 #### Connaissances attendues
 
 - **La syntaxe de base de Python**, supposée connue.
-- **Un compte GitHub personnel** : vous y créerez votre copie du dépôt.
+- **Un compte GitHub personnel** : vous y créerez votre copie du dépôt. Si vous n'en avez pas encore, la première étape de la mise en place vous guide.
 
 Le notebook compare souvent Python à C++ et à Java. Ces comparaisons sont des points de repère : appuyez-vous sur le langage que vous connaissez.
 
@@ -78,9 +78,24 @@ Toute la séance se fait dans **GitHub Codespaces** : vous n'avez rien à instal
 
 ## Mise en place
 
-La mise en place se fait en trois étapes : créer votre copie du dépôt, l'ouvrir dans un Codespace (votre environnement de développement dans le navigateur), puis ouvrir le notebook.
+La mise en place se fait en quatre étapes : créer votre compte GitHub si vous n'en avez pas, créer votre copie du dépôt, l'ouvrir dans un Codespace (votre environnement de développement dans le navigateur), puis ouvrir le notebook.
 
-### Étape 1 - Créer votre dépôt de TP
+### Étape 1 - Créer votre compte GitHub
+
+Si vous avez déjà un compte GitHub, passez à l'étape 2. Sinon :
+
+1. Rendez-vous sur <https://github.com/signup>
+2. Saisissez votre adresse e-mail, un mot de passe et un nom d'utilisateur
+3. Validez votre adresse avec le code que GitHub vous envoie par e-mail
+
+Ce compte vous suivra pendant tout le BUT, et sans doute après. Deux conseils au moment de le créer :
+
+- **Utilisez votre adresse e-mail universitaire** (en `@etu.univ-amu.fr` pour les étudiants d'AMU). GitHub s'en sert pour reconnaître votre statut étudiant : elle vous servira pour obtenir le [Student Developer Pack](#augmenter-ce-quota-avec-le-student-developer-pack).
+- **Choisissez un nom d'utilisateur qui vous identifie**, de la forme `PrenomNom`, sans accent ni espace. Dans la suite du BUT, vos enseignants retrouveront ainsi plus facilement vos dépôts et pourront vous attribuer vos devoirs.
+
+Si vous avez déjà un compte créé avec une adresse personnelle, inutile d'en ouvrir un second : ajoutez-y votre adresse universitaire ([marche à suivre](https://docs.github.com/fr/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account)).
+
+### Étape 2 - Créer votre dépôt de TP
 
 1. Rendez-vous sur le dépôt <https://github.com/IUTInfoAix/IntroPython>
 2. Cliquez sur le bouton vert **Use this template**, puis sur **Create a new repository**
@@ -89,7 +104,7 @@ La mise en place se fait en trois étapes : créer votre copie du dépôt, l'ouv
 
 GitHub crée un dépôt `votreUsername/IntroPython` qui contient une copie du TP. Ce dépôt vous appartient : vous pouvez y pousser votre travail librement.
 
-### Étape 2 - Ouvrir le projet dans GitHub Codespaces
+### Étape 3 - Ouvrir le projet dans GitHub Codespaces
 
 Une fois sur la page de votre dépôt (`votreUsername/IntroPython`) :
 
@@ -99,7 +114,7 @@ Une fois sur la page de votre dépôt (`votreUsername/IntroPython`) :
 
 GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code. VS Code s'ouvre ensuite dans votre navigateur, avec un terminal et les extensions Python, Jupyter et Ruff déjà configurées.
 
-### Étape 3 - Ouvrir le notebook
+### Étape 4 - Ouvrir le notebook
 
 Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`.
 

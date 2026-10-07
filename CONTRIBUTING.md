@@ -120,7 +120,7 @@ Puis créer une Pull Request sur GitHub.
 
 ### Écrire des tests
 
-Les tests vivent dans le notebook, avec `unittest`. Un exercice suit toujours le même ordre de cellules : énoncé, code à compléter, tests, solution dans un `<details>`. Les questions les plus courtes (les deux premières sur les inscriptions, le filtre sur les notes) n'ont pas de tests.
+Les tests vivent dans le notebook, avec `unittest`. Un exercice suit toujours le même ordre de cellules : énoncé, code à compléter, tests, solution dans un `<details>`. Les questions les plus courtes (celles sur les inscriptions, le filtre sur les notes) n'ont pas de tests.
 
 ```python
 class TestMaFonction(unittest.TestCase):

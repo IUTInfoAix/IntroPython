@@ -301,7 +301,7 @@ L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur
 
 ### Mesures
 
-Dans un vrai codespace, créé depuis une copie du template dans un compte personnel, la création prend moins d'une minute et le notebook est utilisable aussitôt (essai d'octobre 2026, avec l'image `2026.10.2`).
+Dans un vrai codespace, créé depuis une copie du template dans un compte personnel, la création prend moins d'une minute et le notebook est utilisable aussitôt : le noyau Python 3.15 est présélectionné, et Copilot ne propose aucune complétion pendant la frappe (essai d'octobre 2026, avec l'image `2026.10.2`).
 
 Le tableau ci-dessous compare les configurations entre elles. Il mesure la création à froid d'un conteneur avec la CLI `devcontainer`, sur un poste de 16 cœurs, dans un démon Docker vide (octobre 2026). L'installation des extensions VS Code n'y est pas comptée, et ces durées ne sont pas celles d'un codespace.
 

@@ -118,7 +118,7 @@ GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis install
 
 Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`.
 
-Le noyau Python 3.15 est normalement déjà sélectionné : son nom s'affiche en haut à droite du notebook, et vous pouvez exécuter les cellules tout de suite. Si VS Code affiche **Sélectionner un noyau** à la place, cliquez dessus, choisissez **Environnements Python**, puis Python 3.15.
+Le noyau Python 3.15 est déjà sélectionné : son nom s'affiche en haut à droite du notebook, et vous pouvez exécuter les cellules tout de suite.
 
 ### Vérification rapide
 
@@ -622,6 +622,10 @@ jupyter notebook
 pip install jupyterlab
 jupyter lab
 ```
+
+### VS Code demande de sélectionner un noyau
+
+Dans le Codespace, le noyau Python 3.15 est sélectionné d'office. Si le notebook affiche **Sélectionner un noyau** en haut à droite, cliquez dessus, choisissez **Environnements Python**, puis Python 3.15.
 
 ### ModuleNotFoundError: No module named '...'
 

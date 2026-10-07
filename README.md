@@ -98,7 +98,7 @@ Si vous avez déjà un compte créé avec une adresse personnelle, inutile d'en 
 ### Étape 2 - Créer votre dépôt de TP
 
 1. Rendez-vous sur le dépôt <https://github.com/IUTInfoAix/IntroPython>
-2. Cliquez sur le bouton vert **Use this template**, puis sur **Create a new repository**
+2. Cliquez sur le bouton **Use this template**, en haut à droite, juste au-dessus de la liste des fichiers, puis sur **Create a new repository**
 3. Dans **Owner**, choisissez votre compte personnel et gardez `IntroPython` comme nom de dépôt
 4. Cliquez sur **Create repository**
 
@@ -108,7 +108,7 @@ GitHub crée un dépôt `votreUsername/IntroPython` qui contient une copie du TP
 
 Une fois sur la page de votre dépôt (`votreUsername/IntroPython`) :
 
-1. Cliquez sur le bouton vert **Code**
+1. Cliquez sur le bouton **Code**, en haut à droite, juste au-dessus de la liste des fichiers
 2. Sélectionnez l'onglet **Codespaces**
 3. Cliquez sur **Create codespace on main**
 

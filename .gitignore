@@ -105,3 +105,10 @@ $RECYCLE.BIN/
 *.tmp
 *.bak
 *.backup
+
+# Présentation Slidev (`make slides`)
+# Dépendances et cache installés par npx à côté des slides
+node_modules/
+# Sorties de `slidev build` et de `slidev export`
+slides/dist/
+slides/*-export.pdf

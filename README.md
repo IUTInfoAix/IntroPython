@@ -112,7 +112,7 @@ Une fois sur la page de votre dépôt (`votreUsername/IntroPython`) :
 2. Sélectionnez l'onglet **Codespaces**
 3. Cliquez sur **Create codespace on main**
 
-GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code. VS Code s'ouvre ensuite dans votre navigateur, avec un terminal et les extensions Python, Jupyter et Ruff déjà configurées.
+GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code : comptez moins d'une minute. VS Code s'ouvre ensuite dans votre navigateur, avec un terminal et les extensions Python, Jupyter et Ruff déjà configurées.
 
 ### Étape 4 - Ouvrir le notebook
 

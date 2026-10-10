@@ -740,10 +740,6 @@ make format
 make lint
 ```
 
-### Ruff affiche « Support for Python 3.15 is under development »
-
-C'est un simple avertissement, pas une erreur : la prise en charge de Python 3.15 par ruff n'est pas encore déclarée stable. Vos résultats sont valables, vous pouvez l'ignorer.
-
 ### Ruff signale « Unused `noqa` directive » (RUF100)
 
 Vous avez corrigé un contre-exemple du notebook : le commentaire `# noqa` qui demandait à ruff de se taire sur cette ligne ne sert plus. Supprimez-le, ou lancez `make lint-fix`.

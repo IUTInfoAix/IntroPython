@@ -1,7 +1,7 @@
 .PHONY: help install install-dev format format-check lint lint-fix test check-all clean notebook slides fix pre-commit-install pre-commit-run
 
 # Commande ruff. Surchargeable pour essayer une autre version sans l'installer :
-#   make lint RUFF="uvx ruff@0.16.10"
+#   make lint RUFF="uvx ruff@0.17.0"
 RUFF ?= ruff
 
 # Couleurs pour l'affichage

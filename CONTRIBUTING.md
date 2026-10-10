@@ -34,7 +34,7 @@ Un seul outil : **[ruff](https://docs.astral.sh/ruff/)**. Il formate le code, tr
 
 Sa configuration se trouve dans les sections `[tool.ruff]` de [pyproject.toml](pyproject.toml). Chaque famille de règles et chaque exception y est justifiée par un commentaire : faites de même si vous en ajoutez.
 
-Sa version est épinglée (`ruff==0.16.10`) dans [requirements.txt](requirements.txt) et dans [.pre-commit-config.yaml](.pre-commit-config.yaml). D'une version à l'autre, ruff ajoute des règles et retouche son formatage : changez la version aux deux endroits en même temps, puis relancez `make check-all`.
+Sa version est épinglée (`ruff==0.17.0`) dans [requirements.txt](requirements.txt) et dans [.pre-commit-config.yaml](.pre-commit-config.yaml). D'une version à l'autre, ruff ajoute des règles et retouche son formatage : changez la version aux deux endroits en même temps, puis relancez `make check-all`.
 
 ### Formatage
 

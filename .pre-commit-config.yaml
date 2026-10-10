@@ -32,7 +32,7 @@ repos:
   # Ruff - Formatage, tri des imports et lint (fichiers .py et notebooks)
   # rev : même version que ruff dans requirements.txt
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.16.10
+    rev: v0.17.0
     hooks:
       # Seule correction automatique : le tri des imports, comme `make format`.
       # Les autres règles sont signalées sans --fix, à l'étudiant de corriger.

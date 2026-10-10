@@ -18,4 +18,4 @@ ipykernel>=7.4,<8
 # Version exacte, la même que dans .pre-commit-config.yaml : d'une version à
 # l'autre, ruff ajoute des règles et retouche son formatage. Tout le monde doit
 # voir les mêmes conseils sur le même code.
-ruff==0.16.10          # Formatage, tri des imports et lint (fichiers .py et notebooks)
+ruff==0.17.0           # Formatage, tri des imports et lint (fichiers .py et notebooks)

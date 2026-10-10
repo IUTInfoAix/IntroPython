@@ -189,7 +189,7 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 | 02:20 | Pause | 15 min | |
 | 02:35 | **Partie 3** | 20 min | Coder à partir des tests |
 | 02:55 | **Partie 4** | 45 min | Refactoring de l'analyseur CSV |
-| 03:40 | Pour aller plus loin | 10 min | Marge : deux exercices bonus pilotés par les tests |
+| 03:40 | Pour aller plus loin | 10 min | Marge : trois exercices bonus pilotés par les tests |
 | 03:50 | Conclusion | 10 min | Bilan et défi Exercism |
 
 ### Mise en route (20 min)
@@ -226,7 +226,7 @@ Vous partez d'un programme écrit par un débutant, qui analyse un fichier de no
 
 ### Pour aller plus loin (10 min de marge)
 
-Deux exercices pilotés par les tests, sur le modèle du palindrome de la partie 3 : un compresseur RLE et un validateur de mots de passe. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous.
+Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Ils comptent pour le défi Exercism présenté en conclusion : une fois vos tests verts, soumettez vos solutions sur le site.
 
 ### Conclusion (10 min)
 
@@ -263,7 +263,7 @@ Pendant la séance, travaillez en binôme sur les exercices, modifiez les exempl
 
 ### Après la séance
 
-- Refaites les exercices à tête reposée, et terminez les exercices « Pour aller plus loin » et les deux bonus pilotés par les tests de la fin du notebook
+- Refaites les exercices à tête reposée, et terminez les exercices « Pour aller plus loin » et les trois exercices de la fin du notebook
 - Consultez régulièrement la cheat sheet
 - Relevez le défi Exercism présenté ci-dessous
 - Explorez les ressources recommandées
@@ -348,6 +348,12 @@ Les exercices Exercism sont classés par difficulté. Une progression possible :
 8. Word Count : collections et parsing
 9. Run Length Encoding : algorithmes de compression
 10. Robot Simulator : POO et états
+
+#### Vous avez peut-être déjà pris de l'avance
+
+Pangram (n° 5) et Scrabble Score (n° 7) sont deux des bonus de la fin du notebook. Le troisième, Anagram, n'est pas dans cette liste, mais il compte aussi : le défi demande un exercice par semaine, pas forcément ceux de la liste. Si vos tests sont verts, soumettez vos solutions sur Exercism : ce sont jusqu'à trois semaines du défi déjà faites.
+
+La piste Python démarre en « Learning Mode », qui débloque les exercices au fur et à mesure des notions travaillées sur le site.
 
 #### Conseils pour réussir
 

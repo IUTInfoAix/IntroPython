@@ -435,7 +435,7 @@ class TestPalindrome(unittest.TestCase):
 
 - Les exercices
     - Détecteur de palindromes : pendant la séance
-    - Compresseur RLE, validateur de mots de passe : bonus, en fin de notebook
+    - Pangram, Scrabble Score et Anagram : bonus, en fin de notebook
 </v-click>
 <v-click>
 
@@ -539,6 +539,8 @@ layout: two-cols-header
 <v-click>
 
 **🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
+
+Pangram, Scrabble Score et Anagram, les bonus du notebook, comptent déjà pour le défi
 
 _"The only way to learn a new programming language is by writing programs in it."_ (Brian Kernighan et Dennis Ritchie, _The C Programming Language_)
 

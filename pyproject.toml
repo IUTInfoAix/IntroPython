@@ -46,9 +46,9 @@ ignore = [
 "*.ipynb" = [
   "B007",  # boucle à compléter : sa variable ne sert pas tant que le corps est vide
   "E501",  # lignes d'affichage : une f-string ne se coupe pas, le formateur gère le reste
-  "F401",  # imports fournis d'avance (this, csv, unicodedata) pour du code encore à écrire
+  "F401",  # imports fournis d'avance (this, unicodedata) pour du code encore à écrire
   "F811",  # imports répétés d'une cellule à l'autre : chacune doit pouvoir s'exécuter seule
-  "F841",  # fonctions à compléter : variables préparées dans le squelette
+  "F841",  # code en cours d'écriture : une variable préparée avant la ligne qui s'en servira
 ]
 
 [tool.ruff.format]

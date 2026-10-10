@@ -133,7 +133,7 @@ class TestMaFonction(unittest.TestCase):
         print("✅ Test 1 réussi : cas simple")
 ```
 
-Chaque test porte un `@unittest.skip` que les étudiants retirent progressivement. Vérifiez que chaque solution proposée fait passer tous les tests de son exercice.
+Chaque test porte un `@unittest.skip` que les étudiants retirent progressivement. Seule exception, l'exercice de refactoring de la partie 4 : ses tests 1 à 7 sont livrés actifs, parce qu'ils passent sur le code d'origine et servent de filet de sécurité pendant les transformations. Vérifiez que chaque solution proposée fait passer tous les tests de son exercice.
 
 ### Lancer les tests
 
@@ -142,7 +142,7 @@ Chaque test porte un `@unittest.skip` que les étudiants retirent progressivemen
 make test
 ```
 
-Tel que distribué, le notebook ne doit lever aucune exception : les tests sont tous ignorés tant que les `@unittest.skip` sont en place.
+Tel que distribué, le notebook ne doit lever aucune exception, et aucune cellule de tests ne doit échouer : les tests encore marqués `@unittest.skip` sont ignorés, et les sept tests actifs de la partie 4 passent sur le code d'origine.
 
 ## Convention de commits
 

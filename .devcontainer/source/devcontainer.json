@@ -43,11 +43,11 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "charliermarsh.ruff",
-        // Version figée le 8 octobre 2025. La 2025.9.0, sortie la veille,
-        // exige VS Code 1.105 ou plus : c'est vraisemblablement ce qui bloquait
-        // dans Codespaces. Ne retirer l'épinglage qu'après avoir vérifié la
-        // version courante dans un vrai codespace (voir CONTRIBUTING.md).
-        "ms-toolsai.jupyter@2025.7.0",
+        // Épinglée à 2025.7.0 d'octobre 2025 à octobre 2026 : la 2025.9.0
+        // exigeait un VS Code plus récent que celui de Codespaces. L'épinglage
+        // est levé avec l'image 2026.10.3 ; si « Sélectionner un noyau »
+        // réapparaît à l'ouverture du notebook, le rétablir (CONTRIBUTING.md).
+        "ms-toolsai.jupyter",
         "editorconfig.editorconfig",
         // Copilot Chat sert de tuteur : son comportement est cadré par
         // .github/copilot-instructions.md (explication, puis documentation,

@@ -291,7 +291,7 @@ L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur
 
 **Noyau présélectionné.** VS Code ne présélectionne un noyau à l'ouverture d'un notebook que s'il n'en trouve qu'un seul. C'est pourquoi l'image part de la variante `slim` de l'image Python : l'image complète embarque aussi le Python 3.13 de Debian (`/usr/bin/python3`). Un paquet Debian ou une feature qui installerait un second Python ferait réapparaître la question « Sélectionner un noyau » : le smoke-test échoue dans ce cas.
 
-**Image de base épinglée.** Le Dockerfile fixe la version mineure de Python et la version de Debian, jamais un tag plus large comme `3` ou `slim`. Tant que Python 3.15 n'est pas sorti, il désigne une préversion précise. À la sortie de Python 3.15.0, remplacez `3.15.0rc3-slim-trixie` par `3.15-slim-trixie`, qui ne suivra que les correctifs de la série 3.15.
+**Image de base épinglée.** Le Dockerfile fixe la version mineure de Python et la version de Debian (`3.15-slim-trixie`), jamais un tag plus large comme `3` ou `slim`. Ce tag ne suit que les correctifs de la série 3.15 (3.15.1, 3.15.2…) : publier une nouvelle image suffit pour en profiter.
 
 **Extension Jupyter épinglée.** `ms-toolsai.jupyter@2025.7.0` est figée depuis le 8 octobre 2025. La version 2025.9.0, sortie la veille, exige VS Code 1.105 ou plus, ce qui la rendait vraisemblablement inutilisable dans Codespaces à ce moment-là. Pour lever l'épinglage : dans un vrai codespace, installez la version courante de l'extension, ouvrez `notebook_seance.ipynb`, vérifiez que le noyau est présélectionné et qu'une cellule s'exécute. Si c'est le cas, retirez `@2025.7.0` de la configuration source et publiez une nouvelle image.
 

@@ -4,10 +4,9 @@
 
 # Image Python officielle, épinglée sur la version mineure de Python et sur la
 # distribution : un tag plus large (`3`, `latest`, `slim`) change de version de
-# Python ou de Debian sans prévenir. Tant que Python 3.15 n'est pas sorti, on
-# épingle une préversion précise (rc3) plutôt que le tag `3.15-rc`, qui passe
-# d'une préversion à la suivante. À la sortie de Python 3.15.0, passer à
-# `3.15-slim-trixie`, qui ne suivra que les correctifs de la série 3.15.
+# Python ou de Debian sans prévenir. `3.15-slim-trixie` ne suit que les
+# correctifs de la série 3.15 (3.15.1, 3.15.2...) : il suffit de publier une
+# nouvelle image pour en profiter.
 #
 # Variante `slim` plutôt que l'image complète, pour deux raisons :
 #   - elle ne contient que Python 3.15, alors que l'image complète embarque
@@ -15,7 +14,7 @@
 #     interpréteur, VS Code n'a qu'un noyau à proposer et le présélectionne ;
 #   - elle est bien plus légère : pas de compilateurs, dont le notebook n'a
 #     pas besoin (il n'utilise que la bibliothèque standard).
-FROM python:3.15.0rc3-slim-trixie
+FROM python:3.15-slim-trixie
 
 # Rattache le paquet publié sur ghcr.io au dépôt enseignant.
 LABEL org.opencontainers.image.source="https://github.com/IUTInfoAix/IntroPython" \

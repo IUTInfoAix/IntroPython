@@ -429,7 +429,7 @@ class TestPalindrome(unittest.TestCase):
 - La boucle de travail
     1. Lire le test pour comprendre ce que la fonction doit faire
     2. Retirer son `@unittest.skip`
-    3. Écrire le code qui le fait passer
+    3. Écrire le minimum de code qui le fait passer, même une valeur en dur
     4. Passer au test suivant, puis refactorer quand tout est vert
 </v-click>
 <v-click>

@@ -540,7 +540,7 @@ layout: two-cols-header
 
 **🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
 
-Pangram, Scrabble Score et Anagram, les bonus du notebook, comptent déjà pour le défi
+Échauffement : soumettez sur Exercism les trois bonus du notebook (Pangram, Scrabble Score, Anagram)
 
 _"The only way to learn a new programming language is by writing programs in it."_ (Brian Kernighan et Dennis Ritchie, _The C Programming Language_)
 

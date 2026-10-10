@@ -226,7 +226,7 @@ Vous partez d'un programme écrit par un débutant, qui analyse un fichier de no
 
 ### Pour aller plus loin (10 min de marge)
 
-Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Ils comptent pour le défi Exercism présenté en conclusion : une fois vos tests verts, soumettez vos solutions sur le site.
+Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Ce sont aussi des exercices Exercism : une fois vos tests verts, soumettez vos solutions sur le site, pour vous échauffer avant le défi présenté en conclusion.
 
 ### Conclusion (10 min)
 
@@ -342,16 +342,16 @@ Les exercices Exercism sont classés par difficulté. Une progression possible :
 2. Two Fer : fonctions et paramètres par défaut
 3. Raindrops : conditions et modulos
 4. Leap : logique booléenne
-5. Pangram : sets et manipulation de chaînes
+5. Hamming : comparaison de chaînes et exceptions
 6. Isogram : algorithmes sur les chaînes
-7. Scrabble Score : dictionnaires
+7. Protein Translation : dictionnaires et découpage de chaînes
 8. Word Count : collections et parsing
 9. Run Length Encoding : algorithmes de compression
 10. Robot Simulator : POO et états
 
-#### Vous avez peut-être déjà pris de l'avance
+#### Pour démarrer : les bonus du notebook
 
-Pangram (n° 5) et Scrabble Score (n° 7) sont deux des bonus de la fin du notebook. Le troisième, Anagram, n'est pas dans cette liste, mais il compte aussi : le défi demande un exercice par semaine, pas forcément ceux de la liste. Si vos tests sont verts, soumettez vos solutions sur Exercism : ce sont jusqu'à trois semaines du défi déjà faites.
+Pangram, Scrabble Score et Anagram, les trois bonus de la fin du notebook, sont aussi des exercices Exercism. Aucun n'est dans la liste ci-dessus : les dix exercices du défi restent à faire. Si vos tests sont verts, soumettez quand même ces trois solutions sur Exercism : vous prendrez la plateforme en main, et vous pourrez déjà demander un retour aux mentors avant de commencer le défi.
 
 La piste Python démarre en « Learning Mode », qui débloque les exercices au fur et à mesure des notions travaillées sur le site.
 

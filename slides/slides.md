@@ -412,6 +412,37 @@ if condition:
 </v-click>
 
 ---
+
+# Coder à partir des tests
+
+- Les tests sont livrés désactivés
+
+```python
+class TestPalindrome(unittest.TestCase):
+    @unittest.skip
+    def test_1_palindrome_simple(self):
+        self.assertTrue(est_palindrome("kayak"))
+```
+<v-click>
+
+- La boucle de travail
+    1. Lire le test pour comprendre ce que la fonction doit faire
+    2. Retirer son `@unittest.skip`
+    3. Écrire le code qui le fait passer
+    4. Passer au test suivant, puis refactorer quand tout est vert
+</v-click>
+<v-click>
+
+- Les exercices
+    - Détecteur de palindromes : pendant la séance
+    - Compresseur RLE, validateur de mots de passe : bonus, en fin de notebook
+</v-click>
+<v-click>
+
+**→ Les tests tiennent lieu d'énoncé**
+</v-click>
+
+---
 layout: two-cols-header
 ---
 
@@ -443,37 +474,6 @@ layout: two-cols-header
 6. Fichier absent (`FileNotFoundError`)
 7. Méthodes de string (`startswith()`)
 
-</v-click>
-
----
-
-# Coder à partir des tests
-
-- Les tests sont livrés désactivés
-
-```python
-class TestPalindrome(unittest.TestCase):
-    @unittest.skip
-    def test_1_palindrome_simple(self):
-        self.assertTrue(est_palindrome("kayak"))
-```
-<v-click>
-
-- La boucle de travail
-    1. Lire le test pour comprendre ce que la fonction doit faire
-    2. Retirer son `@unittest.skip`
-    3. Écrire le code qui le fait passer
-    4. Passer au test suivant, puis refactorer quand tout est vert
-</v-click>
-<v-click>
-
-- Trois exercices
-    - Détecteur de palindromes : pour tout le monde
-    - Compresseur RLE, validateur de mots de passe : bonus, à finir chez vous
-</v-click>
-<v-click>
-
-**→ Les tests tiennent lieu d'énoncé**
 </v-click>
 
 ---

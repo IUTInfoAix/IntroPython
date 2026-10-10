@@ -25,8 +25,8 @@ La séance est découpée en quatre parties, et chacune vise des savoir-faire pr
 |---|---|
 | **1. Structures de données** | Choisir la structure de données appropriée (list, dict, set, tuple). Mesurer les performances d'un code avec `timeit`. Expliquer les références et la mutabilité, et éviter leurs pièges. |
 | **2. Idiomes** | Utiliser les idiomes Python : comprehensions, EAFP, context managers. |
-| **3. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
-| **4. Exercices pilotés par les tests** | Comprendre une spécification à partir de tests, puis écrire le code qui les fait passer. |
+| **3. Coder à partir des tests** | Comprendre une spécification à partir de tests, puis écrire le code qui les fait passer. |
+| **4. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
 
 À la fin de la séance, vous devez aussi être capables de lire et de comprendre du code Python professionnel.
 
@@ -40,7 +40,7 @@ Python a la réputation d'un « langage pour débutants ». C'est aussi un langa
 
 **Vous mesurez au lieu de croire.** Qu'un test d'appartenance soit « très rapide » sur un set, ne le croyez pas sur parole : le module `timeit` chronomètre un bout de code, et vous vous en servez dès la première partie.
 
-**Les tests servent de cahier des charges.** La plupart des exercices sont accompagnés de tests `unittest`, livrés désactivés par un `@unittest.skip`. Vous les activez un par un en retirant le décorateur, et vous écrivez le code qui fait passer chacun. Dans la quatrième partie, les tests tiennent lieu d'énoncé : c'est l'approche TDD (Test-Driven Development).
+**Les tests servent de cahier des charges.** La plupart des exercices sont accompagnés de tests `unittest`, livrés désactivés par un `@unittest.skip`. Vous les activez un par un en retirant le décorateur, et vous écrivez le code qui fait passer chacun. Dans la troisième partie, les tests tiennent lieu d'énoncé : c'est l'approche TDD (Test-Driven Development).
 
 **ruff relit votre code pendant que vous l'écrivez.** Ses remarques s'affichent sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique. Les corrections automatiques à l'enregistrement sont volontairement désactivées : ruff vous montre la tournure à reprendre, à vous de la réécrire.
 
@@ -187,8 +187,9 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 | 00:20 | **Partie 1** | 65 min | Structures de données natives, mesure de performances, mutabilité |
 | 01:25 | **Partie 2** | 55 min | Compréhensions, EAFP, context managers |
 | 02:20 | Pause | 15 min | |
-| 02:35 | **Partie 3** | 45 min | Refactoring de l'analyseur CSV |
-| 03:20 | **Partie 4** | 30 min | Exercices pilotés par les tests |
+| 02:35 | **Partie 3** | 20 min | Coder à partir des tests |
+| 02:55 | **Partie 4** | 45 min | Refactoring de l'analyseur CSV |
+| 03:40 | Pour aller plus loin | 10 min | Marge : deux exercices bonus pilotés par les tests |
 | 03:50 | Conclusion | 10 min | Bilan et défi Exercism |
 
 ### Mise en route (20 min)
@@ -215,13 +216,17 @@ Cette partie présente trois idiomes :
 
 Là aussi, un exercice « Pour aller plus loin » attend ceux qui sont en avance : classer les admis d'un examen avec une comprehension et `sorted()` (15 min).
 
-### Partie 3 - Refactoring de l'analyseur CSV (45 min)
+### Partie 3 - Coder à partir des tests (20 min)
+
+Ici, vous codez à partir des tests : vous les lisez pour comprendre ce que la fonction doit faire, puis vous les faites passer un par un. L'exercice, un détecteur de palindromes, vous fait parcourir le cycle complet : un test rouge, le minimum de code pour le faire passer au vert, puis un refactoring quand tout est vert. La partie 4 s'appuie sur cette démarche.
+
+### Partie 4 - Refactoring de l'analyseur CSV (45 min)
 
 Vous partez d'un programme écrit par un débutant, qui analyse un fichier de notes d'examen. Il fonctionne, mais il n'est ni pythonique ni très lisible : le fichier est ouvert sans `with`, une boucle `while` avance avec un compteur manuel, les sommes sont calculées à la main et un `except:` attrape toutes les erreurs sans distinction. Vous le réécrivez avec ce que vous venez d'apprendre, et neuf tests vérifient votre version.
 
-### Partie 4 - Exercices pilotés par les tests (30 min)
+### Pour aller plus loin (10 min de marge)
 
-Ici, vous codez à partir des tests : vous les lisez pour comprendre ce que la fonction doit faire, puis vous les faites passer un par un. Cette partie sert de marge : le détecteur de palindromes est pour tout le monde, le compresseur RLE et le validateur de mots de passe sont des bonus, à finir chez vous.
+Deux exercices pilotés par les tests, sur le modèle du palindrome de la partie 3 : un compresseur RLE et un validateur de mots de passe. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous.
 
 ### Conclusion (10 min)
 
@@ -258,7 +263,7 @@ Pendant la séance, travaillez en binôme sur les exercices, modifiez les exempl
 
 ### Après la séance
 
-- Refaites les exercices à tête reposée, et terminez les exercices « Pour aller plus loin » et les deux bonus de la partie 4
+- Refaites les exercices à tête reposée, et terminez les exercices « Pour aller plus loin » et les deux bonus pilotés par les tests de la fin du notebook
 - Consultez régulièrement la cheat sheet
 - Relevez le défi Exercism présenté ci-dessous
 - Explorez les ressources recommandées

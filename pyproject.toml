@@ -20,12 +20,12 @@ target-version = "py315"
 select = [
   "A",        # flake8-builtins : `list = [...]` masque la fonction native jusqu'au redémarrage du noyau
   "B",        # flake8-bugbear : pièges du langage (argument par défaut mutable, doublon dans un set)
-  "C4",       # flake8-comprehensions : compréhensions et littéraux plutôt que list(), dict() ou map()
+  "C4",       # flake8-comprehensions : comprehensions et littéraux plutôt que list(), dict() ou map()
   "E",        # pycodestyle, erreurs : PEP 8, `is None`, `not in`, `except:` sans type
   "F",        # Pyflakes : noms non définis, f-strings sans variable
   "I",        # isort : tri des imports
   "N",        # pep8-naming : snake_case et CapWords, pour qui arrive de Java
-  "PERF",     # Perflint : boucle avec append au lieu d'une compréhension
+  "PERF",     # Perflint : boucle avec append au lieu d'une comprehension
   "PLC0206",  # Pylint : `for cle in d: d[cle]` au lieu de `d.items()`
   "PLR1714",  # Pylint : `x == "a" or x == "b"` au lieu de `x in {"a", "b"}`
   "PLR1730",  # Pylint : `if x > maxi: maxi = x` au lieu de `max()`

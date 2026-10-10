@@ -226,7 +226,7 @@ Vous partez d'un programme écrit par un débutant, qui analyse un fichier de no
 
 ### Pour aller plus loin (10 min de marge)
 
-Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Ce sont aussi des exercices Exercism : une fois vos tests verts, soumettez vos solutions sur le site, pour vous échauffer avant le défi présenté en conclusion.
+Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Une fois vos tests verts, soumettez vos solutions sur le site, pour vous échauffer avant le défi présenté en conclusion.
 
 ### Conclusion (10 min)
 

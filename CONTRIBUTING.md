@@ -58,7 +58,7 @@ make lint
 make lint-fix
 ```
 
-Les règles activées couvrent PEP 8 et les tournures que la séance apprend à remplacer : boucle avec `append` au lieu d'une compréhension, `open()` sans `with`, argument par défaut mutable, nom qui masque une fonction native. Pour lire l'explication d'une règle : `ruff rule PERF401`.
+Les règles activées couvrent PEP 8 et les tournures que la séance apprend à remplacer : boucle avec `append` au lieu d'une comprehension, `open()` sans `with`, argument par défaut mutable, nom qui masque une fonction native. Pour lire l'explication d'une règle : `ruff rule PERF401`.
 
 ### Outils de qualité pour notebooks Jupyter
 

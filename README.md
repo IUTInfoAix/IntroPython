@@ -185,7 +185,7 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 |---------|--------|-------|---------|
 | 00:00 | Mise en route | 20 min | Création du dépôt, Codespace, Zen de Python, échauffement |
 | 00:20 | **Partie 1** | 65 min | Structures de données natives, mesure de performances, mutabilité |
-| 01:25 | **Partie 2** | 55 min | Compréhensions, EAFP, context managers |
+| 01:25 | **Partie 2** | 55 min | Comprehensions, EAFP, context managers |
 | 02:20 | Pause | 15 min | |
 | 02:35 | **Partie 3** | 20 min | Coder à partir des tests |
 | 02:55 | **Partie 4** | 45 min | Refactoring de l'analyseur CSV |
@@ -206,7 +206,7 @@ La partie se termine par la mutabilité et les références (20 min). En C++ ou 
 
 Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min).
 
-### Partie 2 - Compréhensions, EAFP, context managers (55 min)
+### Partie 2 - Comprehensions, EAFP, context managers (55 min)
 
 Cette partie présente trois idiomes :
 

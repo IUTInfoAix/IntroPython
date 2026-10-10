@@ -30,6 +30,7 @@ mdc: true
 - ✅ Choisir la bonne structure de données
 - ✅ Utiliser les idiomes Python
 - ✅ Écrire du code lisible et élégant
+- ✅ Coder à partir des tests, et refactoriser sous leur protection
 
 <v-click>
 

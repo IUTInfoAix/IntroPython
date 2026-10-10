@@ -26,7 +26,7 @@ La séance est découpée en quatre parties, et chacune vise des savoir-faire pr
 | **1. Structures de données** | Choisir la structure de données appropriée (list, dict, set, tuple). Mesurer les performances d'un code avec `timeit`. Expliquer les références et la mutabilité, et éviter leurs pièges. |
 | **2. Idiomes** | Utiliser les idiomes Python : comprehensions, EAFP, context managers. |
 | **3. Coder à partir des tests** | Comprendre une spécification à partir de tests, puis écrire le code qui les fait passer. |
-| **4. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
+| **4. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique, sous la protection de tests qui garantissent qu'il fait toujours la même chose. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
 
 À la fin de la séance, vous devez aussi être capables de lire et de comprendre du code Python professionnel.
 

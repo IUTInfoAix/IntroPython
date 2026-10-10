@@ -448,17 +448,19 @@ layout: two-cols-header
 
 # Refactoring : un code moche mais fonctionnel
 
+**Méthode** : des tests verts avant de commencer, une transformation à la fois, et les tests restent verts après chacune
+
 ::left::
 
 ### Code original
 
-- ❌ Pas de `with` pour les fichiers
+- ❌ Pas de `with` pour le fichier
 - ❌ Boucle `while` avec compteur
-- ❌ Boucle manuelle pour sommer
-- ❌ Découpage du CSV à la main (`split(',')`)
+- ❌ `ligne[0] != "#"`
+- ❌ `note >= 0 and note <= 20`
 - ❌ `except:` sans préciser l'erreur
-- ❌ Rien de prévu si le fichier n'existe pas
-- ❌ Indexation au lieu de méthodes
+- ❌ Boucles manuelles pour sommer et compter
+- ❌ Plante si le fichier n'existe pas ou n'a aucune note
 
 ::right::
 
@@ -466,13 +468,13 @@ layout: two-cols-header
 
 ### À améliorer
 
-1. Context managers
-2. Boucles `for` idiomatiques
-3. Fonctions built-in (`sum()`)
-4. Module `csv` (`csv.reader()`)
-5. Erreurs précises (`ValueError`, `IndexError`)
-6. Fichier absent (`FileNotFoundError`)
-7. Méthodes de string (`startswith()`)
+1. Context manager (`with open()`)
+2. `for ligne in lignes:`
+3. Méthode de string (`startswith()`)
+4. Comparaison enchaînée (`0 <= note <= 20`)
+5. Erreur précise (`ValueError`)
+6. Fonctions natives (`sum()`, `len()`) et comprehension
+7. Nouveau comportement : un test rouge d'abord (TDD)
 
 </v-click>
 

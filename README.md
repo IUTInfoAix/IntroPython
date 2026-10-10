@@ -222,7 +222,7 @@ Ici, vous codez à partir des tests : vous les lisez pour comprendre ce que la f
 
 ### Partie 4 - Refactoring de l'analyseur CSV (45 min)
 
-Vous partez d'un programme écrit par un débutant, qui analyse un fichier de notes d'examen. Il fonctionne, mais il n'est ni pythonique ni très lisible : le fichier est ouvert sans `with`, une boucle `while` avance avec un compteur manuel, les sommes sont calculées à la main et un `except:` attrape toutes les erreurs sans distinction. Vous le réécrivez avec ce que vous venez d'apprendre, et neuf tests vérifient votre version.
+Vous partez d'un programme écrit par un débutant, qui analyse un fichier de notes d'examen. Il fonctionne, mais il n'est ni pythonique ni très lisible : le fichier est ouvert sans `with`, une boucle `while` avance avec un compteur manuel, les sommes sont calculées à la main et un `except:` attrape toutes les erreurs sans distinction. Vous le refactorisez, c'est-à-dire que vous améliorez son écriture sans changer ce qu'il fait. Sept tests, déjà activés et verts, servent de filet de sécurité : vous faites une seule transformation à la fois, et ils doivent rester verts après chacune. Vous ajoutez ensuite, en partant d'un test rouge comme dans la partie 3, deux comportements qui manquaient au programme : gérer un fichier absent et un fichier sans note valide.
 
 ### Pour aller plus loin (10 min de marge)
 
@@ -251,7 +251,7 @@ Un exercice se présente toujours dans le même ordre : l'énoncé, une cellule 
 | 👁️ | Solution ou explication repliée : cliquez après avoir essayé |
 | ❌ et ✅ | Ce qu'il faut éviter et ce qu'il faut faire ; ✅ marque aussi les tests et les points clés d'une solution |
 
-**Les tests.** Ils sont tous désactivés au départ. Retirez le `@unittest.skip` du premier test, exécutez la cellule, écrivez le code qui le fait passer, puis passez au suivant.
+**Les tests.** Ils sont désactivés au départ. Retirez le `@unittest.skip` du premier test, exécutez la cellule, écrivez le code qui le fait passer, puis passez au suivant. Seule exception : dans l'exercice de refactoring de la partie 4, les premiers tests sont déjà activés, et votre travail consiste à les garder verts.
 
 **Les solutions.** Ouvrez-les après avoir cherché. Plusieurs proposent une seconde version, plus concise ou mieux découpée, à comparer avec la vôtre.
 

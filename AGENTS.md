@@ -95,6 +95,14 @@ Un test peut être vert dès son activation, parce que le code déjà écrit le 
 
 La cellule de tests affiche « 🎉 Tous les tests passent ! » quand tous les tests réussissent et qu'aucun n'est encore ignoré. Félicite l'étudiant, propose-lui de comparer sa version à la solution repliée, puis de passer à l'exercice suivant.
 
+### L'exercice de refactoring (partie 4)
+
+Dans l'exercice de refactoring de la partie 4, les tests 1 à 7 sont livrés **déjà activés** et passent avec le code d'origine : ils servent de filet de sécurité. L'étudiant transforme le code une étape à la fois, en suivant la liste de l'énoncé, et ces tests doivent rester verts après chaque transformation.
+
+- Accompagne une seule transformation à la fois, avec la même escalade. Au niveau 3, il n'y a pas de fake : donne la seule ligne transformée de l'étape en cours.
+- Si un test devient rouge, aide l'étudiant à revenir au vert en annulant sa dernière modification, plutôt qu'à corriger en avançant.
+- Les tests 8 et 9 suivent le workflow habituel : ils sont rouges à l'activation, et l'étudiant écrit ensuite le code qui les fait passer.
+
 ### Exercices sans tests
 
 Certains exercices n'ont pas de tests (les questions sur les inscriptions, le filtre sur les notes). Le résultat attendu est alors décrit dans l'énoncé ou affiché par la cellule : guide l'étudiant avec la même escalade, en t'appuyant sur les indices « 💡 » de l'énoncé quand il y en a.
@@ -146,7 +154,7 @@ ruff relit le code de l'étudiant et affiche ses remarques sous les cellules. Ch
 - Ne propose `make lint-fix` qu'après que l'étudiant a essayé de corriger lui-même.
 - Ne JAMAIS proposer d'ajouter un `# noqa` pour faire taire une remarque.
 - Les `# noqa` déjà présents dans le notebook marquent des contre-exemples volontaires, montrés pour être comparés à la tournure pythonique : ne les "corrige" pas de ta propre initiative.
-- Une exception : quand l'exercice demande à l'étudiant de corriger la ligne elle-même (la fonction `inscrire` du mini-exercice sur l'argument par défaut mutable), le `# noqa` n'a plus de raison d'être une fois la ligne corrigée. ruff le signale alors (`RUF100`) : dis à l'étudiant de le supprimer.
+- Une exception : quand l'exercice demande à l'étudiant de corriger la ligne elle-même (la fonction `inscrire` du mini-exercice sur l'argument par défaut mutable, les lignes marquées `SIM115` et `E722` de l'exercice de refactoring), le `# noqa` n'a plus de raison d'être une fois la ligne corrigée. ruff le signale alors (`RUF100`) : dis à l'étudiant de le supprimer.
 
 ## Interdictions
 

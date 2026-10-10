@@ -490,6 +490,7 @@ layout: two-cols-header
     4. **Idiomes** : Comprehensions, EAFP, context managers
     5. **Code pythonique** : Lisible, avec les outils natifs plutôt que la roue réinventée
     6. **TDD** : Coder à partir des tests
+    7. **Refactoring** : Une transformation à la fois, tests toujours verts
 <v-click>
 
 - 🎯 Prochaines étapes

@@ -249,7 +249,7 @@ Un exercice se présente toujours dans le même ordre : l'énoncé, une cellule 
 | 💡 | Indice, exemple ou point à retenir |
 | 💻 VOTRE CODE ICI | Zone à compléter dans une cellule de code |
 | 👁️ | Solution ou explication repliée : cliquez après avoir essayé |
-| ❌ et ✅ | Ce qu'il faut éviter et ce qu'il faut faire ; ✅ marque aussi les tests et les points clés d'une solution |
+| ❌ et ✅ | Ce qu'il faut éviter et ce qu'il faut faire ; ✅ marque aussi les tests, les résultats attendus et les points clés d'une solution |
 
 **Les tests.** Ils sont désactivés au départ. Retirez le `@unittest.skip` du premier test, exécutez la cellule, écrivez le code qui le fait passer, puis passez au suivant. Seule exception : dans l'exercice de refactoring de la partie 4, les premiers tests sont déjà activés, et votre travail consiste à les garder verts.
 

@@ -642,7 +642,7 @@ Le fonctionnement du Codespace, la publication de son image et les conventions d
 
 ### Q : Le code « pythonique » est-il vraiment plus rapide ?
 
-**R :** Souvent oui (list comprehensions, fonctions built-in optimisées en C), mais le principal avantage est la lisibilité et la maintenabilité. "Premature optimization is the root of all evil." (Donald Knuth, 1974)
+**R :** Pas toujours. Une list comprehension est aussi rapide que la boucle qu'elle remplace : son avantage est la lisibilité. Une fonction native comme `sum()`, écrite en C, est en revanche plusieurs fois plus rapide qu'une boucle écrite à la main (environ 4 fois pour additionner un million d'entiers avec Python 3.15). Dans tous les cas, le principal avantage du code pythonique est la lisibilité et la maintenabilité. "Premature optimization is the root of all evil." (Donald Knuth, 1974)
 
 ### Q : Dois-je toujours suivre PEP 8 strictement ?
 

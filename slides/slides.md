@@ -257,7 +257,7 @@ fusion = {**d for d in dicos}                         # 3.15 : [{"a": 1}, {"b": 
 
 <v-click>
 
-**→ Plus lisible, souvent plus rapide**
+**→ Plus lisible, et aussi rapide**
 </v-click>
 
 ---

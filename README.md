@@ -210,7 +210,7 @@ Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait compar
 
 Cette partie présente trois idiomes :
 
-- la **list comprehension** écrit en une ligne une boucle qui remplit une liste. Exercice : filtrer une liste de notes (10 min) ;
+- la **list comprehension** écrit en une ligne une boucle qui remplit une liste, et aplatit une liste de listes avec l'unpacking `*`, nouveau dans Python 3.15 (PEP 798). Exercice : filtrer une liste de notes (10 min) ;
 - **EAFP**, « Easier to Ask Forgiveness than Permission » : en Python, on préfère essayer puis gérer l'erreur plutôt que vérifier avant. Exercice : une division qui retourne une valeur par défaut au lieu d'échouer (15 min) ;
 - le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit. Exercice : écrire puis relire un fichier (10 min).
 

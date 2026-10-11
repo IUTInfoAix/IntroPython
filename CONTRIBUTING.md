@@ -142,7 +142,7 @@ Chaque test porte un `@unittest.skip` que les étudiants retirent progressivemen
 make test
 ```
 
-Tel que distribué, le notebook ne doit lever aucune exception, et aucune cellule de tests ne doit échouer : les tests encore marqués `@unittest.skip` sont ignorés, et les sept tests actifs de la partie 4 passent sur le code d'origine.
+Il faut un Python 3.15 : la partie 2 utilise l'unpacking dans les comprehensions (PEP 798), que les versions précédentes refusent. Tel que distribué, le notebook ne doit lever aucune exception, et aucune cellule de tests ne doit échouer : les tests encore marqués `@unittest.skip` sont ignorés, et les sept tests actifs de la partie 4 passent sur le code d'origine.
 
 ## Convention de commits
 

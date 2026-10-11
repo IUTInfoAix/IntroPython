@@ -247,10 +247,10 @@ pairs = [x for x in range(20) if x % 2 == 0]
 
 <v-click>
 
-- Nested
+- Aplatir une liste de listes
 ```python
-plat = [elem for ligne in matrice
-               for elem in ligne]
+plat = [elem for ligne in matrice for elem in ligne]  # avant 3.15
+plat = [*ligne for ligne in matrice]                  # 3.15 : PEP 798
 ```
 </v-click>
 
@@ -362,6 +362,7 @@ a, b = b, a                # ✅
 
 ```python
 premier, *milieu, dernier = [1, 2, 3, 4, 5]
+plat = [*ligne for ligne in matrice]  # 3.15 : aplatir
 ```
 </v-click>
 <v-click>

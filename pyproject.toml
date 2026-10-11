@@ -10,8 +10,9 @@
 # caractères de PEP 8 sur un écran actuel.
 line-length = 88
 # Version du prérequis du README et de l'image du devcontainer. Elle fixe la
-# syntaxe acceptée (les `lazy import` de la cheat sheet seraient refusés avec
-# une version plus ancienne) et les modernisations proposées par la famille UP.
+# syntaxe acceptée (l'unpacking dans les comprehensions de la partie 2, PEP 798,
+# serait refusé avec une version plus ancienne) et les modernisations proposées
+# par la famille UP.
 target-version = "py315"
 
 [tool.ruff.lint]

@@ -28,6 +28,7 @@ mdc: true
 
 ### Au programme :
 - ✅ Choisir la bonne structure de données
+- ✅ Annoter les types, et laisser l'éditeur les vérifier
 - ✅ Utiliser les idiomes Python
 - ✅ Écrire du code lisible et élégant
 - ✅ Coder à partir des tests, et refactoriser sous leur protection
@@ -217,6 +218,36 @@ grille = [[0] * 3 for _ in range(3)]  # ✅ Trois rangées distinctes
 <v-click>
 
 **→ Immutables (int, str, tuple) : sans danger. Mutables (list, dict, set) : attention au partage**
+</v-click>
+
+---
+
+# Annoter les types
+
+- Python est typé dynamiquement, mais on peut annoter
+```python
+def moyenne(notes: list[float]) -> float:
+    return sum(notes) / len(notes)
+
+def inscrire(nom: str, inscrits: list[str] | None = None) -> list[str]: ...
+```
+<v-click>
+
+- Python ignore les annotations à l'exécution ; l'éditeur, lui, les vérifie
+    - `moyenne(["12", "15"])` est souligné avant même d'être exécuté
+    - Typage graduel : on annote ce qu'on veut, l'outil vérifie ce qui est annoté
+</v-click>
+<v-click>
+
+- Python 3.15 : une sentinelle, quand `None` est une valeur possible
+```python
+ABSENT = sentinel("ABSENT")
+def premier(elements: list[int], defaut: int | None | ABSENT = ABSENT) -> int | None: ...
+```
+</v-click>
+<v-click>
+
+**→ Comme en Java, la signature documente le contrat, et un outil le vérifie**
 </v-click>
 
 ---
@@ -462,7 +493,8 @@ layout: two-cols-header
 - ❌ `note >= 0 and note <= 20`
 - ❌ `except:` sans préciser l'erreur
 - ❌ Boucles manuelles pour sommer et compter
-- ❌ Plante si le fichier n'existe pas ou n'a aucune note
+- ❌ Aucune annotation de types
+- ❌ Plante sans fichier ou sans note valide
 
 ::right::
 
@@ -475,8 +507,9 @@ layout: two-cols-header
 3. Méthode de string (`startswith()`)
 4. Comparaison enchaînée (`0 <= note <= 20`)
 5. Erreur précise (`ValueError`)
-6. Fonctions natives (`sum()`, `len()`) et comprehension
-7. Nouveau comportement : un test rouge d'abord (TDD)
+6. `sum()`, `len()` et comprehension
+7. Annotations de types
+8. Un test rouge d'abord (TDD)
 
 </v-click>
 
@@ -489,10 +522,10 @@ layout: two-cols-header
     1. **Structures** : Choisir la bonne (list, dict, set, tuple)
     2. **Mesure** : `timeit` avant de choisir
     3. **Mutabilité** : Se méfier des références partagées
-    4. **Idiomes** : Comprehensions, EAFP, context managers
-    5. **Code pythonique** : Lisible, avec les outils natifs plutôt que la roue réinventée
-    6. **TDD** : Coder à partir des tests
-    7. **Refactoring** : Une transformation à la fois, tests toujours verts
+    4. **Typage** : Annoter ses fonctions, l'éditeur vérifie les types
+    5. **Idiomes** : Comprehensions, EAFP, context managers
+    6. **Code pythonique** : Lisible, avec les outils natifs plutôt que la roue réinventée
+    7. **Tests** : Coder à partir des tests, refactoriser sous leur protection
 <v-click>
 
 - 🎯 Prochaines étapes

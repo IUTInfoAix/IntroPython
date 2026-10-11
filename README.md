@@ -23,7 +23,7 @@ La séance est découpée en quatre parties, et chacune vise des savoir-faire pr
 
 | Partie | Vous serez capable de... |
 |---|---|
-| **1. Structures de données** | Choisir la structure de données appropriée (list, dict, set, tuple). Mesurer les performances d'un code avec `timeit`. Expliquer les références et la mutabilité, et éviter leurs pièges. |
+| **1. Structures de données** | Choisir la structure de données appropriée (list, dict, set, tuple). Mesurer les performances d'un code avec `timeit`. Expliquer les références et la mutabilité, et éviter leurs pièges. Annoter les types d'une fonction. |
 | **2. Idiomes** | Utiliser les idiomes Python : comprehensions, EAFP, context managers. |
 | **3. Coder à partir des tests** | Comprendre une spécification à partir de tests, puis écrire le code qui les fait passer. |
 | **4. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique, sous la protection de tests qui garantissent qu'il fait toujours la même chose. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
@@ -43,6 +43,8 @@ Python a la réputation d'un « langage pour débutants ». C'est aussi un langa
 **Les tests servent de cahier des charges.** La plupart des exercices sont accompagnés de tests `unittest`, livrés désactivés par un `@unittest.skip`. Vous les activez un par un en retirant le décorateur, et vous écrivez le code qui fait passer chacun. Dans la troisième partie, les tests tiennent lieu d'énoncé : c'est l'approche TDD (Test-Driven Development).
 
 **ruff relit votre code pendant que vous l'écrivez.** Ses remarques s'affichent sous votre code, dans les cellules du notebook. Chacune porte un code (par exemple `PERF401`) et propose une tournure plus pythonique. Les corrections automatiques à l'enregistrement sont volontairement désactivées : ruff vous montre la tournure à reprendre, à vous de la réécrire.
+
+**Les fonctions sont annotées avec leurs types.** Python est typé dynamiquement, mais on peut annoter le type des paramètres et du résultat d'une fonction. Python ignore ces annotations à l'exécution ; l'éditeur, lui, les vérifie, et souligne un appel qui ne les respecte pas, comme le ferait un compilateur Java.
 
 **Copilot Chat est un tuteur, pas un générateur de code.** Il est configuré pour ne pas donner la solution d'emblée : il commence par expliquer le concept, puis oriente vers la documentation, et ne propose du code qu'en dernier recours. L'objectif est que vous compreniez chaque ligne de code que vous écrivez. La section [Assistance IA](#assistance-ia) explique comment vous en servir.
 
@@ -231,25 +233,26 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 | Horaire | Partie | Durée | Contenu |
 |---------|--------|-------|---------|
 | 00:00 | Mise en route | 20 min | Création du dépôt, Codespace, Zen de Python, échauffement |
-| 00:20 | **Partie 1** | 65 min | Structures de données natives, mesure de performances, mutabilité |
-| 01:25 | **Partie 2** | 55 min | Comprehensions, EAFP, context managers |
-| 02:20 | Pause | 15 min | |
-| 02:35 | **Partie 3** | 20 min | Coder à partir des tests |
-| 02:55 | **Partie 4** | 45 min | Refactoring de l'analyseur CSV |
-| 03:40 | Pour aller plus loin | 10 min | Marge : trois exercices bonus pilotés par les tests |
+| 00:20 | **Partie 1** | 75 min | Structures de données natives, mesure de performances, mutabilité, typage |
+| 01:35 | **Partie 2** | 55 min | Comprehensions, EAFP, context managers |
+| 02:30 | Pause | 15 min | |
+| 02:45 | **Partie 3** | 20 min | Coder à partir des tests |
+| 03:05 | **Partie 4** | 45 min | Refactoring de l'analyseur CSV |
 | 03:50 | Conclusion | 10 min | Bilan et défi Exercism |
 
 ### Mise en route (20 min)
 
 Vous créez votre dépôt et votre Codespace, puis vous lisez le Zen de Python, les principes du langage. L'échauffement compare deux versions d'une même boucle : l'une écrite comme en C ou en Java, avec `range(len(...))` et un indice, l'autre avec `enumerate()` et une f-string. À vous de dire laquelle est la plus lisible.
 
-### Partie 1 - Structures de données, mesure de performances, mutabilité (65 min)
+### Partie 1 - Structures de données, mesure de performances, mutabilité, typage (75 min)
 
 Python fournit quatre structures de base : la liste, le dictionnaire, le set et le tuple. Vous voyez d'abord à quoi sert chacune, puis vous mesurez avec `timeit` ce que coûte un test d'appartenance (`in`) parmi 100 000 éléments, dans une liste puis dans un set. Avant d'exécuter la cellule, pariez sur l'écart.
 
 L'exercice guidé (25 min) met ces structures au travail sur un cas réel : vous gérez les inscriptions à un événement où certaines personnes se sont inscrites plusieurs fois. Il faut compter les participants uniques, retrouver ceux qui se sont inscrits plusieurs fois, puis refaire ce comptage avec `Counter`.
 
-La partie se termine par la mutabilité et les références (20 min). En C++ ou en Java, vous savez toujours si vous manipulez une valeur ou une référence. En Python, la syntaxe ne le montre pas : il faut connaître la règle. Vous la découvrez sur trois petits programmes dont vous prédisez l'affichage (`b = a`, un argument par défaut, une grille 3 × 3), puis vous réparez une fonction dont l'argument par défaut est mutable.
+La partie se poursuit avec la mutabilité et les références (20 min). En C++ ou en Java, vous savez toujours si vous manipulez une valeur ou une référence. En Python, la syntaxe ne le montre pas : il faut connaître la règle. Vous la découvrez sur trois petits programmes dont vous prédisez l'affichage (`b = a`, un argument par défaut, une grille 3 × 3).
+
+Vous apprenez ensuite à annoter les types d'une fonction (10 min). Python ignore ces annotations à l'exécution, mais l'éditeur souligne un appel qui ne les respecte pas. Toutes les fonctions du notebook sont annotées à partir de là, à commencer par celle que vous réparez ensuite, dont l'argument par défaut est mutable. Un bonus présente les sentinelles de Python 3.15, pour les cas où `None` ne suffit pas à dire « pas de valeur ».
 
 Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min).
 
@@ -271,9 +274,9 @@ Ici, vous codez à partir des tests : vous les lisez pour comprendre ce que la f
 
 Vous partez d'un programme écrit par un débutant, qui analyse un fichier de notes d'examen. Il fonctionne, mais il n'est ni pythonique ni très lisible : le fichier est ouvert sans `with`, une boucle `while` avance avec un compteur manuel, les sommes sont calculées à la main et un `except:` attrape toutes les erreurs sans distinction. Vous le refactorisez, c'est-à-dire que vous améliorez son écriture sans changer ce qu'il fait. Sept tests, déjà activés et verts, servent de filet de sécurité : vous faites une seule transformation à la fois, et ils doivent rester verts après chacune. Vous ajoutez ensuite, en partant d'un test rouge comme dans la partie 3, deux comportements qui manquaient au programme : gérer un fichier absent et un fichier sans note valide.
 
-### Pour aller plus loin (10 min de marge)
+### Pour aller plus loin (si vous êtes en avance)
 
-Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Ils servent de marge : commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Une fois vos tests verts, soumettez vos solutions sur le site, pour vous échauffer avant le défi présenté en conclusion.
+Trois exercices de la piste Python d'Exercism, Pangram, Scrabble Score et Anagram, à faire passer par les tests comme le palindrome de la partie 3. Commencez-les si vous avez fini la partie 4 avant la conclusion, et finissez-les chez vous. Une fois vos tests verts, soumettez vos solutions sur le site, pour vous échauffer avant le défi présenté en conclusion.
 
 ### Conclusion (10 min)
 

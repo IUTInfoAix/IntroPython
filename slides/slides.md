@@ -421,7 +421,7 @@ if condition:
 
 ```python
 class TestPalindrome(unittest.TestCase):
-    @unittest.skip
+    @unittest.skip("à activer")
     def test_1_palindrome_simple(self):
         self.assertTrue(est_palindrome("kayak"))
 ```

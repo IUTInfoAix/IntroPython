@@ -126,7 +126,7 @@ Les tests vivent dans le notebook, avec `unittest`. Un exercice suit toujours le
 class TestMaFonction(unittest.TestCase):
     """Tests unitaires pour ma_fonction"""
 
-    @unittest.skip
+    @unittest.skip("à activer")
     def test_1_cas_simple(self):
         """Test 1 : Cas simple"""
         self.assertEqual(ma_fonction(2, 3), 5)

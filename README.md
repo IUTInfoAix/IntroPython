@@ -188,7 +188,7 @@ La création est alors plus longue, car tout l'environnement est reconstruit. Pr
 
 Un compte GitHub personnel gratuit dispose chaque mois de 120 heures de calcul et de 15 Go de stockage pour Codespaces. Les heures sont comptées selon la machine choisie : sur une machine à 2 cœurs, largement suffisante pour cette séance, une heure d'utilisation en consomme 2, ce qui laisse **60 heures par mois**. Sur une machine à 4 cœurs, il n'en reste que 30. Les chiffres à jour sont dans la [documentation de GitHub](https://docs.github.com/fr/billing/concepts/product-billing/github-codespaces).
 
-Pensez à arrêter votre codespace quand vous avez terminé (bouton **Code**, onglet **Codespaces**, menu **…**, **Stop codespace**) : un codespace arrêté ne consomme plus d'heures, et votre travail y est conservé.
+Pensez à arrêter votre codespace quand vous avez terminé (bouton **Code**, onglet **Codespaces**, menu **…**, **Stop codespace**) : un codespace arrêté ne consomme plus d'heures, et votre travail y est conservé pendant 30 jours : au-delà, GitHub le supprime. Pour garder votre travail, enregistrez-le dans votre dépôt (voir [Comment travailler dans le notebook](#comment-travailler-dans-le-notebook)).
 
 #### Augmenter ce quota avec le Student Developer Pack
 
@@ -302,6 +302,10 @@ Un exercice se présente toujours dans le même ordre : l'énoncé, une cellule 
 | ❌ et ✅ | Ce qu'il faut éviter et ce qu'il faut faire ; ✅ marque aussi les tests, les résultats attendus et les points clés d'une solution |
 
 **Les tests.** Ils sont désactivés au départ. Retirez le `@unittest.skip` du premier test, exécutez la cellule, écrivez le code qui le fait passer, puis passez au suivant. Seule exception : dans l'exercice de refactoring de la partie 4, les premiers tests sont déjà activés, et votre travail consiste à les garder verts.
+
+**Enregistrer son travail.** À la pause et en fin de séance, enregistrez votre travail dans votre dépôt GitHub, depuis le terminal : `git add notebook_seance.ipynb`, puis `git commit -m "..."` avec un message qui dit ce qui a changé, puis `git push`. Le notebook vous le rappelle.
+
+**Le débogueur.** Pour comprendre ce que fait une cellule, le bouton **Run by Line** de VS Code l'exécute une instruction à la fois et montre la valeur des variables. **Debug Cell** permet en plus de poser des points d'arrêt.
 
 **Les solutions.** Ouvrez-les après avoir cherché. Plusieurs proposent une seconde version, plus concise ou mieux découpée, à comparer avec la vôtre.
 

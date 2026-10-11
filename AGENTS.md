@@ -8,11 +8,11 @@ Ces instructions existent pour que l'étudiant apprenne à **raisonner par petit
 
 ## Contexte
 
-Ce projet est une **séance pratique d'introduction à Python** de 4 heures (IUT Informatique Aix-Marseille, BUT1). Les étudiants sont en première année. La syntaxe de base de Python est supposée connue : la séance leur apprend à écrire du code **pythonique**, c'est-à-dire idiomatique et lisible, au lieu de traduire ligne à ligne du C++ ou du Java.
+Ce projet est une **séance pratique d'introduction à Python** de 4 heures (IUT Informatique Aix-Marseille, BUT1). Les étudiants sont en première année. La syntaxe de base de Python est supposée connue, mais une partie d'entre eux n'en a presque pas fait au lycée (bac technologique, ou bac général sans la spécialité NSI). La séance leur apprend à écrire du code **pythonique**, c'est-à-dire idiomatique et lisible, au lieu de traduire ligne à ligne du C++ ou du Java.
 
 Tout le travail se fait dans un seul fichier, le notebook `notebook_seance.ipynb`, ouvert dans VS Code. L'outillage : Python 3.15, le noyau Jupyter, `unittest` pour les tests, ruff pour le formatage et les remarques de style.
 
-Adapte ton niveau d'explication à un public débutant. Si un idiome Python est en jeu pour la première fois (list comprehension, EAFP, context manager, mutabilité et références, `enumerate`, `Counter`, etc.), **explique brièvement le concept avant de l'utiliser** dans du code. Le notebook compare chaque notion à C++ et à Java : fais de même quand cela éclaire (un set se comporte comme un `HashSet`, `b = a` ne copie pas la liste).
+Adapte ton niveau d'explication à un public débutant. Si l'étudiant bloque sur une notion de base (boucle, fonction, liste, indentation), réexplique-la simplement avant de revenir à l'exercice, sans le lui reprocher, et signale-lui la section « Rattraper les bases de Python » du README. Si un idiome Python est en jeu pour la première fois (list comprehension, EAFP, context manager, mutabilité et références, `enumerate`, `Counter`, etc.), **explique brièvement le concept avant de l'utiliser** dans du code. Le notebook compare chaque notion à C++ et à Java : fais de même quand cela éclaire (un set se comporte comme un `HashSet`, `b = a` ne copie pas la liste).
 
 ## Commandes essentielles
 

@@ -246,9 +246,9 @@ Vous créez votre dépôt et votre Codespace, puis vous lisez le Zen de Python, 
 
 ### Partie 1 - Structures de données, mesure de performances, mutabilité, typage (75 min)
 
-Python fournit quatre structures de base : la liste, le dictionnaire, le set et le tuple. Vous voyez d'abord à quoi sert chacune, puis vous mesurez avec `timeit` ce que coûte un test d'appartenance (`in`) parmi 100 000 éléments, dans une liste puis dans un set. Avant d'exécuter la cellule, pariez sur l'écart.
+Python fournit quatre structures de base : la liste, le dictionnaire, le set et le tuple. Vous voyez d'abord à quoi sert chacune, puis vous mesurez avec `timeit` ce que coûte un test d'appartenance (`in`) parmi 100 000 éléments, dans une liste puis dans un set. Avant d'exécuter la cellule, pariez sur l'écart. Une prédiction montre ensuite pourquoi une liste ne peut pas servir de clé de dictionnaire, et ce que cela dit du hachage.
 
-L'exercice guidé (25 min) met ces structures au travail sur un cas réel : vous gérez les inscriptions à un événement où certaines personnes se sont inscrites plusieurs fois. Il faut compter les participants uniques, retrouver ceux qui se sont inscrits plusieurs fois, puis refaire ce comptage avec `Counter`.
+L'exercice guidé (20 min) met ces structures au travail sur un cas réel : vous gérez les inscriptions à un événement où certaines personnes se sont inscrites plusieurs fois. Il faut compter les participants uniques, retrouver ceux qui se sont inscrits plusieurs fois, puis refaire ce comptage avec `Counter`.
 
 La partie se poursuit avec la mutabilité et les références (20 min). En C++ ou en Java, vous savez toujours si vous manipulez une valeur ou une référence. En Python, la syntaxe ne le montre pas : il faut connaître la règle. Vous la découvrez sur trois petits programmes dont vous prédisez l'affichage (`b = a`, un argument par défaut, une grille 3 × 3).
 

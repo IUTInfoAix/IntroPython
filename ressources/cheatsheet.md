@@ -42,6 +42,7 @@ header-includes:
 a,b,c = [1,2,3]
 premier,*milieu,dernier = [1,2,3,4]
 a,b = b,a
+[*l for l in listes]  # Aplatir (3.15)
 
 for i,val in enumerate(liste, start=1):
     print(f"{i}: {val}")
@@ -228,7 +229,6 @@ d['key'].append(1)  # Pas de KeyError
 
 ```python
 lazy import json  # Chargé au 1er usage
-[*lst for lst in listes]  # Aplatir
 {**d for d in dicos}  # Fusionner
 fd = frozendict(a=1)  # Dict immutable
 ABSENT = sentinel("ABSENT")  # Pas None

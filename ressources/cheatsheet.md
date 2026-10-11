@@ -71,9 +71,9 @@ s.add(x); s1|s2; s1&s2; s1-s2
 ```python
 len(obj)  # Longueur
 sum(iterable)  # Somme
-min(iterable); max(iterable)
+min(it); max(it, key=len)  # Selon une clé
 all(iterable); any(iterable)
-sorted(iterable)  # Trier
+sorted(it, key=lambda x: x[1])  # Trier
 zip(it1, it2)  # Combiner
 map(func, iter); filter(func, iter)
 ```

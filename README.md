@@ -264,7 +264,7 @@ Cette partie présente trois idiomes :
 - **EAFP**, « Easier to Ask Forgiveness than Permission » : en Python, on préfère essayer puis gérer l'erreur plutôt que vérifier avant. Exercice : une division qui retourne une valeur par défaut au lieu d'échouer (15 min) ;
 - le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit. Exercice : écrire puis relire un fichier (10 min).
 
-Là aussi, un exercice « Pour aller plus loin » attend ceux qui sont en avance : classer les admis d'un examen avec une comprehension et `sorted()` (15 min).
+Là aussi, un exercice « Pour aller plus loin » attend ceux qui sont en avance : classer les admis d'un examen avec une comprehension et `sorted()` (15 min). Un bonus présente aussi les générateurs, qui calculent leurs valeurs à la demande : un million de valeurs tiennent en 200 octets au lieu de 8 Mo.
 
 ### Partie 3 - Coder à partir des tests (20 min)
 

@@ -29,7 +29,7 @@ mdc: true
 ### Au programme :
 - ✅ Choisir la bonne structure de données
 - ✅ Annoter les types, et laisser l'éditeur les vérifier
-- ✅ Utiliser les idiomes Python
+- ✅ Utiliser les idiomes Python, dont les fonctions d'ordre supérieur
 - ✅ Écrire du code lisible et élégant
 - ✅ Coder à partir des tests, et refactoriser sous leur protection
 
@@ -360,6 +360,39 @@ with open('in.txt') as f_in, open('out.txt', 'w') as f_out:
 <v-click>
 
 **→ Toujours utiliser `with` pour les fichiers**
+</v-click>
+
+---
+
+# Les fonctions sont des valeurs
+
+- Une fonction se passe en argument : les fonctions d'ordre supérieur
+```python
+sorted(mots, key=len)   # Java : Comparator.comparing(String::length)
+max(mots, key=len)      # le mot le plus long
+```
+<v-click>
+
+- `lambda` : une petite fonction écrite sur place
+```python
+sorted(resultats.items(), key=lambda paire: paire[1])   # Java : paire -> paire.getValue()
+```
+</v-click>
+<v-click>
+
+- `map` et `filter` existent, mais la comprehension est plus lisible
+```python
+list(map(lambda n: n * 2, notes))   # ❌ ruff le signale (C417)
+[n * 2 for n in notes]              # ✅
+```
+</v-click>
+<v-click>
+
+- Une fonction qui retourne une fonction : une fermeture, la base des décorateurs
+```python
+def au_moins(seuil: int) -> Callable[[int], bool]:   # Java : Predicate<Integer>
+    return lambda note: note >= seuil
+```
 </v-click>
 
 ---

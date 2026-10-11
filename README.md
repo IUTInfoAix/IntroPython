@@ -24,7 +24,7 @@ La séance est découpée en quatre parties, et chacune vise des savoir-faire pr
 | Partie | Vous serez capable de... |
 |---|---|
 | **1. Structures de données** | Choisir la structure de données appropriée (list, dict, set, tuple). Mesurer les performances d'un code avec `timeit`. Expliquer les références et la mutabilité, et éviter leurs pièges. Annoter les types d'une fonction. |
-| **2. Idiomes** | Utiliser les idiomes Python : comprehensions, EAFP, context managers. |
+| **2. Idiomes** | Utiliser les idiomes Python : comprehensions, EAFP, context managers, fonctions d'ordre supérieur et `lambda`. |
 | **3. Coder à partir des tests** | Comprendre une spécification à partir de tests, puis écrire le code qui les fait passer. |
 | **4. Refactoring** | Transformer du code « traduit de C++ ou Java » en code pythonique, sous la protection de tests qui garantissent qu'il fait toujours la même chose. Exploiter les outils natifs de Python plutôt que réinventer la roue. |
 
@@ -234,7 +234,7 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 |---------|--------|-------|---------|
 | 00:00 | Mise en route | 20 min | Création du dépôt, Codespace, Zen de Python, échauffement, calculs |
 | 00:20 | **Partie 1** | 75 min | Structures de données natives, mesure de performances, mutabilité, typage |
-| 01:35 | **Partie 2** | 55 min | Comprehensions, EAFP, context managers |
+| 01:35 | **Partie 2** | 55 min | Comprehensions, EAFP, context managers, fonctions d'ordre supérieur |
 | 02:30 | Pause | 15 min | |
 | 02:45 | **Partie 3** | 20 min | Coder à partir des tests |
 | 03:05 | **Partie 4** | 45 min | Refactoring de l'analyseur CSV |
@@ -256,13 +256,14 @@ Vous apprenez ensuite à annoter les types d'une fonction (10 min). Python ignor
 
 Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min). Un autre mesure ce que coûte une file d'attente avec une liste, puis avec une `deque` : O(n) contre O(1) pour retirer le premier élément.
 
-### Partie 2 - Comprehensions, EAFP, context managers (55 min)
+### Partie 2 - Comprehensions, EAFP, context managers, fonctions d'ordre supérieur (55 min)
 
-Cette partie présente trois idiomes :
+Cette partie présente quatre idiomes :
 
 - la **list comprehension** écrit en une ligne une boucle qui remplit une liste, et aplatit une liste de listes avec l'unpacking `*`, nouveau dans Python 3.15 (PEP 798). Exercice : filtrer une liste de notes (10 min) ;
-- **EAFP**, « Easier to Ask Forgiveness than Permission » : en Python, on préfère essayer puis gérer l'erreur plutôt que vérifier avant. Exercice : une division qui retourne une valeur par défaut au lieu d'échouer (15 min) ;
-- le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit. Exercice : écrire puis relire un fichier (10 min).
+- **EAFP**, « Easier to Ask Forgiveness than Permission » : en Python, on préfère essayer puis gérer l'erreur plutôt que vérifier avant. Exercice : une division qui retourne une valeur par défaut au lieu d'échouer (10 min) ;
+- le **context manager** `with` ferme un fichier automatiquement, même si une erreur se produit. Exercice : écrire puis relire un fichier (10 min) ;
+- les **fonctions d'ordre supérieur** : une fonction est une valeur, qu'on passe à `sorted()` ou `max()`, et qu'on écrit sur place avec `lambda`, comme les lambdas de Java. Exercice : trouver le meilleur étudiant d'un seul appel à `max()` (5 min).
 
 Là aussi, un exercice « Pour aller plus loin » attend ceux qui sont en avance : classer les admis d'un examen avec une comprehension et `sorted()` (15 min). Un bonus présente aussi les générateurs, qui calculent leurs valeurs à la demande : un million de valeurs tiennent en 200 octets au lieu de 8 Mo.
 

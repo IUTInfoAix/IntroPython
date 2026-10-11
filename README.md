@@ -252,7 +252,7 @@ L'exercice guidé (20 min) met ces structures au travail sur un cas réel : vous
 
 La partie se poursuit avec la mutabilité et les références (20 min). En C++ ou en Java, vous savez toujours si vous manipulez une valeur ou une référence. En Python, la syntaxe ne le montre pas : il faut connaître la règle. Vous la découvrez sur trois petits programmes dont vous prédisez l'affichage (`b = a`, un argument par défaut, une grille 3 × 3).
 
-Vous apprenez ensuite à annoter les types d'une fonction (10 min). Python ignore ces annotations à l'exécution, mais l'éditeur souligne un appel qui ne les respecte pas. Toutes les fonctions du notebook sont annotées à partir de là, à commencer par celle que vous réparez ensuite, dont l'argument par défaut est mutable. Un bonus présente les sentinelles de Python 3.15, pour les cas où `None` ne suffit pas à dire « pas de valeur ».
+Vous apprenez ensuite à annoter les types d'une fonction (10 min). Python ignore ces annotations à l'exécution, mais l'éditeur souligne un appel qui ne les respecte pas. Toutes les fonctions du notebook sont annotées à partir de là, à commencer par celle que vous réparez ensuite, dont l'argument par défaut est mutable. Des bonus présentent les sentinelles de Python 3.15, pour les cas où `None` ne suffit pas à dire « pas de valeur », les fonctions génériques (comme `<T>` en Java) et les dataclasses, des enregistrements typés comme les `record` de Java.
 
 Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min). Un autre mesure ce que coûte une file d'attente avec une liste, puis avec une `deque` : O(n) contre O(1) pour retirer le premier élément.
 

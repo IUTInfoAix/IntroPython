@@ -153,6 +153,9 @@ Une fois sur la page de votre dépôt (`votreUsername/IntroPython`) :
 
 GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis installe les extensions de VS Code : comptez moins d'une minute. VS Code s'ouvre ensuite dans votre navigateur, avec un terminal et les extensions Python, Jupyter et Ruff déjà configurées.
 
+> [!TIP]
+> Utilisez de préférence **Chrome** ou **Edge**. Sous Firefox, certains réglages de confidentialité empêchent le codespace de démarrer : voir [Le codespace ne démarre pas sous Firefox](#le-codespace-ne-démarre-pas-sous-firefox).
+
 ### Étape 4 - Ouvrir le notebook
 
 Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`.
@@ -624,6 +627,8 @@ L'évaluation est formative : l'enseignant observe les solutions proposées aux 
 
 Une partie de la promotion arrive sans avoir vraiment pratiqué Python au lycée : bac technologique, ou bac général sans la spécialité NSI. Envoyez à tous, une semaine avant la séance, le lien vers la section [Rattraper les bases de Python](#rattraper-les-bases-de-python) : elle leur donne un programme pour vérifier qu'ils sont prêts, et des ressources en français pour se mettre à niveau.
 
+Conseillez-leur aussi de venir avec Chrome ou Edge. Sous Firefox, les réglages de confidentialité empêchent parfois le codespace de démarrer : la section [Le codespace ne démarre pas sous Firefox](#le-codespace-ne-démarre-pas-sous-firefox) donne la marche à suivre, mais elle prend du temps en début de séance.
+
 ### Maintenance du dépôt
 
 Le fonctionnement du Codespace, la publication de son image et les conventions du dépôt sont décrits dans [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -663,6 +668,19 @@ Le fonctionnement du Codespace, la publication de son image et les conventions d
 ---
 
 ## Dépannage
+
+### Le codespace ne démarre pas sous Firefox
+
+Sous Firefox, la page du codespace peut rester blanche, charger sans fin, ou afficher « Error loading webview: Could not register service workers ». Le même codespace s'ouvre pourtant dans Chrome ou Edge.
+
+En cause, des réglages de confidentialité de Firefox. Dans le navigateur, VS Code a besoin des *service workers* et du stockage local, que ces réglages bloquent pour le site du codespace. Essayez dans l'ordre, en rechargeant la page après chaque étape :
+
+1. **Désactivez la protection renforcée contre le pistage pour ce site.** Cliquez sur le bouclier à gauche de l'adresse du codespace (elle se termine par `github.dev`), puis désactivez la protection. C'est la solution qui marche le plus souvent, surtout si la protection est réglée sur « Stricte ».
+2. **Vérifiez que Firefox ne supprime pas les données des sites à sa fermeture.** Dans **Paramètres** › **Vie privée et sécurité**, si la case « Supprimer les cookies et les données des sites à la fermeture de Firefox » est cochée, ajoutez une exception pour `github.dev` avec le bouton **Gérer les exceptions…**.
+3. **Désactivez vos extensions de blocage** (uBlock Origin, Privacy Badger…) pour le codespace. Le mode de dépannage de Firefox (menu ☰ › **Aide** › **Mode de dépannage**) les désactive toutes le temps d'un essai.
+4. **N'utilisez pas de fenêtre de navigation privée**, et mettez Firefox à jour : selon la version, les service workers y sont désactivés.
+
+Si rien n'y fait, ouvrez le codespace dans **Chrome** ou **Edge**, comme le conseille GitHub pour les navigateurs qui ne reposent pas sur Chromium. Votre travail est dans le codespace, pas dans le navigateur : vous le retrouvez à l'identique.
 
 ### Le notebook ne s'ouvre pas
 

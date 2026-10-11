@@ -232,7 +232,7 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 
 | Horaire | Partie | Durée | Contenu |
 |---------|--------|-------|---------|
-| 00:00 | Mise en route | 20 min | Création du dépôt, Codespace, Zen de Python, échauffement |
+| 00:00 | Mise en route | 20 min | Création du dépôt, Codespace, Zen de Python, échauffement, calculs |
 | 00:20 | **Partie 1** | 75 min | Structures de données natives, mesure de performances, mutabilité, typage |
 | 01:35 | **Partie 2** | 55 min | Comprehensions, EAFP, context managers |
 | 02:30 | Pause | 15 min | |
@@ -242,7 +242,7 @@ En attendant, votre compte reste sur Copilot Free : Copilot Chat fonctionne, ave
 
 ### Mise en route (20 min)
 
-Vous créez votre dépôt et votre Codespace, puis vous lisez le Zen de Python, les principes du langage. L'échauffement compare deux versions d'une même boucle : l'une écrite comme en C ou en Java, avec `range(len(...))` et un indice, l'autre avec `enumerate()` et une f-string. À vous de dire laquelle est la plus lisible.
+Vous créez votre dépôt et votre Codespace, puis vous lisez le Zen de Python, les principes du langage. L'échauffement compare deux versions d'une même boucle : l'une écrite comme en C ou en Java, avec `range(len(...))` et un indice, l'autre avec `enumerate()` et une f-string. À vous de dire laquelle est la plus lisible. Six prédictions montrent ensuite que Python ne calcule pas toujours comme C++ ou Java : `7 / 2` vaut `3.5`, et `-7 // 2` vaut `-4`.
 
 ### Partie 1 - Structures de données, mesure de performances, mutabilité, typage (75 min)
 

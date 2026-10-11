@@ -247,11 +247,11 @@ pairs = [x for x in range(20) if x % 2 == 0]
 
 <v-click>
 
-- Aplatir, fusionner (3.15 : PEP 798)
+- Aplatir une liste de listes, réunir des dictionnaires (Python 3.15, PEP 798)
 ```python
 plat = [elem for ligne in matrice for elem in ligne]  # avant 3.15
-plat = [*ligne for ligne in matrice]                  # 3.15
-fusion = {**d for d in dicos}                         # idem avec ** pour les dicts
+plat = [*ligne for ligne in matrice]                  # 3.15 : [[1, 2], [3]] → [1, 2, 3]
+fusion = {**d for d in dicos}                         # 3.15 : [{"a": 1}, {"b": 2}] → {"a": 1, "b": 2}
 ```
 </v-click>
 

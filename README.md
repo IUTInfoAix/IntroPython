@@ -17,7 +17,7 @@
 
 ### Ce que vous saurez faire à la fin de cette séance
 
-La syntaxe de base de Python est supposée connue. Avec elle, on écrit déjà des programmes qui fonctionnent, mais qui ressemblent souvent à du C++ ou à du Java traduit ligne à ligne : une boucle `for i in range(len(fruits))` pour parcourir une liste, un fichier ouvert puis fermé à la main, un `while` avec un compteur. Cette séance vous apprend à écrire les mêmes programmes à la façon Python, c'est-à-dire du code **pythonique** : idiomatique et lisible.
+La syntaxe de base de Python est supposée connue : si vous en avez peu fait au lycée, la section [Rattraper les bases de Python](#rattraper-les-bases-de-python) vous dit comment vous mettre à niveau. Avec elle, on écrit déjà des programmes qui fonctionnent, mais qui ressemblent souvent à du C++ ou à du Java traduit ligne à ligne : une boucle `for i in range(len(fruits))` pour parcourir une liste, un fichier ouvert puis fermé à la main, un `while` avec un compteur. Cette séance vous apprend à écrire les mêmes programmes à la façon Python, c'est-à-dire du code **pythonique** : idiomatique et lisible.
 
 La séance est découpée en quatre parties, et chacune vise des savoir-faire précis :
 
@@ -54,10 +54,49 @@ Quatre heures ne suffisent pas à prendre des habitudes. La séance se prolonge 
 
 #### Connaissances attendues
 
-- **La syntaxe de base de Python**, supposée connue.
+- **La syntaxe de base de Python** : variables, conditions, boucles, fonctions et listes. Si vous en avez peu fait au lycée, voir [Rattraper les bases de Python](#rattraper-les-bases-de-python), juste en dessous.
 - **Un compte GitHub personnel** : vous y créerez votre copie du dépôt. Si vous n'en avez pas encore, la première étape de la mise en place vous guide.
 
 Le notebook compare souvent Python à C++ et à Java. Ces comparaisons sont des points de repère : appuyez-vous sur le langage que vous connaissez.
+
+#### Rattraper les bases de Python
+
+Après la spécialité NSI, vous avez écrit beaucoup de Python : vous pouvez passer cette section. Après un bac technologique, ou un bac général sans NSI, vous n'en avez souvent fait qu'un peu, en SNT et en mathématiques. Ce n'est pas un problème, mais la séance ne reprend pas les bases : prenez quelques heures **avant la séance** pour les rattraper.
+
+**Êtes-vous prêt ?** Vous l'êtes si vous savez lire ce programme et dire ce qu'il affiche, puis en écrire un du même genre sans aide :
+
+```python
+def compter_admis(notes):
+    admis = 0
+    for note in notes:
+        if note >= 10:
+            admis = admis + 1
+    return admis
+
+
+print(compter_admis([12, 8, 15, 10]))
+```
+
+Il contient tout ce que la séance suppose connu : des variables, une liste, une boucle `for`, un test `if`, une fonction avec `def` et `return`, et un affichage avec `print()`. Il affiche `3`. Pendant la séance, vous apprendrez justement à l'écrire de façon plus pythonique.
+
+**Pour rattraper les bases**, dans cet ordre :
+
+1. **[futurecoder](https://fr.futurecoder.io/)**, en français : un cours interactif pour grands débutants, qui se suit dans le navigateur, sans installation ni compte. Il explique les messages d'erreur et propose des indices quand on bloque.
+2. **[France-IOI](https://www.france-ioi.org/algo/chapters.php)**, en français : des exercices corrigés automatiquement. Choisissez Python, puis faites le niveau 1 du parcours général : 8 chapitres, de l'affichage aux boucles en passant par les variables et les conditions. L'inscription est gratuite.
+3. **[Python Tutor](https://pythontutor.com/visualize.html)** : collez-y un programme, il l'exécute pas à pas en dessinant les variables et les listes. C'est le meilleur moyen de comprendre une boucle qui ne fait pas ce que vous croyez. L'interface est en anglais, mais les dessins parlent d'eux-mêmes. Il vous resservira dans la partie 1, pour les références.
+
+**Si vous préférez un cours suivi :**
+
+- [Apprenez les bases du langage Python](https://openclassrooms.com/fr/courses/7168871-apprenez-les-bases-du-langage-python), sur OpenClassrooms : environ 6 heures, en libre accès, pour ceux « qui n'ont jamais vu une ligne de code ». Ses deux premières parties suffisent pour la séance ; la troisième, sur l'extraction de données web, va au-delà.
+- Le [Learning Mode d'Exercism](https://exercism.org/tracks/python/concepts), la plateforme du défi présenté en conclusion : de courts exercices, qui introduisent chacun une notion avec son explication. Les dix premiers, de *Guido's Gorgeous Lasagna* (les bases) à *Making the Grade* (les boucles), couvrent ce qu'il faut savoir. Les énoncés sont en anglais.
+
+**Pour progresser pendant le semestre :**
+
+- Le [tutoriel officiel de Python](https://docs.python.org/fr/3/tutorial/), en français. Ses chapitres 3 à 5 (« Introduction informelle à Python », « D'autres outils de contrôle de flux », « Structures de données ») font référence, mais ils sont denses pour un débutant.
+- [Apprendre à programmer avec Python 3](https://inforef.be/swi/python.htm), de Gérard Swinnen : un livre complet pour débutants, en français, téléchargeable gratuitement.
+- Le MOOC [Apprendre à coder avec Python](https://www.fun-mooc.fr/fr/cours/apprendre-a-coder-avec-python/), de l'Université libre de Bruxelles et de l'Université de La Réunion, sur FUN : un cours complet pour débutants, mais long (15 semaines d'environ 8 heures). Les dates des sessions sont sur sa page.
+
+**Pendant la séance**, si une notion de base vous manque, demandez à Copilot Chat de vous la réexpliquer (« Comment fonctionne une boucle for ? »), ou appelez l'enseignant : c'est normal, et c'est fait pour ça.
 
 #### Environnement technique
 
@@ -305,6 +344,7 @@ Ouvrez le panneau **Copilot Chat** (icône dans la barre latérale gauche) et es
 - `Qu'est-ce qu'une list comprehension ?`
 - `Explique-moi la différence entre une liste et un set`
 - `Pourquoi b = a ne copie pas ma liste ?`
+- `Comment fonctionne une boucle for ?`
 - `Pourquoi mon test test_1_palindrome_simple échoue ?`
 
 Observez comment Copilot répond : il explique le concept sans donner directement du code. Si vous insistez, il vous orientera vers la documentation, puis seulement en dernier recours proposera un minimum de code.
@@ -579,6 +619,10 @@ Elle relie leurs connaissances théoriques en algorithmique et en programmation 
 La séance repose sur une pédagogie active. Les notions sont mises en perspective avec les langages que les étudiants pratiqueront (C/C++, Java), et chacune est suivie d'un exercice court qui la vérifie. Les exercices sont posés comme des problèmes d'optimisation ou de refactoring, et tous les exemples viennent de cas d'usage réels qu'ils rencontreront probablement un jour.
 
 L'évaluation est formative : l'enseignant observe les solutions proposées aux exercices, écoute les questions et les discussions, puis ajuste le rythme et le niveau d'approfondissement pendant la séance.
+
+### Avant la séance
+
+Une partie de la promotion arrive sans avoir vraiment pratiqué Python au lycée : bac technologique, ou bac général sans la spécialité NSI. Envoyez à tous, une semaine avant la séance, le lien vers la section [Rattraper les bases de Python](#rattraper-les-bases-de-python) : elle leur donne un programme pour vérifier qu'ils sont prêts, et des ressources en français pour se mettre à niveau.
 
 ### Maintenance du dépôt
 

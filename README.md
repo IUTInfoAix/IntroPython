@@ -158,7 +158,12 @@ GitHub télécharge un environnement déjà prêt (environ 190 Mo), puis install
 
 ### Étape 4 - Ouvrir le notebook
 
-Dans l'explorateur de fichiers (à gauche), cliquez sur le fichier `notebook_seance.ipynb`.
+**Attendez d'abord que le README s'ouvre tout seul** dans l'éditeur : c'est le signe que le codespace a fini de se préparer. Pendant ce temps, VS Code installe ses extensions, dont celle qui affiche les notebooks (Jupyter).
+
+> [!WARNING]
+> Ouvert trop tôt, avant l'installation de l'extension Jupyter, le notebook ne s'affiche pas, et refuse ensuite de s'ouvrir : voir [Le notebook refuse de s'ouvrir](#le-notebook-refuse-de-souvrir).
+
+Dans l'explorateur de fichiers (à gauche), cliquez ensuite sur le fichier `notebook_seance.ipynb`.
 
 Le noyau Python 3.15 est déjà sélectionné : son nom s'affiche en haut à droite du notebook, et vous pouvez exécuter les cellules tout de suite.
 
@@ -682,7 +687,16 @@ En cause, des réglages de confidentialité de Firefox. Dans le navigateur, VS C
 
 Si rien n'y fait, ouvrez le codespace dans **Chrome** ou **Edge**, comme le conseille GitHub pour les navigateurs qui ne reposent pas sur Chromium. Votre travail est dans le codespace, pas dans le navigateur : vous le retrouvez à l'identique.
 
-### Le notebook ne s'ouvre pas
+### Le notebook refuse de s'ouvrir
+
+C'est presque toujours qu'il a été ouvert avant la fin de la préparation du codespace, quand l'extension Jupyter n'était pas encore installée. Le notebook reste alors vide, ou s'affiche sous forme de texte (du JSON), et ne se corrige pas tout seul une fois l'extension installée. C'est un défaut connu de VS Code. Essayez dans l'ordre :
+
+1. **Fermez l'onglet du notebook**, puis rouvrez le fichier depuis l'explorateur.
+2. **S'il s'affiche en texte**, faites un clic droit sur son onglet, choisissez **Reopen Editor With…** (Rouvrir l'éditeur avec), puis **Jupyter Notebook**.
+3. **Rechargez la fenêtre** : appuyez sur F1, tapez `Reload Window`, puis choisissez **Developer: Reload Window**.
+4. **En dernier recours, arrêtez puis relancez le codespace** : sur la page de votre dépôt, bouton **Code**, onglet **Codespaces**, menu **…** du codespace, **Stop codespace**, puis rouvrez-le. Votre travail est conservé.
+
+### Le notebook ne s'ouvre pas en local
 
 ```bash
 # Vérifier que Jupyter est installé

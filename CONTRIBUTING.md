@@ -297,6 +297,8 @@ L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur
 
 **Copilot en tuteur.** [.github/copilot-instructions.md](.github/copilot-instructions.md) cadre les réponses de Copilot Chat : explication du concept, puis documentation, puis un minimum de code, sans jamais réciter les solutions repliées du notebook. Ce fichier est adapté de celui des TP de R2.02 et R2.03 ; « Use this template » le copie chez chaque étudiant. [AGENTS.md](AGENTS.md) donne les mêmes consignes aux autres assistants (Codex, Cursor…). Seul leur en-tête diffère. Le bloc délimité par les marqueurs `TDD-PLAYBOOK` doit rester identique dans les deux fichiers : un hook pre-commit refuse le commit s'il diffère. Les sections qui le précèdent (commandes, structure du projet) ne sont pas contrôlées : reportez-y vos modifications à la main. L'extension Copilot Chat et le réglage qui coupe les complétions automatiques (`github.copilot.enable`) sont dans la configuration source : les modifier demande de publier une nouvelle image.
 
+**Pas d'ouverture automatique du notebook.** `customizations.codespaces.openFiles` ouvrirait le notebook à la création du codespace, avant que VS Code ait installé l'extension Jupyter : il s'afficherait en JSON, sans se corriger ensuite ([vscode-jupyter#13726](https://github.com/microsoft/vscode-jupyter/issues/13726)). C'est le défaut que rencontre un étudiant qui ouvre le notebook trop tôt. Le README lui demande d'attendre que le README s'ouvre, et son dépannage explique comment débloquer le notebook.
+
 **Rien ne s'installe au démarrage.** Les dépendances sont installées par le Dockerfile, pas par une commande de cycle de vie (`onCreateCommand`, `postCreateCommand`) qui serait rejouée à chaque création de codespace.
 
 ### Mesures

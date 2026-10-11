@@ -254,7 +254,7 @@ La partie se poursuit avec la mutabilité et les références (20 min). En C++ o
 
 Vous apprenez ensuite à annoter les types d'une fonction (10 min). Python ignore ces annotations à l'exécution, mais l'éditeur souligne un appel qui ne les respecte pas. Toutes les fonctions du notebook sont annotées à partir de là, à commencer par celle que vous réparez ensuite, dont l'argument par défaut est mutable. Un bonus présente les sentinelles de Python 3.15, pour les cas où `None` ne suffit pas à dire « pas de valeur ».
 
-Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min).
+Si vous êtes en avance, un exercice « Pour aller plus loin » vous fait comparer les inscrits de deux ateliers avec les opérations entre sets (10 min). Un autre mesure ce que coûte une file d'attente avec une liste, puis avec une `deque` : O(n) contre O(1) pour retirer le premier élément.
 
 ### Partie 2 - Comprehensions, EAFP, context managers (55 min)
 

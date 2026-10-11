@@ -363,7 +363,6 @@ a, b = b, a                # ✅
 
 ```python
 premier, *milieu, dernier = [1, 2, 3, 4, 5]
-plat = [*ligne for ligne in matrice]  # 3.15 : aplatir
 ```
 </v-click>
 <v-click>
@@ -542,9 +541,7 @@ layout: two-cols-header
 
 <v-click>
 
-**🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**
-
-Échauffement : soumettez sur Exercism les trois bonus du notebook (Pangram, Scrabble Score, Anagram)
+**🚀 Lancez-vous : [exercism.org/tracks/python](https://exercism.org/tracks/python)**, en commençant par les trois bonus du notebook
 
 _"The only way to learn a new programming language is by writing programs in it."_ (Brian Kernighan et Dennis Ritchie, _The C Programming Language_)
 

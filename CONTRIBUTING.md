@@ -71,6 +71,12 @@ Tel que distribué, le notebook doit passer `make check-all` sans aucune remarqu
 
 Dans VS Code, les remarques de ruff s'affichent sous le code, dans les cellules. Les corrections automatiques à l'enregistrement sont désactivées (`ruff.fixAll` dans [.devcontainer/source/devcontainer.json](.devcontainer/source/devcontainer.json)) : c'est à l'étudiant de réécrire son code.
 
+Les fonctions sont annotées à partir de la section D de la partie 1, et Pylance vérifie ces annotations dans le Codespace (`python.analysis.typeCheckingMode` à `basic`). Tel que distribué, le notebook ne doit lui montrer aucune erreur, hormis les écritures de la PEP 798, qu'il ne connaît pas encore (vérifié avec pyright 1.1.414, le moteur de Pylance). Trois conventions en découlent :
+
+- les fonctions à compléter ont pour corps `...` plutôt que `pass`, que Pylance refuse sous un type de retour ;
+- les tests portent `@unittest.skip("à activer")` : sans raison, le décorateur est une erreur de type ;
+- un appel volontairement mal typé, comme dans le test 3 de la division, porte un `# type: ignore` expliqué par un commentaire, comme les contre-exemples portent un `# noqa`.
+
 ## Workflow de développement
 
 ### 1. Créer une branche
@@ -296,6 +302,8 @@ L'image n'est construite que pour l'architecture amd64, celle de Codespaces. Sur
 **Extension Jupyter.** Elle n'est plus épinglée depuis l'image `2026.10.3`. Elle l'avait été à `2025.7.0` d'octobre 2025 à octobre 2026, parce que la version 2025.9.0 exigeait VS Code 1.105, plus récent que celui de Codespaces à l'époque. Un an plus tard, cette raison avait disparu et les étudiants recevaient une extension vieille de quatorze mois. Avant de publier une image, vérifiez dans un vrai codespace que le noyau est présélectionné à l'ouverture de `notebook_seance.ipynb` et qu'une cellule s'exécute. Si la question « Sélectionner un noyau » réapparaît, rétablissez un épinglage (`ms-toolsai.jupyter@<version qui fonctionne>`) dans la configuration source.
 
 **Copilot en tuteur.** [.github/copilot-instructions.md](.github/copilot-instructions.md) cadre les réponses de Copilot Chat : explication du concept, puis documentation, puis un minimum de code, sans jamais réciter les solutions repliées du notebook. Ce fichier est adapté de celui des TP de R2.02 et R2.03 ; « Use this template » le copie chez chaque étudiant. [AGENTS.md](AGENTS.md) donne les mêmes consignes aux autres assistants (Codex, Cursor…). Seul leur en-tête diffère. Le bloc délimité par les marqueurs `TDD-PLAYBOOK` doit rester identique dans les deux fichiers : un hook pre-commit refuse le commit s'il diffère. Les sections qui le précèdent (commandes, structure du projet) ne sont pas contrôlées : reportez-y vos modifications à la main. L'extension Copilot Chat et le réglage qui coupe les complétions automatiques (`github.copilot.enable`) sont dans la configuration source : les modifier demande de publier une nouvelle image.
+
+**Vérification des types.** `python.analysis.typeCheckingMode` vaut `basic` dans la configuration source : Pylance souligne les appels qui ne respectent pas les annotations. Le mode `standard` ajoute des vérifications plus fines, déroutantes pour des débutants. Le réglage est inscrit dans l'image : le modifier demande de publier une nouvelle image.
 
 **Pas d'ouverture automatique du notebook.** `customizations.codespaces.openFiles` ouvrirait le notebook à la création du codespace, avant que VS Code ait installé l'extension Jupyter : il s'afficherait en JSON, sans se corriger ensuite ([vscode-jupyter#13726](https://github.com/microsoft/vscode-jupyter/issues/13726)). C'est le défaut que rencontre un étudiant qui ouvre le notebook trop tôt. Le README lui demande d'attendre que le README s'ouvre, et son dépannage explique comment débloquer le notebook.
 

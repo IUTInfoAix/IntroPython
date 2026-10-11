@@ -592,7 +592,7 @@ ruff check --fix mon_fichier.py
 ruff rule PERF401
 ```
 
-Ruff remplace à lui seul trois outils que vous croiserez encore dans beaucoup de projets : **black** (formatage), **isort** (tri des imports) et **flake8** (style PEP 8). Ils s'utilisent de la même façon, par exemple `black mon_fichier.py`. Ruff ne vérifie pas les annotations de types : pour cela, l'outil de référence reste **mypy**, qui n'est pas utilisé dans ce projet.
+Ruff remplace à lui seul trois outils que vous croiserez encore dans beaucoup de projets : **black** (formatage), **isort** (tri des imports) et **flake8** (style PEP 8). Ils s'utilisent de la même façon, par exemple `black mon_fichier.py`. Ruff ne vérifie pas les annotations de types. Dans VS Code, c'est Pylance qui s'en charge, en mode `basic` dans le Codespace ; en ligne de commande, l'outil de référence est **mypy**, qui n'est pas utilisé dans ce projet.
 
 ### Configuration recommandée (`.vscode/settings.json`)
 
@@ -604,6 +604,7 @@ Ruff remplace à lui seul trois outils que vous croiserez encore dans beaucoup d
   },
   "notebook.formatOnSave.enabled": true,
   "ruff.fixAll": false,
+  "python.analysis.typeCheckingMode": "basic",
   "editor.rulers": [88],
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
@@ -613,7 +614,7 @@ Ruff remplace à lui seul trois outils que vous croiserez encore dans beaucoup d
 }
 ```
 
-Ces réglages demandent l'extension **Ruff** (`charliermarsh.ruff`). Dans le Codespace, elle est déjà installée et configurée. Le code est formaté à chaque enregistrement, y compris dans les cellules du notebook. Les corrections automatiques à l'enregistrement sont volontairement désactivées (`ruff.fixAll`) : ruff vous montre la tournure à reprendre, à vous de la réécrire.
+Ces réglages demandent les extensions **Ruff** (`charliermarsh.ruff`) et **Pylance** (`ms-python.vscode-pylance`), qui vérifie les annotations de types (`python.analysis.typeCheckingMode`). Dans le Codespace, elles sont déjà installées et configurées. Le code est formaté à chaque enregistrement, y compris dans les cellules du notebook. Les corrections automatiques à l'enregistrement sont volontairement désactivées (`ruff.fixAll`) : ruff vous montre la tournure à reprendre, à vous de la réécrire.
 
 ---
 

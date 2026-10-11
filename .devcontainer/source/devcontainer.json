@@ -73,6 +73,11 @@
         },
         // Indentation automatique de Pylance pendant la frappe.
         "editor.formatOnType": true,
+        // Vérification des types par Pylance : un appel qui ne respecte pas
+        // les annotations est souligné (partie 1, section D du notebook). Le
+        // mode basic suffit ; standard ajoute des vérifications plus fines,
+        // déroutantes pour des débutants.
+        "python.analysis.typeCheckingMode": "basic",
         // Pas de correction automatique à l'enregistrement : ruff montre la
         // tournure à reprendre, à l'étudiant de la réécrire.
         "ruff.fixAll": false,
